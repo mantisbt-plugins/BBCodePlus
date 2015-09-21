@@ -10,7 +10,8 @@
 // Feel free to add more tags
 // ----------------------------------------------------------------------------
 mySettings = {
-	previewParserPath: 'plugins/BBCodePlus/files/markitup/templates/preview.php',
+	// parser determined in plugin code.
+	previewParserPath: '',
 	markupSet: [
 		{name:'Bold', key:'B', openWith:'[b]', closeWith:'[/b]'},
 		{name:'Italic', key:'I', openWith:'[i]', closeWith:'[/i]'},

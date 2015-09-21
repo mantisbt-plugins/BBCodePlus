@@ -99,6 +99,7 @@
 			
 			if ( ON == plugin_config_get( 'process_markitup' ) )
 			{
+				$resources .= 'mySettings.previewParserPath = "' . plugin_page("preview.php") . '"';
 				$resources .= '// apply to proper text areas' . $nl;
 				$resources .= 'if ($("textarea[name=\'bugnote_text\']")) $("textarea[name=\'bugnote_text\']").markItUp(mySettings);' . $nl;
 				$resources .= 'if ($("textarea[name=\'description\']")) $("textarea[name=\'description\']").markItUp(mySettings);' . $nl;
@@ -337,8 +338,6 @@
 
 			return $p_string;
 		}
-		//-------------------------------------------------------------------
-		
 		//-------------------------------------------------------------------
 		/**
 		 * restore 2 html tags: <pre> and <code>
