@@ -1,0 +1,22 @@
+div.bbcodeplus-quote {
+    border: solid #c0c0c0 1px;
+    padding: 10px;
+    background-color: #d8d8d8;
+}
+
+pre {
+  border: 1px solid silver;
+  margin: 0 0 1.5em 0;
+  overflow: auto;
+  padding-left: 10px;
+}
+
+code span {
+	font-family: Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
+	font-size: 1em;
+}
+
+.bbcodeplus-list {
+	margin-left: 0px;
+	padding-left: 1.2em;
+}
