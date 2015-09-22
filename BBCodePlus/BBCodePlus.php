@@ -362,11 +362,9 @@
 				}
 			}
 			$tags = implode( '|', $tags );
-
-			$t_string = preg_replace( '/&lt;(' . $tags . ')\s*&gt;/ui', '<\\1>', $t_string );
-			$t_string = preg_replace( '/&lt;\/(' . $tags . ')\s*&gt;/ui', '</\\1>', $t_string );
-			$t_string = preg_replace( '/&lt;(' . $tags . ')\s*\/&gt;/ui', '<\\1 />', $t_string );
-			$t_string = preg_replace( '/&lt;(code)\sclass=&quot;(\S+)&quot;\s*&gt;/ui', '<\\1 class="\\2">', $t_string );
+		
+			$t_string = preg_replace('/&lt;(' . $tags . ')(.*?)&gt;/uie', "'<\$1' . str_replace('&quot;','\"','$2') . '>'", $t_string);
+			$t_string = preg_replace( '/&lt;\/(' . $tags . ')\s*&gt;/ui', '</\\1>', $t_string );			
 			$t_string = preg_replace( '/&lt;a\shref=&quot;(\S+)&quot;&gt;.+&lt;\/a&gt;\s\[&lt;a\shref=&quot;(\S+)&quot;\starget=&quot;_blank&quot;&gt;\^&lt;\/a&gt;\]/ui', '<a href="\\1">\\1</a> [<a href="\\1" target="_blank">^</a>]', $t_string );
 
 			return $t_string;
