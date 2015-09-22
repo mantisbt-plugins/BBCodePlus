@@ -33,7 +33,7 @@
 			
 			$this->author  = 'Belman Kraul-Garcia';
 			$this->contact = 'bkraul@yahoo.com';
-			$this->url     = 'http://wiki.belmankraul.com';
+			$this->url     = 'https://github.com/bkraul';
 		}
 		//-------------------------------------------------------------------
 		function hooks() {
