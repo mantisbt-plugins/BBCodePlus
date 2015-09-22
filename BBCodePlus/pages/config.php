@@ -13,7 +13,7 @@ print_manage_menu( );
 
 <br />
 <form id="bbcodeplus-config-form" action="<?php echo plugin_page( 'config_edit' )?>" method="post">
-<?php echo form_security_field( 'plugin_format_config_edit' ) ?>
+<?php echo form_security_field( 'plugin_BBCodePlus_config_edit' ) ?>
 <table align="center" class="width50" cellspacing="1">
 
 <tr>

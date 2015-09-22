@@ -1,6 +1,6 @@
 <?php
 
-form_security_validate( 'plugin_BBCodePlus_manage_config' );
+form_security_validate( 'plugin_BBCodePlus_config_edit' );
 auth_reauthenticate( );
 access_ensure_global_level( config_get( 'manage_plugin_threshold' ) );
 
@@ -40,5 +40,5 @@ if( plugin_config_get( 'highlight_css' ) != $f_highlight_css ) {
 	plugin_config_set( 'highlight_css', $f_highlight_css );
 }
 
-form_security_purge( 'plugin_BBCodePlus_manage_config' );
+form_security_purge( 'plugin_BBCodePlus_config_edit' );
 print_successful_redirect( plugin_page( 'config', true ) );
