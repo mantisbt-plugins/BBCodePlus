@@ -139,6 +139,12 @@ print_manage_menu( );
 	</td>
 </tr>
 
+<tr>
+	<td class="center" colspan="3">
+		<input type="submit" class="button" value="<?php echo lang_get( 'change_configuration' )?>" />
+	</td>
+</tr>
+
 
 </table>
 </form>
