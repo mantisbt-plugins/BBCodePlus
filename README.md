@@ -15,4 +15,4 @@ Mantis 1.2 Considerations
 Mantis 1.3 Considerations
 -------------------------
 * Requires the latest development build (See mantisbt issue [#0020081](https://www.mantisbt.org/bugs/view.php?id=20081)).
-* Requires removal or editing of .htacess file inside plugins folder as it interferes with resource referencing.
+
