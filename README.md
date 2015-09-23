@@ -1,6 +1,7 @@
 BBCodePlus
 =============
 BBCode plugin for Mantis BugTracker 1.3 (nightly build)
+
 See [1.2.x branch] (https://github.com/mantisbt-plugins/BBCodePlus/tree/master-1.2.x) for the Mantis 1.2 version.
 
 Incorporates the following configurable features:
@@ -9,11 +10,7 @@ Incorporates the following configurable features:
 * BBCode processing.
 * Syntax Highlighting (using [prismjs](http://prismjs.com/)).
 
-Mantis 1.2 Considerations
--------------------------
-* Requires the use of the [jQuery plugin](https://github.com/mantisbt-plugins/jquery).
-
-Mantis 1.3 Considerations
+Considerations
 -------------------------
 * Requires the latest development build (See mantisbt issue [#0020081](https://www.mantisbt.org/bugs/view.php?id=20081)).
 
