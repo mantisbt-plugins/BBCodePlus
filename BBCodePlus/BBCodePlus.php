@@ -50,8 +50,7 @@
 			// store configuration values.
 			$t_html_make_links = config_get_global("html_make_links");
 			
-			if (plugin_is_loaded('MantisCoreFormatting'))
-			{
+			if( plugin_is_loaded('MantisCoreFormatting') ) {
 				$this->t_MantisCoreFormatting_process_text = config_get( 'plugin_MantisCoreFormatting_process_text');
 				$this->t_MantisCoreFormatting_process_urls = config_get( 'plugin_MantisCoreFormatting_process_urls');
 				$this->t_MantisCoreFormatting_process_buglinks = config_get( 'plugin_MantisCoreFormatting_process_buglinks');
@@ -64,8 +63,7 @@
 			// includes.
 			$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'bbcodeplus.css' ) . '" />';
 			
-			if ( ON == plugin_config_get( 'process_markitup' ) )
-			{
+			if ( ON == plugin_config_get( 'process_markitup' ) ) {
 				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'markitup/skins/mantis/style.css' ) . '" />';
 				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'markitup/sets/mantis/style.css' ) . '" />';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'jquery_migrate_min.js' ) . '"></script>';
@@ -73,8 +71,7 @@
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/sets/mantis/set.js' ) . '"></script>';
 			}
 			
-			if ( ON == plugin_config_get( 'process_highlight' ) )
-			{
+			if ( ON == plugin_config_get( 'process_highlight' ) ) {
 				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'prism/styles/' . plugin_config_get( 'highlight_css' ) . '.css' ) . '" />';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'prism/prism.js' ) . '"></script>';	
 				
@@ -91,8 +88,7 @@
 			$resources .= '(function($) {' . $nl;
 			$resources .= '$(document).ready(function(){' . $nl;
 			
-			if ( ON == plugin_config_get( 'process_markitup' ) )
-			{
+			if ( ON == plugin_config_get( 'process_markitup' ) ) {
 				$resources .= 'mySettings.previewParserPath = "' . plugin_page("preview.php") . '"';
 				$resources .= '// apply to proper text areas' . $nl;
 				$resources .= 'if ($("textarea[name=\'bugnote_text\']")) $("textarea[name=\'bugnote_text\']").markItUp(mySettings);' . $nl;
@@ -213,26 +209,21 @@
 			$p_string = $this->restore_pre_code_tags( $p_string, $p_multiline );
 			
 			// remove breaks from [code] added by mantis formatting.
-			if ($this->t_MantisCoreFormatting_process_text)
-			{
+			if ( $this->t_MantisCoreFormatting_process_text ) {
 				$p_string = $this->string_code_nl2br($p_string);
 				$p_string = $this->string_list_nl2br($p_string);
-			}
-			else
-			{
+			} else {
 				$p_string = string_html_specialchars( $p_string );
 				$p_string = string_restore_valid_html_tags( $p_string, true );
 			}
 				
 			// process bug and note links (if not already addressed.)
-			if (!$this->t_MantisCoreFormatting_process_buglinks)
-			{
+			if ( !$this->t_MantisCoreFormatting_process_buglinks ) {
 				$p_string = string_process_bug_link( $p_string, TRUE );
 				$p_string = string_process_bugnote_link( $p_string, TRUE );
 			}
 			
-			if (!$this->t_MantisCoreFormatting_process_vcslinks)
-			{
+			if ( !$this->t_MantisCoreFormatting_process_vcslinks ) {
 				$p_string = $this->string_process_cvs_link( $p_string );
 			}
 
@@ -320,8 +311,7 @@
 			$p_string = $this->string_process_quote($p_string);		
 			
 			// add line breaks except for code blocks (only if core formatting is OFF);
-			if (!$this->t_MantisCoreFormatting_process_text)
-			{
+			if ( !$this->t_MantisCoreFormatting_process_text ) {
 				$p_string = string_nl2br($p_string);				
 			}
 			
