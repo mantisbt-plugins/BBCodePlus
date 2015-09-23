@@ -21,15 +21,11 @@
 			$this->page        = 'config';
 			$this->version     = '1.0.3';
 			
-			$this->requires['MantisCore'] = '1.2.0, < 1.4';
-			// if it is mantis 1.2, require jQuery.
-			// 1.3 has jQuery bundled.
-			if (substr(MANTIS_VERSION, 0, 3) == "1.2")
-			{
-				$this->requires['jQuery'] = '1.9, < 1.12';
-			}				
+			$this->requires['MantisCore'] = '1.2.0';
+			// mantis 1.2, requires jQuery.
+			$this->requires['jQuery'] = '1.9, < 1.12';
 			// this plugin can coexist with MantisCoreFormatting.
-			$this->uses['MantisCoreFormatting'] = '1.0, < 1.4';
+			$this->uses['MantisCoreFormatting'] = '1.0';
 			
 			$this->author  = 'Belman Kraul-Garcia';
 			$this->contact = 'bkraul@yahoo.com';
@@ -175,8 +171,7 @@
 		 * @param  string Unformatted text
 		 * @return string Formatted text
 		 */
-		public function email( $p_event, $p_string )
-		{
+		public function email( $p_event, $p_string ) {
 
 			$p_string = string_strip_hrefs( $p_string );
 			$p_string = string_process_bug_link( $p_string, FALSE );
@@ -194,8 +189,7 @@
 		 * @param  boolean Multiline text
 		 * @return multi Array with formatted text and multiline parameter
 		 */
-		public function formatted( $p_event, $p_string, $p_multiline = TRUE )
-		{
+		public function formatted( $p_event, $p_string, $p_multiline = TRUE ) {
 		
 			if ( ON == plugin_config_get( 'process_text' ) )
 				$p_string = $this->string_process_bbcode( $p_string );			
