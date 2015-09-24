@@ -69,6 +69,7 @@
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'jquery_migrate_min.js' ) . '"></script>';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/jquery_markitup.js' ) . '"></script>';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/sets/mantis/set.js' ) . '"></script>';
+				$resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup-init.js' ) . '"></script>';				
 			}
 			
 			if ( ON == plugin_config_get( 'process_highlight' ) ) {
@@ -76,31 +77,10 @@
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'prism/prism.js' ) . '"></script>';	
 				
 				// load additional languages.
-				if ( ON == plugin_config_get( 'highlight_extralangs' ) )
-				{
+				if ( ON == plugin_config_get( 'highlight_extralangs' ) ) {
 					$resources .= '<script type="text/javascript" src="' . plugin_file( 'prism/prism_additional_languages.js' ) . '"></script>';		
 				}	
 			}
-			
-			// initialization.
-			$nl = "\n";
-			$resources .= '<script type="text/javascript">' . $nl;
-			$resources .= '(function($) {' . $nl;
-			$resources .= '$(document).ready(function(){' . $nl;
-			
-			if ( ON == plugin_config_get( 'process_markitup' ) ) {
-				$resources .= 'mySettings.previewParserPath = "' . plugin_page("preview.php") . '"';
-				$resources .= '// apply to proper text areas' . $nl;
-				$resources .= 'if ($("textarea[name=\'bugnote_text\']")) $("textarea[name=\'bugnote_text\']").markItUp(mySettings);' . $nl;
-				$resources .= 'if ($("textarea[name=\'description\']")) $("textarea[name=\'description\']").markItUp(mySettings);' . $nl;
-				$resources .= 'if ($("textarea[name=\'steps_to_reproduce\']")) $("textarea[name=\'steps_to_reproduce\']").markItUp(mySettings);' . $nl;
-				$resources .= 'if ($("textarea[name=\'additional_info\']")) $("textarea[name=\'additional_info\']").markItUp(mySettings);' . $nl;
-				$resources .= 'if ($("textarea[name=\'body\']")) $("textarea[name=\'body\']").markItUp(mySettings);' . $nl;
-			}
-			
-			$resources .= '});' . $nl;
-			$resources .= '})(jQuery);' . $nl;
-			$resources .= '</script>' . $nl;
 						 
 			return  $resources;
 		}
