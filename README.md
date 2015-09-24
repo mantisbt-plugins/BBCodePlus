@@ -1,8 +1,8 @@
 BBCodePlus
 =============
-BBCode plugin for Mantis BugTracker 1.3 (nightly build)
+BBCode plugin for Mantis BugTracker 1.2
 
-See [1.2.x branch] (https://github.com/mantisbt-plugins/BBCodePlus/tree/master-1.2.x) for the Mantis 1.2 version.
+See [BBCodePlus] (https://github.com/mantisbt-plugins/BBCodePlus) for the Mantis 1.3 version.
 
 Incorporates the following configurable features:
 
@@ -12,5 +12,5 @@ Incorporates the following configurable features:
 
 Considerations
 -------------------------
-* Requires the latest development build (See mantisbt issue [#0020081](https://www.mantisbt.org/bugs/view.php?id=20081)).
+* Requires the use of the [jQuery plugin](https://github.com/mantisbt-plugins/jquery).
 

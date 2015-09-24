@@ -21,9 +21,12 @@
 			$this->page        = 'config';
 			$this->version     = '1.0.3';
 			
-			$this->requires['MantisCore'] = '1.3.0';
+			$this->requires['MantisCore'] = '1.2.0';
+			// require jQuery.
+			$this->requires['jQuery'] = '1.9, < 1.12'			
 			// this plugin can coexist with MantisCoreFormatting.
-			$this->uses['MantisCoreFormatting'] = '1.3';
+			$this->uses['MantisCoreFormatting'] = '1.2';
+			
 			
 			$this->author  = 'Belman Kraul-Garcia';
 			$this->contact = 'bkraul@yahoo.com';
