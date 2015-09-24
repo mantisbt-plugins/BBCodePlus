@@ -1,3 +1,4 @@
+<?php header("Content-type: text/css", true); ?>
 /* -------------------------------------------------------------------
 // markItUp! Universal MarkUp Engine, JQuery plugin
 // By Jay Salvat - http://markitup.jaysalvat.com/
@@ -16,13 +17,20 @@
 	margin:5px 0 5px 0;
 }
 .markItUpContainer  {
+	border:1px solid #3C769D;	
+	background:#FFF url("<?php echo plugin_file('markitup/skins/mantis/images/bg-container.png') ?>") repeat-x top left;
+	padding:5px 5px 2px 5px;
 	font:11px Verdana, Arial, Helvetica, sans-serif;
 }
+
 .markItUpEditor {
-	font:12px 'CG Mono', 'Courier New', Courier, monospace;
-	padding:5px;
-	width:690px;
-	clear:both; display:block;
+	font:12px 'CG Mono', 'Consolas', 'Courier New', Courier, monospace;
+	padding:5px 5px 5px 35px;
+	border:3px solid #3C769D;
+	width:643px;
+	height:320px;
+	background:#FFF url("<?php echo plugin_file('markitup/skins/mantis/images/bg-editor.png') ?>") no-repeat;
+	clear:both;
 	line-height:18px;
 	overflow:auto;
 }
@@ -42,7 +50,7 @@
 	width:22px; height:5px;
 	margin-left:auto;
 	margin-right:auto;
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAGCAMAAAAbiyWRAAAACVBMVEWwuL/////39/cgI8QnAAAAAnRSTlP/AOW3MEoAAAAmSURBVAjXY2BkYGAEAlSSgQnMQiMZmJhA0mgkFu0gAlM7TBTDEAAcxQB4swGL+wAAAABJRU5ErkJggg==);
+	background-image: url("<?php echo plugin_file('markitup/skins/mantis/images/handle.png') ?>");
 	cursor:n-resize;
 }
 /***************************************************************************************/
@@ -57,7 +65,7 @@
 	display:block;
 }
 .markItUpHeader ul .markItUpDropMenu {
-	background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAMAAACecocUAAAAJ1BMVEUyMjL///8yMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjJf8HD6AAAADHRSTlMAAAQFCAkM4PDx9v6PBTIxAAAALElEQVR4AWNgRAAi2czs3EDAyQpiM7BwcPNwsYHEwRwgE6qegYmFAcgixkwAQf4A+oVIqzEAAAAASUVORK5CYII=) no-repeat 115% 50%;	
+	background: transparent url("<?php echo plugin_file('markitup/skins/mantis/images/menu.png') ?>") no-repeat 115% 50%;
 	margin-right:5px;
 }
 .markItUpHeader ul .markItUpDropMenu li {
@@ -76,7 +84,7 @@
 	padding-bottom: 0px;	
 }
 .markItUpHeader ul ul .markItUpDropMenu {
-	background:#FFF url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAMAAACecocUAAAAJ1BMVEX///8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM4yZTiAAAADHRSTlMAAwQGBwoM3+7y9v5WU9FmAAAAK0lEQVR4AWNAB6xIbE42BJuHiw3B5uFigbO5ORjhbA5muBp2BJOBiQEvAAAtQACajS29DQAAAABJRU5ErkJggg==) no-repeat 100% 50%;
+	background:#FFF url("<?php echo plugin_file('markitup/skins/mantis/images/submenu.png') ?>") no-repeat 100% 50%;
 }
 .markItUpHeader ul .markItUpSeparator {
 	margin:0 10px;
