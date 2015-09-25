@@ -23,7 +23,7 @@
 			
 			$this->requires['MantisCore'] = '1.2.0';
 			// require jQuery.
-			$this->requires['jQuery'] = '1.9, < 1.12'			
+			$this->requires['jQuery'] = '1.9, < 1.12';		
 			// this plugin can coexist with MantisCoreFormatting.
 			$this->uses['MantisCoreFormatting'] = '1.2';
 			
