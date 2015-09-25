@@ -22,7 +22,11 @@ code span {
 }
 
 .bbcodeplus-preview {
-	background-color: #fff;
 	height:100%; 
 	width:100%;
 }
+
+.bbcodeplus-preview-body {
+	background-image:none !important;
+}
+
