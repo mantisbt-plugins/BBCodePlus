@@ -135,6 +135,13 @@
 						markup(settings);
 					}
 				});
+				
+				// bind an event to catch external preview calls.
+				$$.bind("preview", function() {
+					if (textarea === $.markItUp.focused) {
+						preview();
+					}
+				});	
 
 				// remember the last focus
 				$$.focus(function() {
@@ -556,4 +563,10 @@
 			$('textarea').trigger('insertion', [options]);
 		}
 	};
+	
+	// method to preview without triggering eval().
+	$.fn.markItUpPreview = function(settings) {
+		$('textarea').trigger('preview');
+	};	
+
 })(jQuery);

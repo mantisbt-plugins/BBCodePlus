@@ -20,3 +20,9 @@ code span {
 	margin-left: 0px;
 	padding-left: 1.2em;
 }
+
+.bbcodeplus-preview {
+	background-color: #fff;
+	height:100%; 
+	width:100%;
+}
