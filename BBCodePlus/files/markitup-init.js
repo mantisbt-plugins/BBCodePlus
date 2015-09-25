@@ -1,5 +1,6 @@
 (function($) {
 	$(document).ready(function() {
+		
 		// declare the path to the previewer using the plugin file processor.
 		mySettings.previewParserPath = "./plugin.php?page=BBCodePlus/preview.php";
 		// apply to proper text areas.
@@ -13,5 +14,6 @@
 			$("textarea[name='additional_info']").markItUp(mySettings);
 		if ( $("textarea[name='body']") )
 			$("textarea[name='body']").markItUp( mySettings );
+
 	});
 })(jQuery);

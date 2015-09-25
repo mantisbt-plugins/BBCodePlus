@@ -65,6 +65,7 @@
 			
 			// includes.
 			$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'bbcodeplus.css' ) . '" />';
+			$resources .= '<script type="text/javascript" src="' . plugin_file( 'bbcodeplus-init.js' ) . '"></script>';
 			
 			if ( ON == plugin_config_get( 'process_markitup' ) ) {
 				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_page( 'markitup_skin_css.php' ) . '" />';
@@ -259,8 +260,8 @@
 			$t_replace[] = "<a $t_extra_link_tags href=\"$t_path$1\">$2</a>";
 			$t_replace[] = "<a $t_extra_link_tags href=\"mailto:$1\">$1</a>";
 			$t_replace[] = "<a $t_extra_link_tags href=\"mailto:$1\">$2</a>";
-			$t_replace[] = "<span style=\"color: $1\">$2</span>";
-			$t_replace[] = "<span style=\"font-size: $1%\">$2</span>";
+			$t_replace[] = "<span class=\"bbcolor-\$1\">$2</span>";
+			$t_replace[] = "<span class=\"bbsize-\$1\">$2</span>";
 			$t_replace[] = "<ol type=\"square\" class=\"bbcodeplus-list\">";
 			$t_replace[] = "<ol type=\"1\" start=\"$1\" class=\"bbcodeplus-list\">";
 			$t_replace[] = "</ol>";
