@@ -141,6 +141,14 @@ mySettings = {
 		{name:'Picture', key:'P', replaceWith:'[img][![Url]!][/img]'},				 
 		{separator:'---------------' },
 		{name:'Clean', className:"clean", replaceWith:function(markitup) { return markitup.selection.replace(/\[(.*?)\]/g, "") } },
-		{name:'Preview', className:"preview", replaceWith:function(markitup) { $(markitup.textarea).markItUpPreview(); return }	}	
+		{name:'Preview', className:"preview", replaceWith:function(markitup) {
+				// invoke preview method.
+				(function($) {
+					$(markitup.textarea).markItUpPreview(); 
+				})(jQuery);
+				
+				return; 
+			}		
+		}	
 	]
 }
