@@ -107,7 +107,7 @@
 				'process_highlight'   => ON,
 				'process_markitup'   => ON,				
 				'highlight_css'   => 'default',
-				'highlight_extralangs'   => 'default',					
+				'highlight_extralangs'   => OFF,					
 			);
 		}
 		//-------------------------------------------------------------------
