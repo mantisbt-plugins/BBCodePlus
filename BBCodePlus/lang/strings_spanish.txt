@@ -1,0 +1,35 @@
+<?php
+# 2015	Belman Kraul-Garcia (bkraul@yahoo.com)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with MantisBT.  If not, see <http://www.gnu.org/licenses/>.
+
+$s_plugin_BBCodePlus_title = 'BBCode+';
+$s_plugin_BBCodePlus_description = 'Apoyo completo de código BBCode y colorizado de sintaxis, con editor opcional de código.';
+$s_plugin_BBCodePlus_config = 'Configuración';
+
+$s_plugin_BBCodePlus_process_highlight = 'Usar colorizado de sintaxis (prismjs)';
+$s_plugin_BBCodePlus_process_text = 'Procesar texto';
+$s_plugin_BBCodePlus_process_email = 'Procesar correo electrónico';
+$s_plugin_BBCodePlus_process_rss = 'Procesar rss';
+$s_plugin_BBCodePlus_process_markitup = 'Habilitar editor de código (MarkItUp)';
+
+$s_plugin_BBCodePlus_enabled = 'Si';
+$s_plugin_BBCodePlus_disabled = 'No';
+$s_plugin_BBCodePlus_highlight_css = 'Estilo de colorizado de sintaxis';
+$s_plugin_BBCodePlus_highlight_extralangs = 'Habilitar apoyo de colorizado para lenguajes adicionales';
+
+$s_plugin_BBCodePlus_credits = 'Créditos';
+$s_plugin_BBCodePlus_credits_line1 = 'Basado en el trabajo de desarrollo de los siguientes contribuyentes:';
+$s_plugin_BBCodePlus_credits_line2 = 'Kirill Krasnov - <a href="https://github.com/mantisbt-plugins/bbcode">BBCode</a>, <a href="https://github.com/mantisbt-plugins/highlightcode">HighlightCode</a>';
+$s_plugin_BBCodePlus_credits_line3 = 'Desarrollado y mantenido por <a href="mailto:bkraul@yahoo.com">Belman Kraul-Garcia</a>, 2015.';
