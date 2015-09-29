@@ -18,11 +18,11 @@ $s_plugin_BBCodePlus_title = 'BBCode+';
 $s_plugin_BBCodePlus_description = 'Apoyo completo de código BBCode y colorizado de sintaxis, con editor opcional de código.';
 $s_plugin_BBCodePlus_config = 'Configuración';
 
-$s_plugin_BBCodePlus_process_highlight = 'Usar colorizado de sintaxis (prismjs)';
+$s_plugin_BBCodePlus_process_highlight = 'Usar colorizado de sintaxis (<a href="http://prismjs.com" target="_blank">prismjs</a>)';
 $s_plugin_BBCodePlus_process_text = 'Procesar texto';
 $s_plugin_BBCodePlus_process_email = 'Procesar correo electrónico';
 $s_plugin_BBCodePlus_process_rss = 'Procesar rss';
-$s_plugin_BBCodePlus_process_markitup = 'Habilitar editor de código (MarkItUp)';
+$s_plugin_BBCodePlus_process_markitup = 'Habilitar editor de código (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp<a/>)';
 
 $s_plugin_BBCodePlus_enabled = 'Si';
 $s_plugin_BBCodePlus_disabled = 'No';
