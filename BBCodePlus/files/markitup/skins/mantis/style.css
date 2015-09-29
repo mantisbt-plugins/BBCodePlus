@@ -1,4 +1,3 @@
-<?php header("Content-type: text/css", true); ?>
 /* -------------------------------------------------------------------
 // markItUp! Universal MarkUp Engine, JQuery plugin
 // By Jay Salvat - http://markitup.jaysalvat.com/
@@ -13,12 +12,12 @@
 	text-decoration:none;
 }
 .markItUp  {
-	width:700px;
+	width:710px;
 	margin:5px 0 5px 0;
 }
 .markItUpContainer  {
 	border:1px solid #3C769D;	
-	background:#FFF url("<?php echo plugin_file('markitup/skins/mantis/images/bg-container.png') ?>") repeat-x top left;
+	background:#FFF url("plugin_file.php?file=BBCodePlus/markitup/skins/mantis/images/bg-container.png") repeat-x top left;
 	padding:5px 5px 2px 5px;
 	font:11px Verdana, Arial, Helvetica, sans-serif;
 }
@@ -27,20 +26,21 @@
 	font:12px 'CG Mono', 'Consolas', 'Courier New', Courier, monospace;
 	padding:5px 5px 5px 35px;
 	border:3px solid #3C769D;
-	width:643px;
+	width:653px;
 	height:320px;
-	background:#FFF url("<?php echo plugin_file('markitup/skins/mantis/images/bg-editor.png') ?>") no-repeat;
+	background:#FFF url("plugin_file.php?file=BBCodePlus/markitup/skins/mantis/images/bg-editor.png") no-repeat;
 	clear:both;
 	line-height:18px;
 	overflow:auto;
 }
 .markItUpPreviewFrame	{
-	overflow:auto;
 	background-color:#FFF;
 	width:99.9%;
 	height:300px;
-	margin:5px 0;
+	margin: 0;
 	border: solid 1px #C0C0C0;
+	overflow-x: hidden;
+	overflow-y: scroll;
 }
 .markItUpFooter {
 	width:100%;
@@ -50,7 +50,7 @@
 	width:22px; height:5px;
 	margin-left:auto;
 	margin-right:auto;
-	background-image: url("<?php echo plugin_file('markitup/skins/mantis/images/handle.png') ?>");
+	background-image: url("plugin_file.php?file=BBCodePlus/markitup/skins/mantis/images/handle.png");
 	cursor:n-resize;
 }
 /***************************************************************************************/
@@ -65,7 +65,7 @@
 	display:block;
 }
 .markItUpHeader ul .markItUpDropMenu {
-	background: transparent url("<?php echo plugin_file('markitup/skins/mantis/images/menu.png') ?>") no-repeat 115% 50%;
+	background: transparent url("plugin_file.php?file=BBCodePlus/markitup/skins/mantis/images/menu.png") no-repeat 115% 50%;
 	margin-right:5px;
 }
 .markItUpHeader ul .markItUpDropMenu li {
@@ -84,7 +84,7 @@
 	padding-bottom: 0px;	
 }
 .markItUpHeader ul ul .markItUpDropMenu {
-	background:#FFF url("<?php echo plugin_file('markitup/skins/mantis/images/submenu.png') ?>") no-repeat 100% 50%;
+	background:#FFF url("plugin_file.php?file=BBCodePlus/markitup/skins/mantis/images/submenu.png") no-repeat 100% 50%;
 }
 .markItUpHeader ul .markItUpSeparator {
 	margin:0 10px;
