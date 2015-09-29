@@ -20,3 +20,34 @@ Considerations
 -------------------------
 * Requires the latest development build (See mantisbt issue [#0020081](https://www.mantisbt.org/bugs/view.php?id=20081)).
 
+Supported BBCode Tags
+---------------------
+```
+[img][/img] - Images.
+[url][/url] - Links.
+[email][/email] - Email addresses.
+[color=red][/color] - Colored text.
+[highlight=yellow][/highlight] - Highlighted text.
+[size][/size] - Font size.
+[list][/list] - Lists.
+[list=1][/list] - Numbered lists (number is starting number).
+[*] - List items.
+[b][/b] - Bold.
+[u][/u] - underline
+[i][/i] - Italic.
+[s][/s] - Strikethrough.
+[left][/left] - Left align.
+[center][/center] - Center.
+[right][/right] - Right align.
+[justify][/justify] - Justify.
+[hr] - Horizontal rule.
+[sub][/sub] - Subscript.
+[sup][/sup] - Superscript.
+[table][/table] - Table.
+[table=1][/table] - Table with border of specified width.
+[tr][/tr] - Table row.
+[td][/td] - Table column.
+[code][/code] - Code block.
+[code=sql][/code] - Code block with language definition.
+[code start=3][/code] - Code block with line numbers starting at number.
+```

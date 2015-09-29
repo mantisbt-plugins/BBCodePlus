@@ -284,7 +284,7 @@
 			$t_replace[] = "<td>$1</td>";
 			$t_replace[] = "<pre><code class=\"language-none\">\$1</code></pre>";			
 			$t_replace[] = "'<pre><code class=\"language-' . strtolower('$1') . '\">\$2</code></pre>'";
-			$t_replace[] = "<pre class=\"line-numbers\" data-start=\"\$1\"><code class=\"language-textile\">\$2</code></pre>";			
+			$t_replace[] = "<pre class=\"line-numbers\" data-start=\"\$1\"><code class=\"language-none\">\$2</code></pre>";			
   			$t_replace[] = "'<pre class=\"line-numbers\" data-start=\"\$2\"><code class=\"language-' . strtolower('$1') . '\">\$3</code></pre>'";
 			
 			// perform the actual replacement
