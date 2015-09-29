@@ -19,7 +19,7 @@
 			$this->name        = plugin_lang_get( 'title' );
 			$this->description = plugin_lang_get( 'description' );
 			$this->page        = 'config';
-			$this->version     = '1.0.5';
+			$this->version     = '1.0.6';
 			
 			$this->requires['MantisCore'] = '1.2.0';
 			// require jQuery.
