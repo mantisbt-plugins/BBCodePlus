@@ -65,8 +65,8 @@
 			$resources .= '<script type="text/javascript" src="' . plugin_file( 'bbcodeplus-init.js' ) . '"></script>';
 			
 			if ( ON == plugin_config_get( 'process_markitup' ) ) {
-				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_page( 'markitup_skin_css.php' ) . '" />';
-				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_page( 'markitup_set_css.php' ) . '" />';
+				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'markitup/skins/mantis/style.css' ) . '" />';
+				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'markitup/sets/mantis/style.css' ) . '" />';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'jquery_migrate_min.js' ) . '"></script>';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/jquery_markitup.js' ) . '"></script>';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/sets/mantis/set.js' ) . '"></script>';
@@ -223,6 +223,7 @@
 			$t_search[] = "/\[email\]([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\[\/email\]/is";
 			$t_search[] = "/\[email=([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\](.+?)\[\/email\]/is";
 			$t_search[] = "/\[color=([\#a-z0-9]+?)\](.+?)\[\/color\]/is";
+			$t_search[] = "/\[highlight=([\#a-z0-9]+?)\](.+?)\[\/highlight\]/is";			
 			$t_search[] = "/\[size=([+\-\da-z]+?)\](.+?)\[\/size\]/is";
 			$t_search[] = "/\[list\](\n|\r\n|)/is";
 			$t_search[] = "/\[list=(.+?)\](\n|\r\n|)/is";
@@ -258,6 +259,7 @@
 			$t_replace[] = "<a $t_extra_link_tags href=\"mailto:$1\">$1</a>";
 			$t_replace[] = "<a $t_extra_link_tags href=\"mailto:$1\">$2</a>";
 			$t_replace[] = "<span class=\"bbcolor-\$1\">$2</span>";
+			$t_replace[] = "<span class=\"bbhighlight-\$1\">$2</span>";			
 			$t_replace[] = "<span class=\"bbsize-\$1\">$2</span>";
 			$t_replace[] = "<ol type=\"square\" class=\"bbcodeplus-list\">";
 			$t_replace[] = "<ol type=\"1\" start=\"$1\" class=\"bbcodeplus-list\">";

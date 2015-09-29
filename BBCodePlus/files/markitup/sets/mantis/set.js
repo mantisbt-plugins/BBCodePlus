@@ -36,6 +36,24 @@ mySettings = {
 					{name:'Black',	openWith:'[color=black]', 	closeWith:'[/color]', className:"col3-3" }
 				]
 		},
+		{	name:'Highlight', 
+			className:'colors', 
+			openWith:'[highlight=[![Color]!]]', 
+			closeWith:'[/highlight]', 
+				dropMenu: [
+					{name:'Yellow',	openWith:'[highlight=yellow]', 	closeWith:'[/highlight]', className:"col1-1" },
+					{name:'Orange',	openWith:'[highlight=orange]', 	closeWith:'[/highlight]', className:"col1-2" },
+					{name:'Red', 	openWith:'[highlight=red]', 	closeWith:'[/highlight]', className:"col1-3" },
+					
+					{name:'Blue', 	openWith:'[highlight=blue]', 	closeWith:'[/highlight]', className:"col2-1" },
+					{name:'Purple', openWith:'[highlight=purple]', 	closeWith:'[/highlight]', className:"col2-2" },
+					{name:'Green', 	openWith:'[highlight=green]', 	closeWith:'[/highlight]', className:"col2-3" },
+					
+					{name:'White', 	openWith:'[highlight=white]', 	closeWith:'[/highlight]', className:"col3-1" },
+					{name:'Gray', 	openWith:'[highlight=gray]', 	closeWith:'[/highlight]', className:"col3-2" },
+					{name:'Black',	openWith:'[highlight=black]', 	closeWith:'[/highlight]', className:"col3-3" }
+				]
+		},		
 		{name:'Size', key:'S', openWith:'[size=[![Text size]!]]', closeWith:'[/size]',
 		dropMenu :[
 			{name:'Big', openWith:'[size=125]', closeWith:'[/size]' },
@@ -45,7 +63,6 @@ mySettings = {
 		{name:'Superscript', openWith:'[sup]', closeWith:'[/sup]'},
 		{name:'Subscript', openWith:'[sub]', closeWith:'[/sub]'},				
 		{separator:'---------------' },
-		//{name:'Bulleted list', openWith:'[list]\n', closeWith:'\n[/list]'},
 		{name:'Bulleted list', replaceWith: function(markitup)
 			{
 				// process the selection to dynamically convert lines into bullets.
