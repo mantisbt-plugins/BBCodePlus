@@ -50,4 +50,6 @@ Supported BBCode Tags
 [code][/code] - Code block.
 [code=sql][/code] - Code block with language definition.
 [code start=3][/code] - Code block with line numbers starting at number.
+[quote][/quote] - Quote by *someone* (no name).
+[quote=name][/quote] - Quote by *name*.
 ```

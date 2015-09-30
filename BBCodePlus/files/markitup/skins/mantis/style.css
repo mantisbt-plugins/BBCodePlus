@@ -12,7 +12,7 @@
 	text-decoration:none;
 }
 .markItUp  {
-	width:710px;
+	width:730px;
 	margin:5px 0 5px 0;
 }
 .markItUpContainer  {
@@ -26,7 +26,7 @@
 	font:12px 'CG Mono', 'Consolas', 'Courier New', Courier, monospace;
 	padding:5px 5px 5px 35px;
 	border:3px solid #3C769D;
-	width:653px;
+	width:667px;
 	height:320px;
 	background:#FFF url("plugin_file.php?file=BBCodePlus/markitup/skins/mantis/images/bg-editor.png") no-repeat;
 	clear:both;
@@ -113,11 +113,17 @@
 	background-position: center;
 	padding:3px;
 	margin:0px;
-	border: solid 1px transparent;	
+	border: solid 1px transparent;
 }
 .markItUpHeader ul a:hover {
-	border: solid 1px #C0C0C0;
-	background-color: #D2D2D2;	
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background-color: rgba(255,255,255, 0.5);
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border: 1px solid #C0C0C0;
 }
 .markItUpHeader ul ul a {
 	display:block;
