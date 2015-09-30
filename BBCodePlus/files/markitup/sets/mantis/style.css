@@ -56,39 +56,43 @@
 .markItUp .markItUpButton13 a	{
 	background-image: url("plugin_file.php?file=BBCodePlus/markitup/sets/mantis/images/code.png");
 }
-/* hr */
+/* quote */
 .markItUp .markItUpButton14 a	{
+	background-image: url("plugin_file.php?file=BBCodePlus/markitup/sets/mantis/images/quote.png");
+}
+/* hr */
+.markItUp .markItUpButton15 a	{
 	background-image: url("plugin_file.php?file=BBCodePlus/markitup/sets/mantis/images/hr.png");
 }
 /* --- separator ---*/
 /* left align */
-.markItUp .markItUpButton15 a	{
+.markItUp .markItUpButton16 a	{
 	background-image: url("plugin_file.php?file=BBCodePlus/markitup/sets/mantis/images/left-align.png");
 
 }
 /* center */
-.markItUp .markItUpButton16 a	{
+.markItUp .markItUpButton17 a	{
 	background-image: url("plugin_file.php?file=BBCodePlus/markitup/sets/mantis/images/center.png");
 }
 /* right align */
-.markItUp .markItUpButton17 a	{
+.markItUp .markItUpButton18 a	{
 	background-image: url("plugin_file.php?file=BBCodePlus/markitup/sets/mantis/images/right-align.png");
 }
 /* justify */
-.markItUp .markItUpButton18 a	{
+.markItUp .markItUpButton19 a	{
 	background-image: url("plugin_file.php?file=BBCodePlus/markitup/sets/mantis/images/justify.png");
 }
 /* --- separator ---*/
 /* link */
-.markItUp .markItUpButton19 a	{
+.markItUp .markItUpButton20 a	{
 	background-image: url("plugin_file.php?file=BBCodePlus/markitup/sets/mantis/images/link.png");
 }
 /* email */
-.markItUp .markItUpButton20 a	{
+.markItUp .markItUpButton21 a	{
 	background-image: url("plugin_file.php?file=BBCodePlus/markitup/sets/mantis/images/email.png");
 }
 /* picture */
-.markItUp .markItUpButton21 a	{
+.markItUp .markItUpButton22 a	{
 	background-image: url("plugin_file.php?file=BBCodePlus/markitup/sets/mantis/images/picture.png");
 }
 /* --- separator ---*/

@@ -146,6 +146,7 @@ mySettings = {
 		{name:'List item', openWith:'[*]'},
 		{separator:'---------------' },
 		{name:'Code', openWith:'[code=[![Language]!]]', closeWith:'[/code]'},
+		{name:'Quote', key:'Q', openWith:'[quote=[![Who said it?]!]]', closeWith:'[/quote]'},		
 		{name:'Horizontal rule', openWith:'\n[hr]\n'},		
 		{separator:'---------------' },
 		{name:'Left', openWith:'[left]', closeWith:'[/left]'},		
@@ -155,7 +156,7 @@ mySettings = {
 		{separator:'---------------' },										
 		{name:'Link', openWith:'[url=[![Url]!]]', closeWith:'[/url]', placeHolder:'Your text to link here...'},
 		{name:'Email', key:'E', openWith:'[email=[![Email]!]]', closeWith:'[/email]',  placeHolder:"Your email here"},
-		{name:'Picture', key:'P', replaceWith:'[img][![Url]!][/img]'},				 
+		{name:'Picture', key:'P', replaceWith:'[img][![Url]!][/img]'},
 		{separator:'---------------' },
 		{name:'Clean', className:"clean", replaceWith:function(markitup) { return markitup.selection.replace(/\[(.*?)\]/g, "") } },
 		{name:'Preview', className:"preview", replaceWith:function(markitup) {
