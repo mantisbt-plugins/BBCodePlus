@@ -265,9 +265,9 @@
 			$t_replace[] = "<ol type=\"1\" start=\"$1\" class=\"bbcodeplus-list\">";
 			$t_replace[] = "</ol>";
 			$t_replace[] = "<li>";
-			$t_replace[] = "<b>$1</b>";
+			$t_replace[] = "<strong>$1</strong>";
 			$t_replace[] = "<u>$1</u>";
-			$t_replace[] = "<i>$1</i>";
+			$t_replace[] = "<em>$1</em>";
 			$t_replace[] = "<s>$1</s>";
 			$t_replace[] = "<div align=\"left\">$1</div>";
 			$t_replace[] = "<div align=\"center\">$1</div>";
