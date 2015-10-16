@@ -1,5 +1,5 @@
 <?php
-# 2015	Belman Kraul-Garcia (bkraul@yahoo.com)
+# 2015	Roman Allenstein
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,21 +15,21 @@
 # along with MantisBT.  If not, see <http://www.gnu.org/licenses/>.
 
 $s_plugin_BBCodePlus_title = 'BBCode+';
-$s_plugin_BBCodePlus_description = 'Complete BBCode and syntax highlighting support, with optional markdown editor.';
-$s_plugin_BBCodePlus_config = 'Config';
+$s_plugin_BBCodePlus_description = 'Unterstützung für BBCode und Syntax Highlighting mit optionalem Markdown-Editor.';
+$s_plugin_BBCodePlus_config = 'Konfiguration';
 
-$s_plugin_BBCodePlus_process_highlight = 'Use code syntax highlighting (<a href="http://prismjs.com" target="_blank">prismjs</a>)';
-$s_plugin_BBCodePlus_process_text = 'Process plain text';
-$s_plugin_BBCodePlus_process_email = 'Process email';
-$s_plugin_BBCodePlus_process_rss = 'Process rss';
-$s_plugin_BBCodePlus_process_markitup = 'Enable markdown editor (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp<a/>)';
+$s_plugin_BBCodePlus_process_highlight = 'Code Syntax Highlighting aktivieren (<a href="http://prismjs.com" target="_blank">prismjs</a>)';
+$s_plugin_BBCodePlus_process_text = 'BBCode für Klartext';
+$s_plugin_BBCodePlus_process_email = 'BBCode für E-Mails';
+$s_plugin_BBCodePlus_process_rss = 'BBCode für RSS';
+$s_plugin_BBCodePlus_process_markitup = 'Markdown Editor aktivieren (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp<a/>)';
 
-$s_plugin_BBCodePlus_enabled = 'Yes';
-$s_plugin_BBCodePlus_disabled = 'No';
-$s_plugin_BBCodePlus_highlight_css = 'Code highlight style';
-$s_plugin_BBCodePlus_highlight_extralangs = 'Enable support for highlighting of extra languages';
+$s_plugin_BBCodePlus_enabled = 'Ja';
+$s_plugin_BBCodePlus_disabled = 'Nein';
+$s_plugin_BBCodePlus_highlight_css = 'Code Highlight Stil';
+$s_plugin_BBCodePlus_highlight_extralangs = 'Aktiviere Highlighting-Unterstützung für extra Sprachen';
 
 $s_plugin_BBCodePlus_credits = 'Credits';
-$s_plugin_BBCodePlus_credits_line1 = 'Based on the plugin development work of the following contributors:';
+$s_plugin_BBCodePlus_credits_line1 = 'Dieses Plugin basiert auf den Entwicklungen der folgenden Beitragenden:';
 $s_plugin_BBCodePlus_credits_line2 = 'Kirill Krasnov - <a href="https://github.com/mantisbt-plugins/bbcode">BBCode</a>, <a href="https://github.com/mantisbt-plugins/highlightcode">HighlightCode</a>';
-$s_plugin_BBCodePlus_credits_line3 = 'Developed and maintained by <a href="mailto:bkraul@yahoo.com">Belman Kraul-Garcia</a>, 2015.';
+$s_plugin_BBCodePlus_credits_line3 = 'Entwickelt und gewartet von <a href="mailto:bkraul@yahoo.com">Belman Kraul-Garcia</a>, 2015.';
