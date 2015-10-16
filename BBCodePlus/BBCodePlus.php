@@ -65,7 +65,7 @@
 			$resources .= '<script type="text/javascript" src="' . plugin_file( 'bbcodeplus-init.js' ) . '"></script>';
 			
 			if ( ON == plugin_config_get( 'process_markitup' ) ) {
-				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'markitup/skins/mantis/style.css' ) . '" />';
+				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'markitup/skins/' . plugin_config_get( 'markitup_skin' ) . '/style.css' ) . '" />';
 				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'markitup/sets/mantis/style.css' ) . '" />';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'jquery_migrate_min.js' ) . '"></script>';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/jquery_markitup.js' ) . '"></script>';
@@ -102,7 +102,8 @@
 				'process_email' => ON,
 				'process_rss'   => ON,
 				'process_highlight'   => ON,
-				'process_markitup'   => ON,				
+				'process_markitup'   => ON,
+				'markitup_skin'   => 'mantis',
 				'highlight_css'   => 'default',
 				'highlight_extralangs'   => OFF,					
 			);

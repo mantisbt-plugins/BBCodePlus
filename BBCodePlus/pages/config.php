@@ -93,6 +93,27 @@ print_manage_menu( );
 	</td>
 </tr>
 
+<tr <?php echo helper_alternate_class() ?>>
+	<td class="category">
+		<?php echo plugin_lang_get( 'markitup_skin' ) ?>
+	</td>
+	<td colspan = 2 >
+		<select name="markitup_skin">
+			<?php
+				$f_markitup_skin = plugin_config_get( 'markitup_skin' );
+				$t_arr = explode( ',', 'mantis,plain' );
+				$enum_count = count( $t_arr );
+				for( $i = 0;$i < $enum_count;$i++ ) {
+					$t_style = string_attribute( $t_arr[$i] );
+					echo '<option value="' . $t_style . '"';
+					check_selected( $t_style, $f_markitup_skin );
+					echo '>' . $t_style . '</option>';
+				}
+			?>
+		</select>
+	</td>
+</tr>
+
 <tr <?php echo helper_alternate_class( )?>>
 	<td class="category" width="60%">
 		<?php echo plugin_lang_get( 'highlight_extralangs' )?>
