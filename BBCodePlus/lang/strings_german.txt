@@ -1,0 +1,35 @@
+<?php
+# 2015	Roman Allenstein
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with MantisBT.  If not, see <http://www.gnu.org/licenses/>.
+
+$s_plugin_BBCodePlus_title = 'BBCode+';
+$s_plugin_BBCodePlus_description = 'Unterstützung für BBCode und Syntax Highlighting mit optionalem Markdown-Editor.';
+$s_plugin_BBCodePlus_config = 'Konfiguration';
+
+$s_plugin_BBCodePlus_process_highlight = 'Code Syntax Highlighting aktivieren (<a href="http://prismjs.com" target="_blank">prismjs</a>)';
+$s_plugin_BBCodePlus_process_text = 'BBCode für Klartext';
+$s_plugin_BBCodePlus_process_email = 'BBCode für E-Mails';
+$s_plugin_BBCodePlus_process_rss = 'BBCode für RSS';
+$s_plugin_BBCodePlus_process_markitup = 'Markdown Editor aktivieren (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp<a/>)';
+
+$s_plugin_BBCodePlus_enabled = 'Ja';
+$s_plugin_BBCodePlus_disabled = 'Nein';
+$s_plugin_BBCodePlus_highlight_css = 'Code Highlight Stil';
+$s_plugin_BBCodePlus_highlight_extralangs = 'Aktiviere Highlighting-Unterstützung für extra Sprachen';
+
+$s_plugin_BBCodePlus_credits = 'Credits';
+$s_plugin_BBCodePlus_credits_line1 = 'Dieses Plugin basiert auf den Entwicklungen der folgenden Beitragenden:';
+$s_plugin_BBCodePlus_credits_line2 = 'Kirill Krasnov - <a href="https://github.com/mantisbt-plugins/bbcode">BBCode</a>, <a href="https://github.com/mantisbt-plugins/highlightcode">HighlightCode</a>';
+$s_plugin_BBCodePlus_credits_line3 = 'Entwickelt und gewartet von <a href="mailto:bkraul@yahoo.com">Belman Kraul-Garcia</a>, 2015.';
