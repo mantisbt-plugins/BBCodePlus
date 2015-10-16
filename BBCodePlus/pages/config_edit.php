@@ -9,6 +9,7 @@ $f_process_text = gpc_get_int( 'process_text', ON );
 $f_process_email = gpc_get_int( 'process_email', ON );
 $f_process_rss = gpc_get_int( 'process_rss', ON );
 $f_process_markitup = gpc_get_int( 'process_markitup', ON );
+$f_markitup_skin = gpc_get_string( 'markitup_skin', 'default' );
 $f_highlight_css = gpc_get_string( 'highlight_css', 'default' );
 $f_highlight_extralangs = gpc_get_int( 'highlight_extralangs', ON );
 
@@ -30,6 +31,10 @@ if( plugin_config_get( 'process_rss' ) != $f_process_rss ) {
 
 if( plugin_config_get( 'process_markitup' ) != $f_process_markitup ) {
 	plugin_config_set( 'process_markitup', $f_process_markitup );
+}
+
+if( plugin_config_get( 'markitup_skin' ) != $f_markitup_skin ) {
+	plugin_config_set( 'markitup_skin', $f_markitup_skin );
 }
 
 if( plugin_config_get( 'highlight_extralangs' ) != $f_highlight_extralangs ) {

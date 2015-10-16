@@ -23,6 +23,7 @@ $s_plugin_BBCodePlus_process_text = 'Process plain text';
 $s_plugin_BBCodePlus_process_email = 'Process email';
 $s_plugin_BBCodePlus_process_rss = 'Process rss';
 $s_plugin_BBCodePlus_process_markitup = 'Enable markdown editor (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp<a/>)';
+$s_plugin_BBCodePlus_markitup_skin = 'MarkItUp skin';
 
 $s_plugin_BBCodePlus_enabled = 'Yes';
 $s_plugin_BBCodePlus_disabled = 'No';
