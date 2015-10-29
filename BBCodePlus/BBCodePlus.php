@@ -22,7 +22,7 @@
 			$this->version     = '1.0.7';
 			
 			$this->requires['MantisCore'] = '1.3.0';
-			// this plugin can coexist with MantisCoreFormatting.
+			# this plugin can coexist with MantisCoreFormatting.
 			$this->uses['MantisCoreFormatting'] = '1.3';
 			
 			$this->author  = 'Belman Kraul-Garcia';
@@ -42,7 +42,7 @@
 		//-------------------------------------------------------------------		
 		function footer($p_event, $p_params) {
 
-			// restore make links option.
+			# restore make links option.
 			config_set_global("html_make_links", $this->t_html_make_links);					
 		}			
 		//-------------------------------------------------------------------
@@ -54,14 +54,18 @@
 				$this->t_MantisCoreFormatting_process_text = config_get( 'plugin_MantisCoreFormatting_process_text');
 				$this->t_MantisCoreFormatting_process_urls = config_get( 'plugin_MantisCoreFormatting_process_urls');
 				$this->t_MantisCoreFormatting_process_buglinks = config_get( 'plugin_MantisCoreFormatting_process_buglinks');
-				$this->t_MantisCoreFormatting_process_vcslinks = config_get( 'plugin_MantisCoreFormatting_process_vcslinks');
+				if ( config_is_set( 'plugin_MantisCoreFormatting_process_vcslinks' ) ) {
+					$this->t_MantisCoreFormatting_process_vcslinks = config_get( 'plugin_MantisCoreFormatting_process_vcslinks');					
+				} else {
+					$this->t_MantisCoreFormatting_process_vcslinks = OFF;
+				}
 			}
 			
-			// turn off formatting options.
+			# turn off formatting options.
 			config_set_global("html_make_links", false);
 			
-			// includes.
-			$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'bbcodeplus.css' ) . '" />';
+			# includes.
+			$resources = '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'bbcodeplus.css' ) . '" />';
 			$resources .= '<script type="text/javascript" src="' . plugin_file( 'bbcodeplus-init.js' ) . '"></script>';
 			
 			if ( ON == plugin_config_get( 'process_markitup' ) ) {
@@ -77,7 +81,7 @@
 				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'prism/styles/' . plugin_config_get( 'highlight_css' ) . '.css' ) . '" />';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'prism/prism.js' ) . '"></script>';	
 				
-				// load additional languages.
+				# load additional languages.
 				if ( ON == plugin_config_get( 'highlight_extralangs' ) ) {
 					$resources .= '<script type="text/javascript" src="' . plugin_file( 'prism/prism_additional_languages.js' ) . '"></script>';		
 				}	
@@ -120,7 +124,7 @@
 		public function text( $p_event, $p_string, $p_multiline = TRUE ) {
 
 			if ( ON == plugin_config_get( 'process_text' ) )
-				$this->string_process_bbcode( $p_string );
+				$this->string_process_bbcode( $p_string, $p_multiline );
 
 			return $p_string;
 		}
@@ -179,7 +183,7 @@
 		 * @param   string $p_string
 		 * @return  string $p_string
 		 */
-		function string_process_bbcode( $p_string ) {
+		function string_process_bbcode( $p_string, $p_multiline = TRUE ) {
 			
 			$t_change_quotes = FALSE;
 			if ( ini_get_bool( 'magic_quotes_sybase' ) ) {
@@ -187,10 +191,10 @@
 				ini_set( 'magic_quotes_sybase', FALSE );
 			}
 			
-			// restore pre/code tags.
-			$p_string = $this->restore_pre_code_tags( $p_string, $p_multiline );
+			# restore pre/code tags.
+			$p_string = $this->restore_pre_code_tags( $p_string, $p_multiline);
 			
-			// remove breaks from [code] added by mantis formatting.
+			# remove breaks from [code] added by mantis formatting.
 			if ( $this->t_MantisCoreFormatting_process_text ) {
 				$p_string = $this->string_code_nl2br($p_string);
 				$p_string = $this->string_list_nl2br($p_string);
@@ -199,7 +203,7 @@
 				$p_string = string_restore_valid_html_tags( $p_string, true );
 			}
 				
-			// process bug and note links (if not already addressed.)
+			# process bug and note links (if not already addressed.)
 			if ( !$this->t_MantisCoreFormatting_process_buglinks ) {
 				$p_string = string_process_bug_link( $p_string, TRUE );
 				$p_string = string_process_bugnote_link( $p_string, TRUE );
@@ -209,10 +213,10 @@
 				$p_string = $this->string_process_cvs_link( $p_string );
 			}
 
-			// ensures that the links will be opened in a new window/tab, so as to not lose the currently displayed issue. 
+			# ensures that the links will be opened in a new window/tab, so as to not lose the currently displayed issue. 
 			$t_extra_link_tags = 'target="_blank"';
 			
-			// if there are any expressed links, images convert them to bbcode.
+			# if there are any expressed links, images convert them to bbcode.
 			$p_string = preg_replace( "/^((http|https|ftp):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#]+)/i", "[url]$1[/url]", $p_string );
 			$p_string = preg_replace( "/([^='\"(\[url\]|\[img\])])((http|https|ftp):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#]+)/i", "$1[url]$2[/url]", $p_string );
 			
@@ -248,15 +252,13 @@
 			$t_search[] = "/\[th\](.+?)\[\/th\]/is";
 			$t_search[] = "/\[td\](.+?)\[\/td\]/is";
 			$t_search[] = '/\[code\](.+)\[\/code\]/imsU';
-			$t_search[] = '/\[code=(\w+)\](.+)\[\/code\]/iemsU';
 			$t_search[] = '/\[code start=([0-9]+)\](.+)\[\/code\]/imsU';
-			$t_search[] = '/\[code=(\w+)\ start=([0-9]+)\](.+)\[\/code\]/iemsU';
-			
+
 			$t_replace[] = "<img src=\"$1\" border=\"0\" alt=\"$1\" />";
 			$t_replace[] = "<img src=\"$1\" border=\"0\" alt=\"$1\" />";
 			$t_replace[] = "<a $t_extra_link_tags href=\"$1\">$1</a>";
 			$t_replace[] = "<a $t_extra_link_tags href=\"$1\">$3</a>";
-			$t_replace[] = "<a $t_extra_link_tags href=\"$t_path$1\">$2</a>";
+			$t_replace[] = "<a $t_extra_link_tags href=\"$1\">$2</a>";
 			$t_replace[] = "<a $t_extra_link_tags href=\"mailto:$1\">$1</a>";
 			$t_replace[] = "<a $t_extra_link_tags href=\"mailto:$1\">$2</a>";
 			$t_replace[] = "<span class=\"bbcolor-\$1\">$2</span>";
@@ -283,18 +285,31 @@
 			$t_replace[] = "<tr>$1</tr>";
 			$t_replace[] = "<th>$1</th>";
 			$t_replace[] = "<td>$1</td>";
-			$t_replace[] = "<pre><code class=\"language-none\">\$1</code></pre>";			
-			$t_replace[] = "'<pre><code class=\"language-' . strtolower('$1') . '\">\$2</code></pre>'";
-			$t_replace[] = "<pre class=\"line-numbers\" data-start=\"\$1\"><code class=\"language-none\">\$2</code></pre>";			
-  			$t_replace[] = "'<pre class=\"line-numbers\" data-start=\"\$2\"><code class=\"language-' . strtolower('$1') . '\">\$3</code></pre>'";
+			$t_replace[] = "<pre><code class=\"language-none\">\$1</code></pre>";		
+			$t_replace[] = "<pre class=\"line-numbers\" data-start=\"\$1\"><code class=\"language-none\">\$2</code></pre>";
 			
-			// perform the actual replacement
+			# perform the actual replacement.
 			$p_string = preg_replace( $t_search, $t_replace, $p_string );
 			
-			// process quotes.	
+			# code=lang
+			$p_string = preg_replace_callback('/\[code=(\w+)\](.+)\[\/code\]/imsU',
+			create_function('$m', '
+				return "<pre><code class=\"language-" . strtolower($m[1]) . "\">" . $m[2] . "</code></pre>";
+			')
+			, $p_string);
+			
+			# code=lang start=n
+			$p_string = preg_replace_callback('/\[code=(\w+)\ start=([0-9]+)\](.+)\[\/code\]/imsU',
+			create_function('$m', '
+				return "<pre class=\"line-numbers\" data-start=\"" . $m[2] . "\"><code class=\"language-" . strtolower($m[1]) . "\">" . $m[3] . "</code></pre>";
+			')
+			, $p_string);
+			
+			
+			# process quotes.	
 			$p_string = $this->string_process_quote($p_string);		
 			
-			// add line breaks except for code blocks (only if core formatting is OFF);
+			# add line breaks except for code blocks (only if core formatting is OFF);
 			if ( !$this->t_MantisCoreFormatting_process_text ) {
 				$p_string = string_nl2br($p_string);				
 			}
@@ -329,7 +344,12 @@
 			}
 			$tags = implode( '|', $tags );
 		
-			$t_string = preg_replace('/&lt;(' . $tags . ')(.*?)&gt;/uie', "'<\$1' . str_replace('&quot;','\"','$2') . '>'", $t_string);
+			$t_string = preg_replace_callback('/&lt;(' . $tags . ')(.*?)&gt;/ui',
+			create_function('$m', '
+				return "<" . $m[1] . str_replace("&quot;", "\"", $m[2]) . ">";
+			')
+			, $t_string);
+			
 			$t_string = preg_replace( '/&lt;\/(' . $tags . ')\s*&gt;/ui', '</\\1>', $t_string );			
 			$t_string = preg_replace( '/&lt;a\shref=&quot;(\S+)&quot;&gt;.+&lt;\/a&gt;\s\[&lt;a\shref=&quot;(\S+)&quot;\starget=&quot;_blank&quot;&gt;\^&lt;\/a&gt;\]/ui', '<a href="\\1">\\1</a> [<a href="\\1" target="_blank">^</a>]', $t_string );
 
@@ -444,15 +464,19 @@
 		 * @return string
 		 */
 		function string_process_cvs_link( $p_string, $p_include_anchor = true ) {
-			$t_cvs_web = config_get( 'cvs_web' );
+			if ( config_is_set('cvs_web') ) {
+				$t_cvs_web = config_get( 'cvs_web' );				
 
-			if( $p_include_anchor ) {
-				$t_replace_with = '[CVS] <a href="' . $t_cvs_web . '\\1?rev=\\4" target="_new">\\1</a>\\5';
+				if( $p_include_anchor ) {
+					$t_replace_with = '[CVS] <a href="' . $t_cvs_web . '\\1?rev=\\4" target="_new">\\1</a>\\5';
+				} else {
+					$t_replace_with = '[CVS] ' . $t_cvs_web . '\\1?rev=\\4\\5';
+				}
+
+				return preg_replace( '/cvs:([^\.\s:,\?!<]+(\.[^\.\s:,\?!<]+)*)(:)?(\d\.[\d\.]+)?([\W\s])?/i', $t_replace_with, $p_string );				
 			} else {
-				$t_replace_with = '[CVS] ' . $t_cvs_web . '\\1?rev=\\4\\5';
+				return $p_string;
 			}
-
-			return preg_replace( '/cvs:([^\.\s:,\?!<]+(\.[^\.\s:,\?!<]+)*)(:)?(\d\.[\d\.]+)?([\W\s])?/i', $t_replace_with, $p_string );
 		}
 		//-------------------------------------------------------------------
 	}
