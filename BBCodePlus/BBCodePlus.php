@@ -19,7 +19,7 @@
 			$this->name        = plugin_lang_get( 'title' );
 			$this->description = plugin_lang_get( 'description' );
 			$this->page        = 'config';
-			$this->version     = '1.0.7';
+			$this->version     = '1.0.8';
 			
 			$this->requires['MantisCore'] = '1.3.0';
 			# this plugin can coexist with MantisCoreFormatting.
@@ -107,7 +107,7 @@
 				'process_rss'   => ON,
 				'process_highlight'   => ON,
 				'process_markitup'   => ON,
-				'markitup_skin'   => 'mantis',
+				'markitup_skin'   => 'plain',
 				'highlight_css'   => 'default',
 				'highlight_extralangs'   => OFF,					
 			);
