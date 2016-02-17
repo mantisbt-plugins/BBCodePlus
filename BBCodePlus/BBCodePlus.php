@@ -19,7 +19,7 @@
 			$this->name        = plugin_lang_get( 'title' );
 			$this->description = plugin_lang_get( 'description' );
 			$this->page        = 'config';
-			$this->version     = '1.0.9';
+			$this->version     = '1.0.10';
 			
 			$this->requires['MantisCore'] = '1.3.0';
 			# this plugin can coexist with MantisCoreFormatting.
@@ -206,21 +206,21 @@
 			$p_string = $this->restore_pre_code_tags( $p_string, $p_multiline);
 			
 			# remove breaks from [code] added by mantis formatting.
-			if ( $this->t_MantisCoreFormatting_process_text ) {
+			if ( ON == $this->t_MantisCoreFormatting_process_text ) {
 				$p_string = $this->string_code_nl2br($p_string);
 				$p_string = $this->string_list_nl2br($p_string);
 			} else {
 				$p_string = string_html_specialchars( $p_string );
 				$p_string = string_restore_valid_html_tags( $p_string, true );
 			}
-				
+		
 			# process bug and note links (if not already addressed.)
-			if ( !$this->t_MantisCoreFormatting_process_buglinks ) {
+			if ( OFF == $this->t_MantisCoreFormatting_process_buglinks ) {
 				$p_string = string_process_bug_link( $p_string, TRUE );
 				$p_string = string_process_bugnote_link( $p_string, TRUE );
 			}
 			
-			if ( !$this->t_MantisCoreFormatting_process_vcslinks ) {
+			if ( OFF == $this->t_MantisCoreFormatting_process_vcslinks ) {
 				$p_string = $this->string_process_cvs_link( $p_string );
 			}
 
@@ -316,12 +316,11 @@
 			')
 			, $p_string);
 			
-			
 			# process quotes.	
 			$p_string = $this->string_process_quote($p_string);		
 			
 			# add line breaks except for code blocks (only if core formatting is OFF);
-			if ( !$this->t_MantisCoreFormatting_process_text ) {
+			if ( OFF == $this->t_MantisCoreFormatting_process_text ) {
 				$p_string = string_nl2br($p_string);				
 			}
 			
@@ -343,20 +342,10 @@
 				$t_change_quotes = TRUE;
 				ini_set( 'magic_quotes_sybase', FALSE );
 			}
-			
+
 			# restore pre/code tags.
 			$p_string = $this->restore_pre_code_tags( $p_string, $p_multiline);
-				
-			# process bug and note links (if not already addressed.)
-			if ( !$this->t_MantisCoreFormatting_process_buglinks ) {
-				$p_string = string_process_bug_link( $p_string, TRUE );
-				$p_string = string_process_bugnote_link( $p_string, TRUE );
-			}
 			
-			if ( !$this->t_MantisCoreFormatting_process_vcslinks ) {
-				$p_string = $this->string_process_cvs_link( $p_string );
-			}
-
 			# ensures that the links will be opened in a new window/tab, so as to not lose the currently displayed issue. 
 			$t_extra_link_tags = 'target="_blank"';
 			
@@ -434,7 +423,7 @@
 			
 			# perform the actual replacement.
 			$p_string = preg_replace( $t_search, $t_replace, $p_string );
-			
+		
 			# code=lang
 			$p_string = preg_replace_callback('/\[code=(\w+)\](.+)\[\/code\]/imsU',
 			create_function('$m', '
@@ -449,19 +438,13 @@
 			')
 			, $p_string);
 			
-			
 			# process quotes.	
 			$p_string = $this->string_strip_quote($p_string);
 			
-			# add line breaks except for code blocks (only if core formatting is OFF);
-			if ( !$this->t_MantisCoreFormatting_process_text ) {
-				$p_string = string_nl2br($p_string);				
-			}
-			
 			if ( $t_change_quotes )
 				ini_set( 'magic_quotes_sybase', TRUE );
-			 
-			 return $p_string;
+
+			return $p_string;
 		 }
 		//-------------------------------------------------------------------
 		/**
