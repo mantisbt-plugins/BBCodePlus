@@ -19,7 +19,7 @@
 			$this->name        = plugin_lang_get( 'title' );
 			$this->description = plugin_lang_get( 'description' );
 			$this->page        = 'config';
-			$this->version     = '1.0.8';
+			$this->version     = '1.0.9';
 			
 			$this->requires['MantisCore'] = '1.3.0';
 			# this plugin can coexist with MantisCoreFormatting.
@@ -125,6 +125,8 @@
 
 			if ( ON == plugin_config_get( 'process_text' ) )
 				$this->string_process_bbcode( $p_string, $p_multiline );
+			else
+				$p_string = $this->string_strip_bbcode( $p_string, $p_multiline );
 
 			return $p_string;
 		}
@@ -140,7 +142,9 @@
 
 			if ( ON == plugin_config_get( 'process_rss' ) )
 				$p_string = $this->string_process_bbcode( $p_string );
-
+			else
+				$p_string = $this->string_strip_bbcode( $p_string );
+			
 			return $p_string;
 		}
 		//-------------------------------------------------------------------
@@ -157,6 +161,11 @@
 			$p_string = string_process_bug_link( $p_string, FALSE );
 			$p_string = string_process_bugnote_link( $p_string, FALSE );
 			$p_string = $this->string_process_cvs_link( $p_string, FALSE );
+			
+			if ( ON == plugin_config_get( 'process_email' ) )
+				$p_string = $this->string_process_bbcode( $p_string );
+			else
+				$p_string = $this->string_strip_bbcode( $p_string );
 
 			return $p_string;
 		}		
@@ -172,8 +181,10 @@
 		public function formatted( $p_event, $p_string, $p_multiline = TRUE ) {
 		
 			if ( ON == plugin_config_get( 'process_text' ) )
-				$p_string = $this->string_process_bbcode( $p_string );			
-
+				$p_string = $this->string_process_bbcode( $p_string );
+			else
+				$p_string = $this->string_strip_bbcode( $p_string );
+			
 			return $p_string;
 		}
 		//-------------------------------------------------------------------
@@ -321,6 +332,139 @@
 		}
 		//-------------------------------------------------------------------
 		/**
+		 * Filter string and remove bbcode
+		 *
+		 * @param   string $p_string
+		 * @return  string $p_string
+		 */
+		 function string_strip_bbcode( $p_string, $p_multiline = TRUE ) {
+			$t_change_quotes = FALSE;
+			if ( ini_get_bool( 'magic_quotes_sybase' ) ) {
+				$t_change_quotes = TRUE;
+				ini_set( 'magic_quotes_sybase', FALSE );
+			}
+			
+			# restore pre/code tags.
+			$p_string = $this->restore_pre_code_tags( $p_string, $p_multiline);
+				
+			# process bug and note links (if not already addressed.)
+			if ( !$this->t_MantisCoreFormatting_process_buglinks ) {
+				$p_string = string_process_bug_link( $p_string, TRUE );
+				$p_string = string_process_bugnote_link( $p_string, TRUE );
+			}
+			
+			if ( !$this->t_MantisCoreFormatting_process_vcslinks ) {
+				$p_string = $this->string_process_cvs_link( $p_string );
+			}
+
+			# ensures that the links will be opened in a new window/tab, so as to not lose the currently displayed issue. 
+			$t_extra_link_tags = 'target="_blank"';
+			
+			# if there are any expressed links, images convert them to bbcode.
+			$p_string = preg_replace( "/^((http|https|ftp):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#]+)/i", "[url]$1[/url]", $p_string );
+			$p_string = preg_replace( "/([^='\"(\[url\]|\[img\])])((http|https|ftp):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#]+)/i", "$1[url]$2[/url]", $p_string );
+			
+			$t_search[] = "/\[img\]((http|https|ftp):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%# ]+?)\[\/img\]/is";
+			$t_search[] = "/\[img\]([.]*[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%# ]+?)\[\/img\]/is";
+			$t_search[] = "/\[url\]((http|https|ftp|mailto):\/\/([a-z0-9\.\-@:]+)[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),\#%~ ]*?)\[\/url\]/is";
+			$t_search[] = "/\[url=((http|https|ftp|mailto):\/\/[^\]]+?)\](.+?)\[\/url\]/is";
+			$t_search[] = "/\[url=([a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%# ]+?)\](.+?)\[\/url\]/is";				
+			$t_search[] = "/\[email\]([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\[\/email\]/is";
+			$t_search[] = "/\[email=([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\](.+?)\[\/email\]/is";
+			$t_search[] = "/\[color=([\#a-z0-9]+?)\](.+?)\[\/color\]/is";
+			$t_search[] = "/\[highlight=([\#a-z0-9]+?)\](.+?)\[\/highlight\]/is";			
+			$t_search[] = "/\[size=([+\-\da-z]+?)\](.+?)\[\/size\]/is";
+			$t_search[] = "/\[list\](\n|\r\n|)/is";
+			$t_search[] = "/\[list=(.+?)\](\n|\r\n|)/is";
+			$t_search[] = "/\[\/list\](\n|\r\n|)/is";
+			$t_search[] = "/\[\*\]/is";
+			$t_search[] = "/\[b\](.+?)\[\/b\]/is";
+			$t_search[] = "/\[u\](.+?)\[\/u\]/is";
+			$t_search[] = "/\[i\](.+?)\[\/i\]/is";
+			$t_search[] = "/\[s\](.+?)\[\/s\]/is";
+			$t_search[] = "/\[left\](.+?)\[\/left\]/is";
+			$t_search[] = "/\[center\](.+?)\[\/center\]/is";
+			$t_search[] = "/\[right\](.+?)\[\/right\]/is";
+			$t_search[] = "/\[justify\](.+?)\[\/justify\]/is";
+			$t_search[] = "/\[hr\](\n|\r\n|)/is";
+			$t_search[] = "/\[sub\](.+?)\[\/sub\]/is";
+			$t_search[] = "/\[sup\](.+?)\[\/sup\]/is";
+			$t_search[] = "/\[table\](\n|\r\n|)/is";
+			$t_search[] = "/\[table=(.+?)\](\n|\r\n|)/is";
+			$t_search[] = "/\[\/table\](\n|\r\n|)/is";
+			$t_search[] = "/\[tr\](.+?)\[\/tr\]/is";					   
+			$t_search[] = "/\[th\](.+?)\[\/th\]/is";
+			$t_search[] = "/\[td\](.+?)\[\/td\]/is";
+			$t_search[] = '/\[code\](.+)\[\/code\]/imsU';
+			$t_search[] = '/\[code start=([0-9]+)\](.+)\[\/code\]/imsU';
+
+			$t_replace[] = "(Image: $1)";
+			$t_replace[] = "(Image: $1)";
+			$t_replace[] = "$1";
+			$t_replace[] = "$1";
+			$t_replace[] = "$1";
+			$t_replace[] = "$1";
+			$t_replace[] = "$2";
+			$t_replace[] = "$2";
+			$t_replace[] = "$2";			
+			$t_replace[] = "$2";
+			$t_replace[] = "";
+			$t_replace[] = "";
+			$t_replace[] = "";
+			$t_replace[] = "* ";
+			$t_replace[] = "$1";
+			$t_replace[] = "$1";
+			$t_replace[] = "$1";
+			$t_replace[] = "$1";
+			$t_replace[] = "\n$1";
+			$t_replace[] = "\n$1";
+			$t_replace[] = "\n$1";
+			$t_replace[] = "\n$1";
+			$t_replace[] = "--------------------------------";
+			$t_replace[] = "$1";
+			$t_replace[] = "$1"; 
+			$t_replace[] = "";
+			$t_replace[] = "";
+			$t_replace[] = "";
+			$t_replace[] = "\n";
+			$t_replace[] = " $1 ";
+			$t_replace[] = " $1 ";
+			$t_replace[] = "\n$1";		
+			$t_replace[] = "\n$2";
+			
+			# perform the actual replacement.
+			$p_string = preg_replace( $t_search, $t_replace, $p_string );
+			
+			# code=lang
+			$p_string = preg_replace_callback('/\[code=(\w+)\](.+)\[\/code\]/imsU',
+			create_function('$m', '
+				return $m[2];
+			')
+			, $p_string);
+			
+			# code=lang start=n
+			$p_string = preg_replace_callback('/\[code=(\w+)\ start=([0-9]+)\](.+)\[\/code\]/imsU',
+			create_function('$m', '
+				return $m[3];
+			')
+			, $p_string);
+			
+			
+			# process quotes.	
+			$p_string = $this->string_strip_quote($p_string);
+			
+			# add line breaks except for code blocks (only if core formatting is OFF);
+			if ( !$this->t_MantisCoreFormatting_process_text ) {
+				$p_string = string_nl2br($p_string);				
+			}
+			
+			if ( $t_change_quotes )
+				ini_set( 'magic_quotes_sybase', TRUE );
+			 
+			 return $p_string;
+		 }
+		//-------------------------------------------------------------------
+		/**
 		 * restore 2 html tags: <pre> and <code>
 		 * from string like &lt;pre&gt;
 		 * @param string $p_string
@@ -383,6 +527,36 @@
 				$matches[1] = 'Someone';
 			}
 			$replacement = sprintf('<div class="bbcodeplus-quote"><i>%s wrote</i><br/><br/>%s</div>', $matches[1], $matches[2]);
+			return $replacement;
+		}
+		//-------------------------------------------------------------------
+		/**
+		 * Strip [quote] BB code
+		 * @param string $p_string
+		 * @return string
+		 */
+		function string_strip_quote($p_string) {
+
+			$pattern = '#\[quote[^\]]*\]#imsU';
+			if ( !preg_match($pattern, $p_string, $matches) ) {
+				return $p_string;
+			}
+			$pattern = '#\[quote(?:=([^\]]+))?\](.+)\[/quote\]#imsU';
+			$p_string = preg_replace_callback($pattern, array($this, 'removeQuotes'), $p_string);
+			return $p_string;
+		}
+		//-------------------------------------------------------------------
+		/**
+		 * Replace callback for [quote]
+		 * @param string[] $matches
+		 * @return string
+		 */
+		private function removeQuotes($matches) {
+
+			if ( !$matches[1] ) {
+				$matches[1] = 'Someone';
+			}
+			$replacement = sprintf('%s', $matches[2]);
 			return $replacement;
 		}
 		//-------------------------------------------------------------------
