@@ -1,0 +1,36 @@
+<?php
+# 2016	Kirill Krasnov (krasnovforum@gmail.com)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with MantisBT.  If not, see <http://www.gnu.org/licenses/>.
+
+$s_plugin_BBCodePlus_title = 'BBCode+';
+$s_plugin_BBCodePlus_description = 'Полная поддержка языка разметки BBCode, подсветкой кода и частичной поддержкой редактора Markdown.';
+$s_plugin_BBCodePlus_config = 'настройки';
+
+$s_plugin_BBCodePlus_process_highlight = 'Использовать подсветку кода с использованием (<a href="http://prismjs.com" target="_blank">prismjs</a>)';
+$s_plugin_BBCodePlus_process_text = 'Обрабатывать простой текст';
+$s_plugin_BBCodePlus_process_email = 'Обрабатывать email';
+$s_plugin_BBCodePlus_process_rss = 'Обрабатывать rss';
+$s_plugin_BBCodePlus_process_markitup = 'Включить редактор Markdown с использованием (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp<a/>)';
+$s_plugin_BBCodePlus_markitup_skin = 'Цветовая схема MarkItUp';
+
+$s_plugin_BBCodePlus_enabled = 'да';
+$s_plugin_BBCodePlus_disabled = 'нет';
+$s_plugin_BBCodePlus_highlight_css = 'Цветовая схема для подсветки кода';
+$s_plugin_BBCodePlus_highlight_extralangs = 'Включить поддержку подсветки для расширенного списка языков';
+
+$s_plugin_BBCodePlus_credits = 'Разработка';
+$s_plugin_BBCodePlus_credits_line1 = '<a href="https://github.com/bkraul">Belman Kraul-Garcia</a>';
+$s_plugin_BBCodePlus_credits_line2 = '<a href="https://github.com/kirill">Kirill Krasnov</a>';
+$s_plugin_BBCodePlus_credits_line3 = '';
