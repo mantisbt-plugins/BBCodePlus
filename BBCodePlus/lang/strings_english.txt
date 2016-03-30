@@ -31,6 +31,6 @@ $s_plugin_BBCodePlus_highlight_css = 'Code highlight style';
 $s_plugin_BBCodePlus_highlight_extralangs = 'Enable support for highlighting of extra languages';
 
 $s_plugin_BBCodePlus_credits = 'Credits';
-$s_plugin_BBCodePlus_credits_line1 = 'Based on the plugin development work of the following contributors:';
-$s_plugin_BBCodePlus_credits_line2 = 'Kirill Krasnov - <a href="https://github.com/mantisbt-plugins/bbcode">BBCode</a>, <a href="https://github.com/mantisbt-plugins/highlightcode">HighlightCode</a>';
-$s_plugin_BBCodePlus_credits_line3 = 'Developed and maintained by <a href="mailto:bkraul@yahoo.com">Belman Kraul-Garcia</a>, 2015.';
+$s_plugin_BBCodePlus_credits_line1 = '<a href="https://github.com/bkraul">Belman Kraul-Garcia</a>';
+$s_plugin_BBCodePlus_credits_line2 = '<a href="https://github.com/kirill">Kirill Krasnov</a>';
+$s_plugin_BBCodePlus_credits_line3 = '';

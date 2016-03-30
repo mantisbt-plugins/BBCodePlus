@@ -19,15 +19,15 @@
 			$this->name        = plugin_lang_get( 'title' );
 			$this->description = plugin_lang_get( 'description' );
 			$this->page        = 'config';
-			$this->version     = '1.0.10';
+			$this->version     = '1.0.11';
 			
 			$this->requires['MantisCore'] = '1.3.0';
 			# this plugin can coexist with MantisCoreFormatting.
 			$this->uses['MantisCoreFormatting'] = '1.3';
 			
-			$this->author  = 'Belman Kraul-Garcia';
-			$this->contact = 'bkraul@yahoo.com';
-			$this->url     = 'https://github.com/bkraul';
+			$this->author  = 'Belman Kraul-Garcia, Kirill Krasnov';
+			$this->contact = 'bkraul@yahoo.com;krasnovforum@gmail.com';
+			$this->url     = 'https://github.com/mantisbt-plugins/BBCodePlus';
 		}
 		//-------------------------------------------------------------------
 		function hooks() {
