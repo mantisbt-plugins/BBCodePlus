@@ -19,7 +19,7 @@
 			$this->name        = plugin_lang_get( 'title' );
 			$this->description = plugin_lang_get( 'description' );
 			$this->page        = 'config';
-			$this->version     = '1.0.10';
+			$this->version     = '1.0.11';
 			
 			$this->requires['MantisCore'] = '1.2.0';
 			# require jQuery.
@@ -28,9 +28,9 @@
 			$this->uses['MantisCoreFormatting'] = '1.2';
 			
 			
-			$this->author  = 'Belman Kraul-Garcia';
-			$this->contact = 'bkraul@yahoo.com';
-			$this->url     = 'https://github.com/bkraul';
+			$this->author  = 'Belman Kraul-Garcia, Kirill Krasnov';
+			$this->contact = 'bkraul@yahoo.com;krasnovforum@gmail.com';
+			$this->url     = 'https://github.com/mantisbt-plugins/BBCodePlus';
 		}
 		//-------------------------------------------------------------------
 		function hooks() {
