@@ -19,7 +19,7 @@
 			$this->name        = plugin_lang_get( 'title' );
 			$this->description = plugin_lang_get( 'description' );
 			$this->page        = 'config';
-			$this->version     = '1.0.11';
+			$this->version     = '1.0.12';
 			
 			$this->requires['MantisCore'] = '1.2.0';
 			# require jQuery.
@@ -542,7 +542,7 @@
 			if ( !$matches[1] ) {
 				$matches[1] = 'Someone';
 			}
-			$replacement = sprintf('%s', $matches[2]);
+			$replacement = sprintf('%s said: "%s"', $matches[1], $matches[2]);
 			return $replacement;
 		}
 		//-------------------------------------------------------------------
