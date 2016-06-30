@@ -30,7 +30,7 @@ $s_plugin_BBCodePlus_highlight_css = 'Code Highlight Stil';
 $s_plugin_BBCodePlus_highlight_extralangs = 'Aktiviere Highlighting-Unterstützung für extra Sprachen';
 
 $s_plugin_BBCodePlus_credits = 'Credits';
-$s_plugin_BBCodePlus_credits_line1 = 'Dieses Plugin basiert auf den Entwicklungen der folgenden Beitragenden:';
+$s_plugin_BBCodePlus_credits_line = 'Dieses Plugin basiert auf den Entwicklungen der folgenden Beitragenden:';
 $s_plugin_BBCodePlus_credits_line1 = '<a href="https://github.com/bkraul">Belman Kraul-Garcia</a>';
 $s_plugin_BBCodePlus_credits_line2 = '<a href="https://github.com/kirill">Kirill Krasnov</a>';
 $s_plugin_BBCodePlus_credits_line3 = '';
