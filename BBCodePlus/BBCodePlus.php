@@ -14,16 +14,16 @@
 		 * @return  void
 		 */
 	
-		public function register() {
+		function register() {
 
 			$this->name        = plugin_lang_get( 'title' );
 			$this->description = plugin_lang_get( 'description' );
 			$this->page        = 'config';
-			$this->version     = '1.0.11';
+			$this->version     = '2.0.11';
 			
-			$this->requires['MantisCore'] = '1.3.0';
+			$this->requires['MantisCore'] = '2.0.0';
 			# this plugin can coexist with MantisCoreFormatting.
-			$this->uses['MantisCoreFormatting'] = '1.3';
+			$this->uses['MantisCoreFormatting'] = '2.0';
 			
 			$this->author  = 'Belman Kraul-Garcia, Kirill Krasnov';
 			$this->contact = 'bkraul@yahoo.com;krasnovforum@gmail.com';
