@@ -14,7 +14,7 @@ Screenshots:
 
 ![Markup editor](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master/Screen1.png)
 
-![Configuration](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master/Screen2.png)
+![Configuration](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master-2.0.x/Screen2.png)
 
 Considerations
 -------------------------
