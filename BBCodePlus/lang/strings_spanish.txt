@@ -32,5 +32,5 @@ $s_plugin_BBCodePlus_highlight_extralangs = 'Habilitar apoyo de colorizado para 
 
 $s_plugin_BBCodePlus_credits = 'Créditos';
 $s_plugin_BBCodePlus_credits_line1 = '<a href="https://github.com/bkraul">Belman Kraul-Garcia</a>';
-$s_plugin_BBCodePlus_credits_line2 = '<a href="https://github.com/kirill">Kirill Krasnov</a>';
+$s_plugin_BBCodePlus_credits_line2 = '<a href="https://github.com/Kirill">Kirill Krasnov</a>';
 $s_plugin_BBCodePlus_credits_line3 = '';

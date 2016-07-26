@@ -15,22 +15,22 @@
 # along with MantisBT.  If not, see <http://www.gnu.org/licenses/>.
 
 $s_plugin_BBCodePlus_title = 'BBCode+';
-$s_plugin_BBCodePlus_description = 'Complete BBCode and syntax highlighting support, with optional markdown editor.';
-$s_plugin_BBCodePlus_config = 'Config';
+$s_plugin_BBCodePlus_description = '完美支持BBCode和语法高亮，并附可选的markdown编辑器。';
+$s_plugin_BBCodePlus_config = '配置';
 
-$s_plugin_BBCodePlus_process_highlight = 'Use code syntax highlighting (<a href="http://prismjs.com" target="_blank">prismjs</a>)';
-$s_plugin_BBCodePlus_process_text = 'Process plain text';
-$s_plugin_BBCodePlus_process_email = 'Process email';
-$s_plugin_BBCodePlus_process_rss = 'Process rss';
-$s_plugin_BBCodePlus_process_markitup = 'Enable markdown editor (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp<a/>)';
-$s_plugin_BBCodePlus_markitup_skin = 'MarkItUp skin';
+$s_plugin_BBCodePlus_process_highlight = '启用代码高亮显示 (<a href="http://prismjs.com" target="_blank">prismjs</a>)';
+$s_plugin_BBCodePlus_process_text = '处理纯文本';
+$s_plugin_BBCodePlus_process_email = '处理email';
+$s_plugin_BBCodePlus_process_rss = '处理rss';
+$s_plugin_BBCodePlus_process_markitup = '启用markdown编辑器(<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp<a/>)';
+$s_plugin_BBCodePlus_markitup_skin = 'MarkItUp皮肤';
 
-$s_plugin_BBCodePlus_enabled = 'Yes';
-$s_plugin_BBCodePlus_disabled = 'No';
-$s_plugin_BBCodePlus_highlight_css = 'Code highlight style';
-$s_plugin_BBCodePlus_highlight_extralangs = 'Enable support for highlighting of extra languages';
+$s_plugin_BBCodePlus_enabled = '是';
+$s_plugin_BBCodePlus_disabled = '否';
+$s_plugin_BBCodePlus_highlight_css = '代码高亮风格';
+$s_plugin_BBCodePlus_highlight_extralangs = '启用额外语言的高亮支持';
 
-$s_plugin_BBCodePlus_credits = 'Credits';
+$s_plugin_BBCodePlus_credits = '贡献者';
 $s_plugin_BBCodePlus_credits_line1 = '<a href="https://github.com/bkraul">Belman Kraul-Garcia</a>';
 $s_plugin_BBCodePlus_credits_line2 = '<a href="https://github.com/Kirill">Kirill Krasnov</a>';
 $s_plugin_BBCodePlus_credits_line3 = '';

@@ -19,7 +19,7 @@
 			$this->name        = plugin_lang_get( 'title' );
 			$this->description = plugin_lang_get( 'description' );
 			$this->page        = 'config';
-			$this->version     = '2.0.11';
+			$this->version     = '2.0.12';
 			
 			$this->requires['MantisCore'] = '2.0.0';
 			# this plugin can coexist with MantisCoreFormatting.
@@ -539,7 +539,7 @@
 			if ( !$matches[1] ) {
 				$matches[1] = 'Someone';
 			}
-			$replacement = sprintf('%s', $matches[2]);
+			$replacement = sprintf('%s said: "%s"', $matches[1], $matches[2]);
 			return $replacement;
 		}
 		//-------------------------------------------------------------------
