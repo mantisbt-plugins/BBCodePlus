@@ -15,15 +15,15 @@
 # along with MantisBT.  If not, see <http://www.gnu.org/licenses/>.
 
 $s_plugin_BBCodePlus_title = 'BBCode+';
-$s_plugin_BBCodePlus_description = 'Complete BBCode and syntax highlighting support, with optional markdown editor.';
+$s_plugin_BBCodePlus_description = 'Complete BBCode and syntax highlighting support, with optional BBCode editor.';
 $s_plugin_BBCodePlus_config = 'Config';
 
 $s_plugin_BBCodePlus_process_highlight = 'Use code syntax highlighting (<a href="http://prismjs.com" target="_blank">prismjs</a>)';
 $s_plugin_BBCodePlus_process_text = 'Process plain text';
 $s_plugin_BBCodePlus_process_email = 'Process email';
 $s_plugin_BBCodePlus_process_rss = 'Process rss';
-$s_plugin_BBCodePlus_process_markitup = 'Enable markdown editor (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp</a>)';
-$s_plugin_BBCodePlus_markitup_skin = 'MarkItUp skin';
+$s_plugin_BBCodePlus_process_markitup = 'Enable BBCode editor (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp</a>)';
+$s_plugin_BBCodePlus_markitup_skin = 'Editor skin';
 
 $s_plugin_BBCodePlus_enabled = 'Yes';
 $s_plugin_BBCodePlus_disabled = 'No';

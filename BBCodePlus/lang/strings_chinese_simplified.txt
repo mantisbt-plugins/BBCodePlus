@@ -22,7 +22,7 @@ $s_plugin_BBCodePlus_process_highlight = '启用代码高亮显示 (<a href="htt
 $s_plugin_BBCodePlus_process_text = '处理纯文本';
 $s_plugin_BBCodePlus_process_email = '处理email';
 $s_plugin_BBCodePlus_process_rss = '处理rss';
-$s_plugin_BBCodePlus_process_markitup = '启用markdown编辑器(<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp<a/>)';
+$s_plugin_BBCodePlus_process_markitup = '启用markdown编辑器(<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp</a>)';
 $s_plugin_BBCodePlus_markitup_skin = 'MarkItUp皮肤';
 
 $s_plugin_BBCodePlus_enabled = '是';
