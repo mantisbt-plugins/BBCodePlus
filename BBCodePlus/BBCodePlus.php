@@ -19,7 +19,7 @@
 			$this->name        = plugin_lang_get( 'title' );
 			$this->description = plugin_lang_get( 'description' );
 			$this->page        = 'config';
-			$this->version     = '2.0.12';
+			$this->version     = '2.0.13';
 			
 			$this->requires['MantisCore'] = '2.0.0';
 			# this plugin can coexist with MantisCoreFormatting.
@@ -275,7 +275,7 @@
 			$t_replace[] = "<span class=\"bbcolor-\$1\">$2</span>";
 			$t_replace[] = "<span class=\"bbhighlight-\$1\">$2</span>";			
 			$t_replace[] = "<span class=\"bbsize-\$1\">$2</span>";
-			$t_replace[] = "<ol type=\"square\" class=\"bbcodeplus-list\">";
+			$t_replace[] = "<ol class=\"bbcodeplus-bullet-list\">";
 			$t_replace[] = "<ol type=\"1\" start=\"$1\" class=\"bbcodeplus-list\">";
 			$t_replace[] = "</ol>";
 			$t_replace[] = "<li>";

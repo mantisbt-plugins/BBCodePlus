@@ -22,7 +22,7 @@ $s_plugin_BBCodePlus_process_highlight = 'Usar colorizado de sintaxis (<a href="
 $s_plugin_BBCodePlus_process_text = 'Procesar texto';
 $s_plugin_BBCodePlus_process_email = 'Procesar correo electrónico';
 $s_plugin_BBCodePlus_process_rss = 'Procesar rss';
-$s_plugin_BBCodePlus_process_markitup = 'Habilitar editor de código (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp<a/>)';
+$s_plugin_BBCodePlus_process_markitup = 'Habilitar editor de código (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp</a>)';
 $s_plugin_BBCodePlus_markitup_skin = 'Piel MarkItUp';
 
 $s_plugin_BBCodePlus_enabled = 'Si';
@@ -32,5 +32,5 @@ $s_plugin_BBCodePlus_highlight_extralangs = 'Habilitar apoyo de colorizado para 
 
 $s_plugin_BBCodePlus_credits = 'Créditos';
 $s_plugin_BBCodePlus_credits_line1 = '<a href="https://github.com/bkraul">Belman Kraul-Garcia</a>';
-$s_plugin_BBCodePlus_credits_line2 = '<a href="https://github.com/Kirill">Kirill Krasnov</a>';
+$s_plugin_BBCodePlus_credits_line2 = '<a href="https://github.com/kirill">Kirill Krasnov</a>';
 $s_plugin_BBCodePlus_credits_line3 = '';

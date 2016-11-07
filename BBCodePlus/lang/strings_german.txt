@@ -22,7 +22,7 @@ $s_plugin_BBCodePlus_process_highlight = 'Code Syntax Highlighting aktivieren (<
 $s_plugin_BBCodePlus_process_text = 'BBCode für Klartext';
 $s_plugin_BBCodePlus_process_email = 'BBCode für E-Mails';
 $s_plugin_BBCodePlus_process_rss = 'BBCode für RSS';
-$s_plugin_BBCodePlus_process_markitup = 'Markdown Editor aktivieren (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp<a/>)';
+$s_plugin_BBCodePlus_process_markitup = 'Markdown Editor aktivieren (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp</a>)';
 
 $s_plugin_BBCodePlus_enabled = 'Ja';
 $s_plugin_BBCodePlus_disabled = 'Nein';

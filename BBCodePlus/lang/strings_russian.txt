@@ -22,7 +22,7 @@ $s_plugin_BBCodePlus_process_highlight = 'Использовать подсве�
 $s_plugin_BBCodePlus_process_text = 'Обрабатывать простой текст';
 $s_plugin_BBCodePlus_process_email = 'Обрабатывать email';
 $s_plugin_BBCodePlus_process_rss = 'Обрабатывать rss';
-$s_plugin_BBCodePlus_process_markitup = 'Включить редактор Markdown с использованием (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp<a/>)';
+$s_plugin_BBCodePlus_process_markitup = 'Включить редактор Markdown с использованием (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp</a>)';
 $s_plugin_BBCodePlus_markitup_skin = 'Цветовая схема MarkItUp';
 
 $s_plugin_BBCodePlus_enabled = 'да';

@@ -21,9 +21,17 @@ code span {
 	padding-left: 1.2em;
 }
 
+.bbcodeplus-bullet-list {
+	margin-left: 0px;
+	padding-left: 1.2em;
+	list-style-type: square;
+}
+
 .bbcodeplus-preview {
 	height:100%; 
 	width:100%;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13px;
 }
 
 .bbcodeplus-preview-body {

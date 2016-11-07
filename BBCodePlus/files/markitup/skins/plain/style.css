@@ -70,7 +70,7 @@
 .markItUpHeader ul ul {
 	display: none;
 	position: absolute;
-	top: 23px; left: 0px;	
+	top: 17px; left: 0px;	
 	background: #FFF;
 	border: 1px solid #c0c0c0;
 }
@@ -102,11 +102,11 @@
 }
 .markItUpHeader ul a {
 	display: block;
-	width: 16px; height: 16px;
+	width: 18px; height: 18px;
 	text-indent: -10000px;
 	background-repeat: no-repeat;
 	background-position: center;
-	padding: 3px;
+	padding: 5px;
 	margin: 0px;
 	border: solid 1px transparent;
 }
@@ -124,7 +124,8 @@
 	display: block;
 	padding-left: 0px;
 	text-indent: 0;
-	width: 120px; 
+	width: 120px;
+	line-height: 10px;
 	padding:5px 5px 5px 25px;
 	background-position: 2px 50%;
 	border: solid 1px transparent;
