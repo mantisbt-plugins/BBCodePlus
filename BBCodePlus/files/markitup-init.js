@@ -17,6 +17,5 @@
 		if ( $("textarea[name='body']") )
 			$("textarea[name='body']").markItUp( mySettings );
 
-		
 	});
 })(jQuery);
