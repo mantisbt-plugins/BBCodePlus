@@ -75,7 +75,7 @@
 .markItUpHeader ul ul {
 	display: none;
 	position: absolute;
-	top: 17px; left: 0px;	
+	top: 23px; left: 0px;	
 	background: #FFF;
 	border: 1px solid #c0c0c0;
 }
@@ -107,7 +107,7 @@
 }
 .markItUpHeader ul a {
 	display: block;
-	width: 16px; height: 16px;
+	width: 22px; height: 22px;
 	text-indent: -10000px;
 	background-repeat: no-repeat;
 	background-position: center;
