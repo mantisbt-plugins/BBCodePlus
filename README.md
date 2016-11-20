@@ -1,12 +1,13 @@
 BBCodePlus
 =============
-BBCode plugin for Mantis BugTracker 1.3 (at least 1.3.0-rc.1)
+BBCode plugin for Mantis BugTracker 2.0
 
-See [1.2.x branch] (https://github.com/mantisbt-plugins/BBCodePlus/tree/master-1.2.x) for the Mantis 1.2 version.
+* See [1.2.x branch](https://github.com/mantisbt-plugins/BBCodePlus/tree/master-1.2.x) for the Mantis 1.2 version.
+* See [BBCodePlus](https://github.com/mantisbt-plugins/BBCodePlus) for the Mantis 1.3 version.
 
 Incorporates the following configurable features:
 
-* Markdown Editor (using [jQuery MarkItUp](http://markitup.jaysalvat.com/home/)).
+* Editor with toolbars and preview (using [jQuery MarkItUp](http://markitup.jaysalvat.com/home/)).
 * BBCode processing.
 * Syntax Highlighting (using [prismjs](http://prismjs.com/)).
 
@@ -18,7 +19,7 @@ Screenshots:
 
 Considerations
 -------------------------
-* Requires version 1.3.0-rc.1 or latest development build (See mantisbt issue [#0020081](https://www.mantisbt.org/bugs/view.php?id=20081)).
+* Requires mantis version 2.0 or latest development build.
 
 Supported BBCode Tags
 ---------------------
