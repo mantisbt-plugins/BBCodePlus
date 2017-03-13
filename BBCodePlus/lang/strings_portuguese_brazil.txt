@@ -1,0 +1,37 @@
+<?php
+# 2015	Belman Kraul-Garcia (bkraul@yahoo.com)
+# 2017	Anderson Silva (anmdss@gmail.com)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with MantisBT.  If not, see <http://www.gnu.org/licenses/>.
+
+$s_plugin_BBCodePlus_title = 'BBCode+';
+$s_plugin_BBCodePlus_description = 'Suporte completo a BBCode e realçador de código (code highlight) para textos, com editor opcional BBCode.';
+$s_plugin_BBCodePlus_config = 'Configurar';
+
+$s_plugin_BBCodePlus_process_highlight = 'Usa realçador de código (code syntax highlighting; <a href="http://prismjs.com" target="_blank">prismjs</a>)';
+$s_plugin_BBCodePlus_process_text = 'Processar texto plano';
+$s_plugin_BBCodePlus_process_email = 'Processar e-mail';
+$s_plugin_BBCodePlus_process_rss = 'Processar RSS';
+$s_plugin_BBCodePlus_process_markitup = 'Habilitar editor BBCode (<a href="http://markitup.jaysalvat.com" target="_blank">MarkItUp</a>)';
+$s_plugin_BBCodePlus_markitup_skin = 'Tema do Editor';
+
+$s_plugin_BBCodePlus_enabled = 'Sim';
+$s_plugin_BBCodePlus_disabled = 'Não';
+$s_plugin_BBCodePlus_highlight_css = 'Estilo do realçador de código (code highlight)';
+$s_plugin_BBCodePlus_highlight_extralangs = 'Habilita o suporte a realçar códigos (highlighting) de liguagens de programação extra';
+
+$s_plugin_BBCodePlus_credits = 'Créditos';
+$s_plugin_BBCodePlus_credits_line1 = '<a href="https://github.com/bkraul">Belman Kraul-Garcia</a>';
+$s_plugin_BBCodePlus_credits_line2 = '<a href="https://github.com/kirill">Kirill Krasnov</a>';
+$s_plugin_BBCodePlus_credits_line3 = '<a href="https://github.com/maxan">Anderson Silva</a>';
