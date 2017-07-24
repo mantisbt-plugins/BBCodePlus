@@ -266,6 +266,7 @@
 			$t_search[] = "/\[th\](.+?)\[\/th\]/is";
 			$t_search[] = "/\[td\](.+?)\[\/td\]/is";
 			$t_search[] = '/\[code\](.+)\[\/code\]/imsU';
+			$t_search[] = '/\[code=\](.+)\[\/code\]/imsU';			
 			$t_search[] = '/\[code start=([0-9]+)\](.+)\[\/code\]/imsU';
 			
 			$t_replace[] = "<img src=\"$1\" border=\"0\" alt=\"$1\" />";
@@ -299,8 +300,9 @@
 			$t_replace[] = "<tr>$1</tr>";
 			$t_replace[] = "<th>$1</th>";
 			$t_replace[] = "<td>$1</td>";
+			$t_replace[] = "<pre><code class=\"language-none\">\$1</code></pre>";
 			$t_replace[] = "<pre><code class=\"language-none\">\$1</code></pre>";			
-			$t_replace[] = "<pre class=\"line-numbers\" data-start=\"\$1\"><code class=\"language-none\">\$2</code></pre>";			
+			$t_replace[] = "<pre class=\"line-numbers\" data-start=\"\$1\"><code class=\"language-none\">\$2</code></pre>";
 			
 			# perform the actual replacement.
 			$p_string = preg_replace( $t_search, $t_replace, $p_string );
