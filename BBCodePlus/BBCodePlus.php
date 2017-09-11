@@ -228,12 +228,12 @@
 			$t_extra_link_tags = 'target="_blank"';
 			
 			# if there are any expressed links, images convert them to bbcode.
-			$p_string = preg_replace( "/^((http|https|ftp):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#]+)/i", "[url]$1[/url]", $p_string );
-			$p_string = preg_replace( "/([^='\"(\[url\]|\[img\])])((http|https|ftp):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#]+)/i", "$1[url]$2[/url]", $p_string );
+			$p_string = preg_replace( "/^((http|https|ftp|file):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#\|]+)/i", "[url]$1[/url]", $p_string );
+			$p_string = preg_replace( "/([^='\"(\[url\]|\[img\])])((http|https|ftp|file):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#\|]+)/i", "$1[url]$2[/url]", $p_string );
 			
 			$t_search[] = "/\[img\]((http|https|ftp):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%# ]+?)\[\/img\]/is";
 			$t_search[] = "/\[img\]([.]*[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%# ]+?)\[\/img\]/is";
-			$t_search[] = "/\[url\]((http|https|ftp|mailto):\/\/([a-z0-9\.\-@:]+)[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),\#%~ ]*?)\[\/url\]/is";
+			$t_search[] = "/\[url\]((http|https|ftp|mailto|file):\/\/([\/a-z0-9\.\-@:]+)[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),\#%~\| ]*?)\[\/url\]/is";
 			$t_search[] = "/\[url=((http|https|ftp|mailto):\/\/[^\]]+?)\](.+?)\[\/url\]/is";
 			$t_search[] = "/\[url=([a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%# ]+?)\](.+?)\[\/url\]/is";				
 			$t_search[] = "/\[email\]([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\[\/email\]/is";

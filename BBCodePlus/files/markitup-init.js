@@ -12,6 +12,8 @@
 			$("textarea[name='steps_to_reproduce']").markItUp(mySettings);
 		if ( $("textarea[name='additional_info']") )
 			$("textarea[name='additional_info']").markItUp(mySettings);
+		if ( $("textarea[name='additional_information']") )
+			$("textarea[name='additional_information']").markItUp(mySettings);
 		if ( $("textarea[name='body']") )
 			$("textarea[name='body']").markItUp( mySettings );
 
