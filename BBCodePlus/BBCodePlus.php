@@ -19,7 +19,7 @@
 			$this->name        = plugin_lang_get( 'title' );
 			$this->description = plugin_lang_get( 'description' );
 			$this->page        = 'config';
-			$this->version     = '2.0.16';
+			$this->version     = '2.0.17';
 			
 			$this->requires['MantisCore'] = '2.0.0';
 			# this plugin can coexist with MantisCoreFormatting.
@@ -70,6 +70,9 @@
 				}
 			}
 			
+			# turn off formatting options.
+			config_set_global("html_make_links", false);
+			
 			# includes.
 			$resources = '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'bbcodeplus.css' ) . '" />';
 			$resources .= '<script type="text/javascript" src="' . plugin_file( 'bbcodeplus-init.js' ) . '"></script>';
@@ -77,7 +80,6 @@
 			if ( ON == plugin_config_get( 'process_markitup' ) ) {
 				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'markitup/skins/' . plugin_config_get( 'markitup_skin' ) . '/style.css' ) . '" />';
 				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'markitup/sets/mantis/style.css' ) . '" />';
-				//$resources .= '<script type="text/javascript" src="' . plugin_file( 'jquery_migrate_min.js' ) . '"></script>';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/jquery_markitup.js' ) . '"></script>';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/sets/mantis/set.js' ) . '"></script>';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup-init.js' ) . '"></script>';				
@@ -234,12 +236,12 @@
 			$t_extra_link_tags = 'target="_blank"';
 			
 			# if there are any expressed links, images convert them to bbcode.
-			$p_string = preg_replace( "/^((http|https|ftp):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#]+)/i", "[url]$1[/url]", $p_string );
-			$p_string = preg_replace( "/([^='\"(\[url\]|\[img\])])((http|https|ftp):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#]+)/i", "$1[url]$2[/url]", $p_string );
+			$p_string = preg_replace( "/^((http|https|ftp|file):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#\|]+)/i", "[url]$1[/url]", $p_string );
+			$p_string = preg_replace( "/([^='\"(\[url\]|\[img\])])((http|https|ftp|file):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#\|]+)/i", "$1[url]$2[/url]", $p_string );
 			
 			$t_search[] = "/\[img\]((http|https|ftp):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%# ]+?)\[\/img\]/is";
 			$t_search[] = "/\[img\]([.]*[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%# ]+?)\[\/img\]/is";
-			$t_search[] = "/\[url\]((http|https|ftp|mailto):\/\/([a-z0-9\.\-@:]+)[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),\#%~ ]*?)\[\/url\]/is";
+			$t_search[] = "/\[url\]((http|https|ftp|mailto|file):\/\/([\/a-z0-9\.\-@:]+)[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),\#%~\| ]*?)\[\/url\]/is";
 			$t_search[] = "/\[url=((http|https|ftp|mailto):\/\/[^\]]+?)\](.+?)\[\/url\]/is";
 			$t_search[] = "/\[url=([a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%# ]+?)\](.+?)\[\/url\]/is";				
 			$t_search[] = "/\[email\]([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\[\/email\]/is";
@@ -312,16 +314,16 @@
 			
 			# code=lang
 			$p_string = preg_replace_callback('/\[code=(\w+)\](.+)\[\/code\]/imsU',
-			function ($m) {
+			create_function('$m', '
 				return "<pre><code class=\"language-" . strtolower($m[1]) . "\">" . $m[2] . "</code></pre>";
-			}
+			')
 			, $p_string);
 			
 			# code=lang start=n
 			$p_string = preg_replace_callback('/\[code=(\w+)\ start=([0-9]+)\](.+)\[\/code\]/imsU',
-			function ($m) {
+			create_function('$m', '
 				return "<pre class=\"line-numbers\" data-start=\"" . $m[2] . "\"><code class=\"language-" . strtolower($m[1]) . "\">" . $m[3] . "</code></pre>";
-			}
+			')
 			, $p_string);
 			
 			# process quotes.	
@@ -434,16 +436,16 @@
 		
 			# code=lang
 			$p_string = preg_replace_callback('/\[code=(\w+)\](.+)\[\/code\]/imsU',
-			function ($m) {
+			create_function('$m', '
 				return $m[2];
-			}
+			')
 			, $p_string);
 			
 			# code=lang start=n
 			$p_string = preg_replace_callback('/\[code=(\w+)\ start=([0-9]+)\](.+)\[\/code\]/imsU',
-			function ($m) {
+			create_function('$m', '
 				return $m[3];
-			}
+			')
 			, $p_string);
 			
 			# process quotes.	
@@ -480,9 +482,9 @@
 			$tags = implode( '|', $tags );
 		
 			$t_string = preg_replace_callback('/&lt;(' . $tags . ')(.*?)&gt;/ui',
-			function($m) {
+			create_function('$m', '
 				return "<" . $m[1] . str_replace("&quot;", "\"", $m[2]) . ">";
-			}
+			')
 			, $t_string);
 			
 			$t_string = preg_replace( '/&lt;\/(' . $tags . ')\s*&gt;/ui', '</\\1>', $t_string );			
