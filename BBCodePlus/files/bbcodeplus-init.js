@@ -1,6 +1,5 @@
 (function($) {
 	$(document).ready(function() {
-		
 		// scan bbcolor classes.
 		var colorElements = $("span[class*='bbcolor-']");
 		if (colorElements != null) {
