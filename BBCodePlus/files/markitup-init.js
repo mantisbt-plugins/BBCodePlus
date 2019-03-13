@@ -3,6 +3,7 @@
 		
 		// declare the path to the previewer using the plugin file processor.
 		mySettings.previewParserPath = "./plugin.php?page=BBCodePlus/preview.php";
+		
 		// apply to proper text areas.
 		if ( $("textarea[name='bugnote_text']") )
 			$("textarea[name='bugnote_text']").markItUp(mySettings);

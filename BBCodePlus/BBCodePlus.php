@@ -19,7 +19,7 @@
 			$this->name        = plugin_lang_get( 'title' );
 			$this->description = plugin_lang_get( 'description' );
 			$this->page        = 'config';
-			$this->version     = '2.0.15';
+			$this->version     = '2.0.16';
 			
 			$this->requires['MantisCore'] = '2.0.0';
 			# this plugin can coexist with MantisCoreFormatting.
@@ -36,6 +36,7 @@
 			
 			$hooks['EVENT_LAYOUT_RESOURCES'] = 'resources';
 			$hooks['EVENT_LAYOUT_PAGE_FOOTER'] = 'footer';
+			$hooks['EVENT_CORE_HEADERS'] = 'csp_headers';
 			
 			return $hooks;			
 		}
@@ -45,6 +46,14 @@
 			# restore make links option.
 			config_set_global("html_make_links", $this->t_html_make_links);					
 		}			
+		//-------------------------------------------------------------------
+		function csp_headers() {
+			# relax csp when processing markitup.
+			if ( ON == plugin_config_get( 'process_markitup' ) ) {
+				http_csp_add( 'script-src', "'self' 'unsafe-inline' 'unsafe-eval'" );
+				http_csp_add( 'frame-ancestors', "'self'" );
+			}				
+		}
 		//-------------------------------------------------------------------
 		function resources( $p_event ) {
 			// store configuration values.
@@ -61,9 +70,6 @@
 				}
 			}
 			
-			# turn off formatting options.
-			config_set_global("html_make_links", false);
-			
 			# includes.
 			$resources = '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'bbcodeplus.css' ) . '" />';
 			$resources .= '<script type="text/javascript" src="' . plugin_file( 'bbcodeplus-init.js' ) . '"></script>';
@@ -71,7 +77,7 @@
 			if ( ON == plugin_config_get( 'process_markitup' ) ) {
 				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'markitup/skins/' . plugin_config_get( 'markitup_skin' ) . '/style.css' ) . '" />';
 				$resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'markitup/sets/mantis/style.css' ) . '" />';
-				$resources .= '<script type="text/javascript" src="' . plugin_file( 'jquery_migrate_min.js' ) . '"></script>';
+				//$resources .= '<script type="text/javascript" src="' . plugin_file( 'jquery_migrate_min.js' ) . '"></script>';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/jquery_markitup.js' ) . '"></script>';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/sets/mantis/set.js' ) . '"></script>';
 				$resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup-init.js' ) . '"></script>';				
