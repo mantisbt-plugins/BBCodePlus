@@ -1,9 +1,9 @@
 BBCodePlus
 =============
-BBCode plugin for Mantis BugTracker 2.0
+BBCode plugin for Mantis BugTracker 2.x
 
-* See [1.2.x branch](https://github.com/mantisbt-plugins/BBCodePlus/tree/master-1.2.x) for the Mantis 1.2 version.
-* See [BBCodePlus](https://github.com/mantisbt-plugins/BBCodePlus) for the Mantis 1.3 version.
+* See branch [master-1.2.x](https://github.com/mantisbt-plugins/BBCodePlus/tree/master-1.2.x) for the Mantis 1.2 version.
+* See [master](https://github.com/mantisbt-plugins/BBCodePlus) for the Mantis 1.3 version.
 
 Incorporates the following configurable features:
 
@@ -11,7 +11,11 @@ Incorporates the following configurable features:
 * BBCode processing.
 * Syntax Highlighting (using [prismjs](http://prismjs.com/)).
 
-Screenshots:
+## Contributing to BBCodePlus
+
+If you would like to contribute to BBCode plus, please [read this first](https://github.com/mantisbt-plugins/BBCodePlus/wiki/Contributing-to-BBCodePlus). 
+
+## Screenshots:
 
 ![Markup editor](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master/Screen1.png)
 
@@ -54,3 +58,4 @@ Supported BBCode Tags
 [quote][/quote] - Quote by *someone* (no name).
 [quote=name][/quote] - Quote by *name*.
 ```
+

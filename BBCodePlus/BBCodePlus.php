@@ -22,7 +22,7 @@
 			$this->name        = plugin_lang_get( 'title' );
 			$this->description = plugin_lang_get( 'description' );
 			$this->page        = 'config';
-			$this->version     = '2.0.17';
+			$this->version     = '2.0.18';
 			
 			$this->requires['MantisCore'] = '2.0.0';
 			# this plugin can coexist with MantisCoreFormatting.
@@ -376,16 +376,16 @@
 			
 			# code=lang
 			$p_string = preg_replace_callback('/\[code=(\w+)\](.+)\[\/code\]/imsU',
-			create_function('$m', '
+			function ($m) {
 				return "<pre><code class=\"language-" . strtolower($m[1]) . "\">" . $m[2] . "</code></pre>";
-			')
+			}
 			, $p_string);
 			
 			# code=lang start=n
 			$p_string = preg_replace_callback('/\[code=(\w+)\ start=([0-9]+)\](.+)\[\/code\]/imsU',
-			create_function('$m', '
+			function ($m) {
 				return "<pre class=\"line-numbers\" data-start=\"" . $m[2] . "\"><code class=\"language-" . strtolower($m[1]) . "\">" . $m[3] . "</code></pre>";
-			')
+			}
 			, $p_string);
 			
 			# process quotes.	
@@ -498,16 +498,16 @@
 		
 			# code=lang
 			$p_string = preg_replace_callback('/\[code=(\w+)\](.+)\[\/code\]/imsU',
-			create_function('$m', '
+			function ($m) {
 				return $m[2];
-			')
+			}
 			, $p_string);
 			
 			# code=lang start=n
 			$p_string = preg_replace_callback('/\[code=(\w+)\ start=([0-9]+)\](.+)\[\/code\]/imsU',
-			create_function('$m', '
+			function ($m) {
 				return $m[3];
-			')
+			}
 			, $p_string);
 			
 			# process quotes.	
@@ -544,9 +544,9 @@
 			$tags = implode( '|', $tags );
 		
 			$t_string = preg_replace_callback('/&lt;(' . $tags . ')(.*?)&gt;/ui',
-			create_function('$m', '
+			function($m) {
 				return "<" . $m[1] . str_replace("&quot;", "\"", $m[2]) . ">";
-			')
+			}
 			, $t_string);
 			
 			$t_string = preg_replace( '/&lt;\/(' . $tags . ')\s*&gt;/ui', '</\\1>', $t_string );			
