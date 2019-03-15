@@ -1,6 +1,9 @@
 <?php
+	require_once( 'core/Parser.php' );
+	require_once( 'core/BBCodeParser.php' );
+	require_once( 'core/HTMLParser.php' );
+	
 	class BBCodePlusPlugin extends MantisFormattingPlugin {
-		
 		// placeholders for MantisCoreFormatting values.
 		private $t_html_make_links = OFF;
 		private $t_MantisCoreFormatting_process_text = OFF;
@@ -51,6 +54,7 @@
 			# relax csp when processing markitup.
 			if ( ON == plugin_config_get( 'process_markitup' ) ) {
 				http_csp_add( 'script-src', "'self' 'unsafe-inline' 'unsafe-eval'" );
+				http_csp_add( 'img-src', "*" );				
 				http_csp_add( 'frame-ancestors', "'self'" );
 			}				
 		}
@@ -204,12 +208,70 @@
 		 */
 		function string_process_bbcode( $p_string, $p_multiline = TRUE ) {
 			
+			# TODO: check mantis core formatting and make the necessary adjustments.
+			# TODO: Make <br/> show up inside <pre> tags.
+			# Mantis core formatting process texts converts ALL newlines to <br>.
+			# we need to disable process text and do our own.
 			$t_change_quotes = FALSE;
 			if ( ini_get_bool( 'magic_quotes_sybase' ) ) {
 				$t_change_quotes = TRUE;
 				ini_set( 'magic_quotes_sybase', FALSE );
 			}
 			
+			# ensures that the links will be opened in a new window/tab, so as to not lose the currently displayed issue.
+			$t_extra_link_tags = 'target="_blank"';
+			
+			# perform sanitation before parsing.
+			# escape all html code inside <code> tags.
+			$p_string = preg_replace_callback('/\[code(.*?)\](.*?)\[\/code\]/imsU', function ($match) { return "[code" . $match[1] . "]" . htmlentities($match[2]) . "[/code]"; }, $p_string);
+			
+			# if mantis core formatting plugin process text feature is off, then we do our own.
+			if ( $this->t_MantisCoreFormatting_process_text == OFF ) {
+				$p_string = string_strip_hrefs( $p_string );
+				$p_string = string_html_specialchars( $p_string );
+				//$p_string = string_restore_valid_html_tags( $p_string, $p_multiline );			
+				# process spaces and line breaks
+				if ( $p_multiline ) {
+					$p_string = string_preserve_spaces_at_bol( $p_string );
+					$p_string = string_nl2br( $p_string );
+				}
+			}
+			
+			# instance the BBCode parsing class.
+			$bbCode = new Genert\BBCode\Parser\BBCodeParser();
+			
+			# add the BBCodePlus custom parsers and overrides.
+			# check core/BBCodeParser.php for the default ones.
+			# any default parser can be overriden here.
+			$bbCode->addParser('email', '/\[email\]([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\[\/email\]/is', '<a ' . $t_extra_link_tags . ' href="mailto:$1">$1</a>', '$1');
+			$bbCode->addParser('email-extra', '/\[email=([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\](.+?)\[\/email\]/is', '<a ' . $t_extra_link_tags . ' href="mailto:$1">$2</a>', '$1');			
+			$bbCode->addParser('size', '/\[size=([+\-\da-z]+?)\](.+?)\[\/size\]/is', '<span class="bbsize-$1">$2</span>', '$1');
+			$bbCode->addParser('color', '/\[color=([\#a-z0-9]+?)\](.+?)\[\/color\]/is', '<span class="bbcolor-$1">$2</span>', '$1');
+			$bbCode->addParser('highlight', '/\[highlight=([\#a-z0-9]+?)\](.+?)\[\/highlight\]/is', '<span class="bbhighlight-$1">$2</span>', '$1');
+			$bbCode->addParser('left-align', '/\[left\](.*?)\[\/left\]/is', '<div align="left">$1</div>', '$1');
+			$bbCode->addParser('center-align', '/\[center\](.*?)\[\/center\]/is', '<div align="center">$1</div>', '$1');
+			$bbCode->addParser('right-align', '/\[right\](.*?)\[\/right\]/is', '<div align="right">$1</div>', '$1');
+			$bbCode->addParser('justify-align', '/\[justify\](.*?)\[\/justify\]/is', '<div align="justify">$1</div>', '$1');			
+			$bbCode->addParser('table-border', '/\[table=(.*?)\](.*?)\[\/table\]/is', '<table border="$1">$2</table>', '$1');
+			$bbCode->addParser('code', '/\[code\](.*?)\[\/code\]/imsU', '<pre><code class="language-none">$1</code></pre>', '$1');
+			$bbCode->addParser('code-lang', '/\[code=(\w+)\](.+)\[\/code\]/imsU', '<pre><code class="language-$1">$2</code></pre>','$1');
+			$bbCode->addParser('code-lang-ln', '/\[code=(\w+)\ start=([0-9]+)\](.+)\[\/code\]/imsU', '<pre class="line-numbers" data-start="$2"><code class="language-$1">$3</code></pre>', '$1');
+
+/*
+			$p_string = preg_replace_callback('/\[code=(\w+)\](.+)\[\/code\]/imsU',
+			create_function('$m', '
+				return "<pre><code class=\"language-" . strtolower($m[1]) . "\">" . $m[2] . "</code></pre>";
+			')
+			, $p_string);
+*/			
+			# restore pre/code tags.
+			#$p_string = $this->restore_pre_code_tags( $p_string, $p_multiline);
+			
+			# parse the BBCode.
+			$p_string = $bbCode->parse($p_string);
+		
+			
+			/*
 			# restore pre/code tags.
 			$p_string = $this->restore_pre_code_tags( $p_string, $p_multiline);
 			
@@ -333,7 +395,7 @@
 			if ( OFF == $this->t_MantisCoreFormatting_process_text ) {
 				$p_string = string_nl2br($p_string);				
 			}
-			
+			*/
 			if ( $t_change_quotes )
 				ini_set( 'magic_quotes_sybase', TRUE );
 
