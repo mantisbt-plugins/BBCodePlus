@@ -11,7 +11,11 @@ Incorporates the following configurable features:
 * BBCode processing.
 * Syntax Highlighting (using [prismjs](http://prismjs.com/)).
 
-Screenshots:
+## Contributing to BBCodePlus
+
+If you would like to contribute to BBCode plus, please [read this first](https://github.com/mantisbt-plugins/BBCodePlus/wiki/Contributing-to-BBCodePlus). 
+
+## Screenshots:
 
 ![Markup editor](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master/Screen1.png)
 
@@ -54,7 +58,4 @@ Supported BBCode Tags
 [quote][/quote] - Quote by *someone* (no name).
 [quote=name][/quote] - Quote by *name*.
 ```
-## Contributing to BBCodePlus
-
-If you would like to contribute to BBCode plus, please [read this first](https://github.com/mantisbt-plugins/BBCodePlus/wiki/Contributing-to-BBCodePlus).
 
