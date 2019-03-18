@@ -14,7 +14,7 @@ Incorporates the following configurable features:
 
 ## Repository Information
 
-**NOTE:** BBCodePlus 2.x is now the **master** for the BBCodePlus project. Please re-fork or update your upstreams to follow the new model outlined below
+**NOTE:** BBCodePlus 2.x is now the **master** for the BBCodePlus project. Please **re-fork** or (carefully) **update** your fork (branch structure on upstream and origin).
 
 | Branch                                                       | Description                                            |
 | ------------------------------------------------------------ | ------------------------------------------------------ |
@@ -23,13 +23,13 @@ Incorporates the following configurable features:
 | [master-1.3.x](https://github.com/mantisbt-plugins/BBCodePlus/tree/master-1.3.x) | Support for MantisBT 1.3.x (legacy).                   |
 ## Change Log
 
-###2.1.0
+### 2.1.0
 * Brand new BBCode/HTML parsers, from [Genert/bbcode](https://github.com/Genert/bbcode).
 * Updated Prism code highlighter, now with Copy to Clipboard functionality.
 * Addresses multiple outstanding issues.
 * Added check for Mantis Formatting Markdown feature (warns if it is **ON**, as it will cause issues with BBCodePlus).
 * Cleaned up lots of old code, which will make it easier to maintain.
-###2.0.18
+### 2.0.18
 * Updated MarkItUp javascript dependency.
 * Merged 
 
@@ -41,11 +41,7 @@ If you would like to contribute to BBCode plus, please [read this first](https:/
 
 ![Markup editor](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master/Screen1.png)
 
-![Configuration](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master-2.0.x/Screen2.png)
-
-Considerations
--------------------------
-* Requires mantis version 2.x+ or latest development build.
+![Configuration](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master/Screen2.png)
 
 Supported BBCode Tags
 ---------------------
