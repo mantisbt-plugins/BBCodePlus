@@ -24,6 +24,7 @@ Incorporates the following configurable features:
 ## Change Log
 
 ### 2.1.0
+[PHP](https://php.net) 7.1+ is required. For PHP < 7.1, please use [master-2.0.x](https://github.com/mantisbt-plugins/BBCodePlus/tree/master-2.0.x).
 * Brand new BBCode/HTML parsers, from [Genert/bbcode](https://github.com/Genert/bbcode).
 * Updated Prism code highlighter, now with Copy to Clipboard functionality.
 * Addresses multiple outstanding issues.
