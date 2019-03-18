@@ -1,5 +1,5 @@
 <?php
-# 2015	Belman Kraul-Garcia (bkraul@yahoo.com)
+# 2015   Belman Kraul-Garcia (bkraul@yahoo.com)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -34,3 +34,5 @@ $s_plugin_BBCodePlus_credits = 'Créditos';
 $s_plugin_BBCodePlus_credits_line1 = '<a href="https://github.com/bkraul">Belman Kraul-Garcia</a>';
 $s_plugin_BBCodePlus_credits_line2 = '<a href="https://github.com/kirill">Kirill Krasnov</a>';
 $s_plugin_BBCodePlus_credits_line3 = '';
+
+$s_plugin_BBCodePlus_markdown_warning = 'La característica de Procesamiendo de Markdown del plugin Mantis Formatting está actualmente ENCENDIDA. Esto causará problemas de despliegue.';

@@ -135,7 +135,7 @@ print_manage_menu( 'manage_plugin_page.php' );
 		<select name="highlight_css" class="input-sm">
 			<?php
 				$f_highlight_css = plugin_config_get( 'highlight_css' );
-				$t_arr = explode( ',', 'default,dark,funky,okaidia,twilight,coy' );
+				$t_arr = explode( ',', 'default,coy,dark,funky,okaidia,solarized-light,tomorrow-night,twilight' );
 				$enum_count = count( $t_arr );
 				for( $i = 0;$i < $enum_count;$i++ ) {
 					$t_style = string_attribute( $t_arr[$i] );

@@ -34,3 +34,5 @@ $s_plugin_BBCodePlus_credits = 'Credits';
 $s_plugin_BBCodePlus_credits_line1 = '<a href="https://github.com/bkraul">Belman Kraul-Garcia</a>';
 $s_plugin_BBCodePlus_credits_line2 = '<a href="https://github.com/kirill">Kirill Krasnov</a>';
 $s_plugin_BBCodePlus_credits_line3 = '';
+
+$s_plugin_BBCodePlus_markdown_warning = 'The Markdown Processing feature of the Mantis Formatting plugin is currently ON. This will cause rendering issues.';

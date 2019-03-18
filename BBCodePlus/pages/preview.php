@@ -1,21 +1,26 @@
 <?php
-// begin html structure.
+# begin html structure.
 html_begin();
 html_head_begin();
 html_content_type();
-html_css();
+layout_head_css();
 html_head_javascript();
 layout_body_javascript();
 ?>
-<link rel="stylesheet" type="text/css" href="<?= plugin_file("bbcodeplus.css") ?>" />
-<link rel="stylesheet" type="text/css" href="<?= plugin_file("prism/styles/default.css") ?>" />
-<script type="text/javascript" src="<?= plugin_file("bbcodeplus-init.js") ?>"></script>
-<script type="text/javascript" src="<?= plugin_file("prism/prism.js") ?>"></script>
+	 <style>
+		  /* override default body style */
+		  body {
+			  background-color: #fff !important;
+			  background-image:none !important;
+			  margin: 10px 10px;
+		  }
+	 </style>
 <?php
-html_head_end();
+# close the head and start the body.
+layout_page_header_end();
 ?>
-<body class="bbcodeplus-preview-body">
-    <div class="bbcodeplus-preview"><?php echo string_display_links($_POST["data"]); ?></div>
+	<div><?php echo string_display_links($_POST["data"]); ?></div>
 <?php
+# close the body and finish the document.
 html_body_end();
 html_end();
