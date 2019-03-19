@@ -147,7 +147,7 @@ final class HTMLParser extends Parser
         ],
     ];
 
-    public function parse(string $source): string
+    public function parse($source)
     {
         foreach ($this->parsers as $name => $parser) {
             $source = $this->searchAndReplace($parser['pattern'], $parser['replace'], $source);
