@@ -21,6 +21,10 @@ Incorporates the following configurable features:
 | [master](https://github.com/mantisbt-plugins/BBCodePlus)     | Support for MantisBT 2.x (current production version). |
 | [master-1.2.x](https://github.com/mantisbt-plugins/BBCodePlus/tree/master-1.2.x) | Support for MantisBT 1.2.x (legacy).                   |
 | [master-1.3.x](https://github.com/mantisbt-plugins/BBCodePlus/tree/master-1.3.x) | Support for MantisBT 1.3.x (legacy).                   |
+## Contributing to BBCodePlus
+
+If you would like to contribute to BBCode plus, please [read this guide first](https://github.com/mantisbt-plugins/BBCodePlus/wiki/Contributing-to-BBCodePlus). 
+
 ## Change Log
 
 ### 2.1.1
@@ -36,11 +40,6 @@ Incorporates the following configurable features:
 * Cleaned up lots of old code, which will make it easier to maintain.
 ### 2.0.18
 * Updated MarkItUp javascript dependency.
-* Merged 
-
-## Contributing to BBCodePlus
-
-If you would like to contribute to BBCode plus, please [read this first](https://github.com/mantisbt-plugins/BBCodePlus/wiki/Contributing-to-BBCodePlus). 
 
 ## Screenshots:
 
@@ -75,7 +74,7 @@ Supported BBCode Tags
 [table][/table] - Table.
 [table=1][/table] - Table with border of specified width.
 [thead][/thead] - Table head block.
-[tbbody][/tbopdy] - Table body block.
+[tbody][/tbody] - Table body block.
 [tr][/tr] - Table row.
 [th][/th] - Table header column.
 [td][/td] - Table column.
