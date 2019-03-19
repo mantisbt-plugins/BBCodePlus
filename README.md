@@ -23,7 +23,12 @@ Incorporates the following configurable features:
 | [master-1.3.x](https://github.com/mantisbt-plugins/BBCodePlus/tree/master-1.3.x) | Support for MantisBT 1.3.x (legacy).                   |
 ## Change Log
 
+### 2.1.1
+* Fixed new parser incompatibility with PHP 5.5.9+.
+* Updated README for all languages supported by code highlighter.
+
 ### 2.1.0
+
 * Brand new BBCode/HTML parsers, from [Genert/bbcode](https://github.com/Genert/bbcode).
 * Updated Prism code highlighter, now with Copy to Clipboard functionality.
 * Addresses multiple outstanding issues.
@@ -82,3 +87,127 @@ Supported BBCode Tags
 [quote=name][/quote] - Quote by *name*.
 ```
 
+## Supported Languages for Code Highlighting
+
+The implementation of prism.js includes support for languages in 2 modes:
+
+* default (supported on plugin install).
+* Add support for extra languages (through the plugin's configuration page).
+
+### Languages supported by default
+
+| Keyword | Description |
+|------- | ----|
+| aspnet | ASP.NET |
+| bash | Bash + Shell |
+| basic | BASIC |
+| batch | Batch |
+| clike | C-like |
+| cpp | C++ |
+| csharp | C# |
+| csp | CoffeeScript |
+| css | CSS |
+| c | C |
+| django | Django/Jinja2 |
+| docker | Docker |
+| hpkp | HTTP Public-Key-Pins |
+| hsts | HTTP Strict-Transport-Security |
+| http | HTTP |
+| ini | Ini |
+| javadoclike | JavaDoc-like |
+| javascript | JavaScript |
+| java | Java |
+| js-extras | JS Extras |
+| json5 | JSON5 |
+| jsonp | JSONP |
+| json | JSON |
+| markup-templating | Markup templating |
+| markup | Markup + HTML + XML + SVG + MathML |
+| nginx | nginx |
+| pascal | Pascal + Object Pascal |
+| perl | Perl |
+| php-extras | PHP Extras |
+| phpdoc | PHPDoc |
+| php | PHP |
+| plsql | PL/SQL |
+| powershell | PowerShell |
+| python | Python |
+| regex | Regex |
+| ruby | Ruby |
+| smarty | Smarty |
+| sql | SQL |
+| vbnet | VB.NET |
+| vim | vim |
+| visual-basic | Visual Basic |
+| wiki | Wiki markup |
+| xquery | XQuery |
+| yaml | YAML |
+
+### Languages supported by the extra languages feature
+
+| Keyword | Description |
+|----|----|
+| abap | ABAP |
+| actionscript | ActionScript |
+| apl | APL |
+| applescript | AppleScript |
+| autohotkey | AutoHotKey |
+| bison | Bison |
+| brainfuck | Brainfuck |
+| coffeescript | CoffeeScript |
+| css-extras | CSS Extras |
+| dart | Dart |
+| diff | Diff |
+| d | D |
+| eiffel | Eiffel |
+| elixir | Elixir |
+| erlang | Erlang |
+| fortran | Fortran |
+| fsharp | F# |
+| gherkin | Gherkin |
+| git | Git |
+| glsl | GLSL |
+| go | Go |
+| groovy | Groovy |
+| haskell | Haskell |
+| inform7 | Inform 7 |
+| jsx | React JSX |
+| julia | Julia |
+| j | J |
+| keyman | Keyman |
+| latex | LaTex |
+| less | Less |
+| lolcode | LOLCODE |
+| makefile | Makefile |
+| markdown | Markdown |
+| matlab | MATLAB |
+| mel | MEL |
+| mizar | Mizar |
+| monkey | Monkey |
+| nasm | NASM |
+| nim | Nim |
+| nsis | NSIS |
+| objectivec | Objective-C |
+| ocaml | OCaml |
+| processing | Processing |
+| prolog | Prolog |
+| pure | Pure |
+| qore | Qore |
+| q | Q |
+| regex | Regex |
+| rest | reST |
+| rip | Rip |
+| rust | Rust |
+| r | R |
+| sass | Sass (Sass) |
+| sas | SAS |
+| scala | Scala |
+| scheme | Scheme |
+| scss | Sass (Scss) |
+| smalltalk | Smalltalk |
+| swift | Swift |
+| tcl | Tcl |
+| twig | Twig |
+| typescript | TypeScript |
+| verilog | Verilog |
+| vhdl | VHDL |
