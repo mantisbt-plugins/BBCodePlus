@@ -12,7 +12,7 @@ class Parser
 
     protected $parsers = [];
 
-    protected function searchAndReplace(string $pattern, string $replace, string $source): string
+    protected function searchAndReplace($pattern, $replace, $source)
     {
         while (preg_match($pattern, $source)) {
             $source = preg_replace($pattern, $replace, $source);
@@ -39,7 +39,7 @@ class Parser
         return $this;
     }
 
-    public function addParser(string $name, string $pattern, string $replace, string $content)
+    public function addParser($name, $pattern, $replace, $content)
     {
         $this->parsers = array_merge($this->parsers, [
             $name => [
