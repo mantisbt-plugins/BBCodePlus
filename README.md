@@ -24,6 +24,8 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 1.3.2
+* Added MarkItUp toolbar support for custom textarea fields.
 ### 1.3.1
 * Updated README for all languages supported by code highlighter.
 
