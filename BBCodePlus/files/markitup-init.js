@@ -16,6 +16,8 @@
 			$("textarea[name='additional_information']").markItUp(mySettings);
 		if ( $("textarea[name='body']") )
 			$("textarea[name='body']").markItUp( mySettings );
+		if ( $("textarea[name^='custom_field_']") )
+			$("textarea[name^='custom_field_']").markItUp( mySettings );
 
 	});
 })(jQuery);
