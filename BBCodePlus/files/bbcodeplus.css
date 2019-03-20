@@ -1,38 +1,35 @@
-div.bbcodeplus-quote {
-    border: solid #c0c0c0 1px;
-    padding: 10px;
-    background-color: #d8d8d8;
+.bbcodeplus.pre {
+   border: 1px solid silver;
+   margin: 0 0 1.5em 0;
+   overflow: auto;
+   padding-left: 10px;
+   border-radius: 4px;
 }
 
-pre {
-  border: 1px solid silver;
-  margin: 0 0 1.5em 0;
-  overflow: auto;
-  padding-left: 10px;
+.bbcodeplus.code span {
+   font-family: Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
+   font-size: 1em;
 }
 
-code span {
-	font-family: Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
-	font-size: 1em;
+.bbcodeplus.table {
+   border-spacing: 0px !important;
+   border-collapse: collapse;
 }
 
-.bbcodeplus-list {
-	margin-left: 0px;
-	padding-left: 1.2em;
+.bbcodeplus.table td {
+   border: 0 !important;
 }
 
-.bbcodeplus-bullet-list {
-	margin-left: 0px;
-	padding-left: 1.2em;
-	list-style-type: square;
+.bbcodeplus.table-bordered td, .bbcodeplus.table-bordered tr, .bbcodeplus.table-bordered th {
+   border: 1px solid silver !important;
 }
 
-.bbcodeplus-preview {
-	height:100%; 
-	width:100%;
-}
-
-.bbcodeplus-preview-body {
-	background-image:none !important;
-	margin: 10px 10px;
+.bbcodeplus.blockquote {
+   border: solid #c0c0c0 1px;
+   border-left: solid #c0c0c0 5px;
+   padding: 10px;
+   font-size: 1em;
+   background-color: #f5f2f0;
+   border-radius: 4px;
+   margin: 0px !important;
 }
