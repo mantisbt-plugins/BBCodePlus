@@ -26,7 +26,12 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.2
+
+- Added MarkItUp toolbar support for custom textarea fields.
+
 ### 2.1.1
+
 * Fixed new parser incompatibility with PHP 5.5.9+.
 * Updated README for all languages supported by code highlighter.
 
