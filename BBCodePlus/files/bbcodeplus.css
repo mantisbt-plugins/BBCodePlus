@@ -1,29 +1,29 @@
 .bbcodeplus.pre {
-  border: 1px solid silver;
-  margin: 0 0 1.5em 0;
-  overflow: auto;
-  padding-left: 10px;
+   border: 1px solid silver;
+   margin: 0 0 1.5em 0;
+   overflow: auto;
+   padding-left: 10px;
+   border-radius: 4px;
 }
 
 .bbcodeplus.code span {
-	font-family: Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
-	font-size: 1em;
+   font-family: Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
+   font-size: 1em;
 }
 
 .bbcodeplus.table td {
-	border: 0 !important;
-	
+   border: 0 !important;
 }
 
 .bbcodeplus.table-bordered td, .bbcodeplus.table-bordered tr, .bbcodeplus.table-bordered th {
-	border: 1px solid silver !important;
+   border: 1px solid silver !important;
 }
 
 .bbcodeplus.blockquote {
-	border: solid #c0c0c0 1px;
-	border-left: solid #c0c0c0 5px;
+   border: solid #c0c0c0 1px;
+   border-left: solid #c0c0c0 5px;
    padding: 10px;
-	font-size: 1.1em;
-   background-color: #f5f2f0;;
-	border-radius: 4px;
+   font-size: 1em;
+   background-color: #f5f2f0;
+   border-radius: 4px;
 }

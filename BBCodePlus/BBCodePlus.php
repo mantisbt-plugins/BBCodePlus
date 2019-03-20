@@ -145,7 +145,6 @@
 
          if ( ON == plugin_config_get( 'process_highlight' ) ) {
             $resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'prism/styles/' . plugin_config_get( 'highlight_css' ) . '.css' ) . '" />';
-            //$resources .= '<script type="text/javascript" src="' . plugin_file( 'prism/clipboard.js' ) . '"></script>';
             $resources .= '<script type="text/javascript" src="' . plugin_file( 'prism/prism.js' ) . '"></script>';
 
             # load additional languages.
@@ -282,8 +281,8 @@
          $this->t_bbCode->addParser('table-body', '/\[tbody\](.*?)\[\/tbody\]/s', '<tbody>$1</tbody>', '$1');
          $this->t_bbCode->addParser('table-head-data', '/\[th\](.*?)\[\/th\]/s', '<th>$1</th>', '$1');
          $this->t_bbCode->addParser('code', '/\[code\](.*?)\[\/code\]/s', '<pre class="bbcodeplus pre"><code class="bbcodeplus code language-none">$1</code></pre>', '$1');
-         $this->t_bbCode->addParser('code-lang', '/\[code=(\w+)\](.*?)\[\/code\]/s', '<pre><code class="bbcodeplus code language-$1">$2</code></pre>','$2');
-         $this->t_bbCode->addParser('code-ln', '/\[code start=([0-9]+)\](.*?)\[\/code\]/s', '<pre class="line-numbers" data-start="$1"><code class="language-none">$2</code></pre>', '$3');
+         $this->t_bbCode->addParser('code-lang', '/\[code=(\w+)\](.*?)\[\/code\]/s', '<pre class="bbcodeplus pre"><code class="bbcodeplus code language-$1">$2</code></pre>','$2');
+         $this->t_bbCode->addParser('code-ln', '/\[code start=([0-9]+)\](.*?)\[\/code\]/s', '<pre class="bbcodeplus pre line-numbers" data-start="$1"><code class="language-none">$2</code></pre>', '$3');
          $this->t_bbCode->addParser('code-lang-ln', '/\[code=(\w+)\ start=([0-9]+)\](.*?)\[\/code\]/s',
                                     '<pre class="bbcodeplus pre line-numbers" data-start="$2"><code class="bbcodeplus code language-$1">$3</code></pre>', '$3');
          $this->t_bbCode->addParser('quote', '/\[quote\](.*?)\[\/quote\]/s', '<blockquote class="bbcodeplus blockquote">$1</blockquote>', '$1');
