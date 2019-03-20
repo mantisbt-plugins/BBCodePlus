@@ -19,7 +19,6 @@ Incorporates the following configurable features:
 | Branch                                                       | Description                                            |
 | ------------------------------------------------------------ | ------------------------------------------------------ |
 | [master](https://github.com/mantisbt-plugins/BBCodePlus)     | Support for MantisBT 2.x (current production version). |
-| [master-1.2.x](https://github.com/mantisbt-plugins/BBCodePlus/tree/master-1.2.x) | Support for MantisBT 1.2.x (legacy).                   |
 | [master-1.3.x](https://github.com/mantisbt-plugins/BBCodePlus/tree/master-1.3.x) | Support for MantisBT 1.3.x (legacy).                   |
 ## Contributing to BBCodePlus
 
