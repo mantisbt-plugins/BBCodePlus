@@ -6,7 +6,6 @@
 
    class BBCodePlusPlugin extends MantisFormattingPlugin {
       # placeholders for MantisCoreFormatting values.
-      private $t_make_links = null;
       private $t_MantisCoreFormatting_process_text = OFF;
       private $t_MantisCoreFormatting_process_urls = OFF;
       private $t_MantisCoreFormatting_process_buglinks = OFF;
@@ -23,7 +22,7 @@
          $this->name        = plugin_lang_get( 'title' );
          $this->description = plugin_lang_get( 'description' );
          $this->page        = 'config';
-         $this->version     = '1.3.1';
+         $this->version     = '1.3.3';
 
          $this->requires['MantisCore'] = '1.3.0';
          # this plugin can coexist with MantisCoreFormatting.
@@ -63,10 +62,7 @@
          $this->t_HTML = new Genert\BBCode\Parser\HTMLParser();
          # add all the tags
          $this->add_tags();
-
          # store original configuration values.
-         $this->t_html_make_links = config_get_global( 'html_make_links' );
-
          if( plugin_is_loaded('MantisCoreFormatting') ) {
             $this->t_MantisCoreFormatting_process_text = config_get( 'plugin_MantisCoreFormatting_process_text' );
             $this->t_MantisCoreFormatting_process_urls = config_get( 'plugin_MantisCoreFormatting_process_urls' );
@@ -85,9 +81,6 @@
        * @return  void
        */
       function footer() {
-
-         # restore make links option.
-         config_set_global("html_make_links", $this->t_html_make_links);
       }
       //-------------------------------------------------------------------
       /**
@@ -242,8 +235,11 @@
          # add the BBCodePlus custom parsers and overrides.
          # check core/BBCodeParser.php for the default ones.
          # any default parser can be overriden here.
-
+         # ensures that the links will be opened in a new window/tab, so as to not lose the currently displayed issue.
+         $t_extra_link_tags = 'target="_blank"';
          # BBCode parsers.
+         $this->t_bbCode->addParser('link', '/\[url\](.*?)\[\/url\]/s', '<a ' . $t_extra_link_tags . ' href="$1">$1</a>', '$1');
+         $this->t_bbCode->addParser('namedlink', '/\[url\=(.*?)\](.*?)\[\/url\]/s', '<a ' . $t_extra_link_tags . ' href="$1">$2</a>', '$2');
          $this->t_bbCode->addParser('email', '/\[email\]([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\[\/email\]/s', '<a ' . $t_extra_link_tags . ' href="mailto:$1">$1</a>', '$1');
          $this->t_bbCode->addParser('named-email', '/\[email=([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\](.+?)\[\/email\]/s', '<a ' . $t_extra_link_tags . ' href="mailto:$1">$2</a>', '$2');
          $this->t_bbCode->addParser('color', '/\[color=([\#a-z0-9]+?)\](.*?)\[\/color\]/s', '<span class="bbcolor-$1">$2</span>', '$2');
@@ -268,8 +264,7 @@
          $this->t_bbCode->addParser('named-quote', '/\[quote=(\w+)\](.*?)\[\/quote\]/s',
                                     '<blockquote class="bbcodeplus blockquote"><p class="mb-0">$2</p><footer class="bbcodeblus blockquote-footer"><cite title="$1">$1</cite></footer></blockquote>',
                                     '$1 wrote: $2');
-
-         # HTML parsers (to corre.
+         # HTML parsers (to convert bug links and bugnote links when the Mantis Formatting plugin is running).
          $this->t_HTML->addParser('link', '/<a href="(.*?)">(.*?)<\/a>/s', '[url=$1]$2[/url]', '$2');
       }
       //-------------------------------------------------------------------
@@ -280,10 +275,6 @@
        * @return  string $p_string
        */
       function string_process_bbcode( $p_string, $p_multiline = TRUE ) {
-         # ensures that the links will be opened in a new window/tab, so as to not lose the currently displayed issue.
-
-         $t_extra_link_tags = 'target="_blank"';
-
          # strip all active href so we can properly process them
          $p_string = string_strip_hrefs( $p_string );
 
