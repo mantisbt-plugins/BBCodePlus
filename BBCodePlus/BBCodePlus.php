@@ -6,7 +6,6 @@
 
    class BBCodePlusPlugin extends MantisFormattingPlugin {
       # placeholders for MantisCoreFormatting values.
-      //private $t_make_links = false;
       private $t_MantisCoreFormatting_process_text = OFF;
       private $t_MantisCoreFormatting_process_urls = OFF;
       private $t_MantisCoreFormatting_process_buglinks = OFF;
@@ -66,8 +65,6 @@
          # add all the tags
          $this->add_tags();
          # store original configuration values.
-         # turn off formatting options.
-         config_set_global("html_make_links", false);
          if( plugin_is_loaded('MantisCoreFormatting') ) {
             $this->t_MantisCoreFormatting_process_text = config_get( 'plugin_MantisCoreFormatting_process_text' );
             $this->t_MantisCoreFormatting_process_urls = config_get( 'plugin_MantisCoreFormatting_process_urls' );
