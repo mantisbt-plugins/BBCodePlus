@@ -23,7 +23,7 @@
          $this->name        = plugin_lang_get( 'title' );
          $this->description = plugin_lang_get( 'description' );
          $this->page        = 'config';
-         $this->version     = '2.1.2';
+         $this->version     = '2.1.3';
 
          $this->requires['MantisCore'] = '2.0.0';
          # this plugin can coexist with MantisCoreFormatting.
