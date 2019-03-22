@@ -26,6 +26,10 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.3
+
+- Cleaned up issues with undefined variable notices from old code.
+
 ### 2.1.2
 
 - Added MarkItUp toolbar support for custom textarea fields.
