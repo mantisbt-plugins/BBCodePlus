@@ -296,26 +296,15 @@
        * @return  string $p_string
        */
       function string_process_bbcode( $p_string, $p_multiline = TRUE ) {
-         # strip all active href so we can properly process them
-         $p_string = string_strip_hrefs( $p_string );
 
          # escape all html code inside <code> tags.
          $p_string = $this->string_escape_code( $p_string );
-         $p_string = $this->t_HTML->except('linebreak')->parse($p_string);
 
          # if mantis core formatting plugin process text feature is off, then we do our own.
          if ( OFF == $this->t_MantisCoreFormatting_process_text ) {
             $p_string = string_html_specialchars( $p_string );
          }
 
-         # process bug and note links (if not already addressed.)
-         if ( ON == $this->t_MantisCoreFormatting_process_buglinks ) {
-            # reconstruct bugnote and bug links to BBCode
-            # bug note links (need to be done before bug note links).
-            $p_string = preg_replace( '/\/view\.php\?id\=([0-9]+)\#c([0-9]+)/is', '~$2', $p_string);
-            # bug links.
-            $p_string = preg_replace( '/\/view\.php\?id\=([0-9]+)/is', '#$1', $p_string);
-         }
          # process the bug/bugnote links.
          $p_string = string_process_bugnote_link( $p_string, TRUE );
          $p_string = string_process_bug_link( $p_string, TRUE );
