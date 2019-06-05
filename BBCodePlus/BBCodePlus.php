@@ -92,6 +92,8 @@
             # display a warning if markdown processing is on.
             $output = '<div class="alert alert-warning" id="check-notice-warnings">'.
                plugin_lang_get( 'title' ) . ': '. plugin_lang_get( 'markdown_warning' ) . '</div>';
+         } else {
+            $output = '';
          }
          return $output;
       }
