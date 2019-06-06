@@ -6,10 +6,9 @@
 
    class BBCodePlusPlugin extends MantisFormattingPlugin {
       # placeholders for MantisCoreFormatting values.
+     private $t_MantisCoreFormatting = OFF;
       private $t_MantisCoreFormatting_process_text = OFF;
       private $t_MantisCoreFormatting_process_urls = OFF;
-      private $t_MantisCoreFormatting_process_buglinks = OFF;
-      private $t_MantisCoreFormatting_process_vcslinks = OFF;
       private $t_MantisCoreFormatting_process_markdown = OFF;
       private $t_bbCode = null;
       private $t_HTML = null;
@@ -66,18 +65,13 @@
          $this->add_tags();
          # store original configuration values.
          if( plugin_is_loaded('MantisCoreFormatting') ) {
-            $this->t_MantisCoreFormatting_process_text = config_get( 'plugin_MantisCoreFormatting_process_text' );
-            $this->t_MantisCoreFormatting_process_urls = config_get( 'plugin_MantisCoreFormatting_process_urls' );
-            $this->t_MantisCoreFormatting_process_buglinks = config_get( 'plugin_MantisCoreFormatting_process_buglinks' );
+            $this->t_MantisCoreFormatting = ON;
+            $this->t_MantisCoreFormatting_process_text = $this->t_MantisCoreFormatting && config_get( 'plugin_MantisCoreFormatting_process_text' );
+            $this->t_MantisCoreFormatting_process_urls = $this->t_MantisCoreFormatting && config_get( 'plugin_MantisCoreFormatting_process_urls' );
             if ( config_is_set( 'plugin_MantisCoreFormatting_process_markdown' ) ) {
                $this->t_MantisCoreFormatting_process_markdown = config_get( 'plugin_MantisCoreFormatting_process_markdown' );
             } else {
                $this->t_MantisCoreFormatting_process_markdown = OFF;
-            }
-            if ( config_is_set( 'plugin_MantisCoreFormatting_process_vcslinks' ) ) {
-               $this->t_MantisCoreFormatting_process_vcslinks = config_get( 'plugin_MantisCoreFormatting_process_vcslinks' );
-            } else {
-               $this->t_MantisCoreFormatting_process_vcslinks = OFF;
             }
          }
       }
@@ -222,17 +216,15 @@
        * @return string Formatted text
        */
       public function email( $p_event, $p_string ) {
-
-         $p_string = string_strip_hrefs( $p_string );
-         $p_string = string_process_bug_link( $p_string, FALSE );
-         $p_string = string_process_bugnote_link( $p_string, FALSE );
-         $p_string = $this->string_process_cvs_link( $p_string, FALSE );
+         #$p_string = string_strip_hrefs( $p_string );
+         #$p_string = string_process_bug_link( $p_string, FALSE );
+         #$p_string = string_process_bugnote_link( $p_string, FALSE );
+         #$p_string = $this->string_process_cvs_link( $p_string, FALSE );
 
          if ( ON == plugin_config_get( 'process_email' ) )
             $p_string = $this->string_process_bbcode( $p_string );
          else
             $p_string = $this->string_strip_bbcode( $p_string );
-
          return $p_string;
       }
       //-------------------------------------------------------------------
@@ -263,6 +255,7 @@
          # BBCode parsers.
          $this->t_bbCode->addParser('link', '/\[url\](.*?)\[\/url\]/s', '<a ' . $t_extra_link_tags . ' href="$1">$1</a>', '$1');
          $this->t_bbCode->addParser('namedlink', '/\[url\=(.*?)\](.*?)\[\/url\]/s', '<a ' . $t_extra_link_tags . ' href="$1">$2</a>', '$2');
+         $this->t_bbCode->addParser('mention', '/\[url\=(.*?)\ mention](.*?)\[\/url\]/s', '<span class="mention"><a ' . $t_extra_link_tags . ' href="$1">$2</a></span>', '$2');
          $this->t_bbCode->addParser('email', '/\[email\]([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\[\/email\]/s', '<a ' . $t_extra_link_tags . ' href="mailto:$1">$1</a>', '$1');
          $this->t_bbCode->addParser('named-email', '/\[email=([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\](.+?)\[\/email\]/s', '<a ' . $t_extra_link_tags . ' href="mailto:$1">$2</a>', '$2');
          $this->t_bbCode->addParser('color', '/\[color=([\#a-z0-9]+?)\](.*?)\[\/color\]/s', '<span class="bbcolor-$1">$2</span>', '$2');
@@ -287,8 +280,6 @@
          $this->t_bbCode->addParser('named-quote', '/\[quote=(\w+)\](.*?)\[\/quote\]/s',
                                     '<blockquote class="bbcodeplus blockquote"><p class="mb-0">$2</p><footer class="bbcodeblus blockquote-footer"><cite title="$1">$1</cite></footer></blockquote>',
                                     '$1 wrote: $2');
-         # HTML parsers (to convert bug links and bugnote links when the Mantis Formatting plugin is running).
-         $this->t_HTML->addParser('link', '/<a href="(.*?)">(.*?)<\/a>/s', '[url=$1]$2[/url]', '$2');
       }
       //-------------------------------------------------------------------
       /**
@@ -298,45 +289,40 @@
        * @return  string $p_string
        */
       function string_process_bbcode( $p_string, $p_multiline = TRUE ) {
-         # strip all active href so we can properly process them
-         $p_string = string_strip_hrefs( $p_string );
-
-         # escape all html code inside <code> tags.
-         $p_string = $this->string_escape_code( $p_string );
-         $p_string = $this->t_HTML->except('linebreak')->parse($p_string);
-
-         # if mantis core formatting plugin process text feature is off, then we do our own.
+         // convert mentions and titled links to BBCode mentions (if available).
+         $p_string = preg_replace( '/<span class="mention"><a .*?href="(.*?)">(.*?)<\/a><\/span>/is', '[url=$1 mention]$2[/url]', $p_string);
+         $p_string = preg_replace( '/<a href="([^"]*)" title="([^"]*)">([^"]*)<\/a>/is', '[url=$1]$3[/url]', $p_string);
+         # strip all the auto generated URLs by MantisCoreFormatting plugin to avoid mangling.
+         if ( ON == $this->t_MantisCoreFormatting_process_urls ) {
+            $p_string = string_strip_hrefs( $p_string );
+         }
+         # if mantis core formatting plugin process text feature is off, we need to sanitize the html,
+         # for safety. this is the only functionality we will support when the MantisCoreFormatting plugin is
+         # not enabled or when the text processing is disabled.
          if ( OFF == $this->t_MantisCoreFormatting_process_text ) {
             $p_string = string_html_specialchars( $p_string );
+            $p_string = string_restore_valid_html_tags( $p_string, $p_multiline );
          }
-
-         # process bug and note links (if not already addressed.)
-         if ( ON == $this->t_MantisCoreFormatting_process_buglinks ) {
-            # reconstruct bugnote and bug links to BBCode
-            # bug note links (need to be done before bug note links).
-            $p_string = preg_replace( '/\/view\.php\?id\=([0-9]+)\#c([0-9]+)/is', '~$2', $p_string);
-            # bug links.
-            $p_string = preg_replace( '/\/view\.php\?id\=([0-9]+)/is', '#$1', $p_string);
-         }
-         # process the bug/bugnote links.
-         $p_string = string_process_bugnote_link( $p_string, TRUE );
-         $p_string = string_process_bug_link( $p_string, TRUE );
-         # process the CVS links (if applicable)
-         if ( OFF == $this->t_MantisCoreFormatting_process_vcslinks ) {
-            $p_string = $this->string_process_cvs_link( $p_string );
-         }
-
+         # convert all remaining major html items to bbcode for uniform processing.
+         $p_string = $this->t_HTML->except('linebreak')->parse($p_string);
+         #escape all html code inside <code> tags.
+         $p_string = $this->string_escape_code( $p_string );
          # parse the BBCode.
          $p_string = $this->t_bbCode->parse($p_string);
          # process new lines (while respecting code blocks);
          if ( OFF == $this->t_MantisCoreFormatting_process_text && $p_multiline ) {
             # convert newlines to html breaks.
+            $p_string = string_preserve_spaces_at_bol( $p_string );
             $p_string = string_nl2br($p_string);
          }
 
+         # escape all html code inside <code> tags.
+         #$p_string = $this->string_escape_code( $p_string );
          # remove extra breaks added by use of string_nl2br.
          $p_string = preg_replace( '/(<ul.*?>)<br \/>/is', '$1', $p_string);
          $p_string = preg_replace( '/(<ol.*?>)<br \/>/is', '$1', $p_string);
+         $p_string = preg_replace( '/<\/ol><br \/>/is', '</ol>', $p_string);
+         $p_string = preg_replace( '/<\/ul><br \/>/is', '</ul>', $p_string);
          $p_string = preg_replace( '/<\/li><br \/>/is', '</li>', $p_string);
          $p_string = preg_replace( '/(<li>.*?)<br \/>/is', '$1', $p_string);
          $p_string = preg_replace( '/(<hr\/>.*?)<br \/>/is', '$1', $p_string);
@@ -345,11 +331,14 @@
          $p_string = preg_replace( '/(<div.*?>)<br \/>/is', '$1', $p_string);
          $p_string = preg_replace( '/<\/div><br \/>/is', '</div>', $p_string);
          $p_string = preg_replace( '/<\/thead><br \/>/is', '</thead>', $p_string);
+         $p_string = preg_replace( '/<tbody><br \/>/is', '<tbody>', $p_string);
          $p_string = preg_replace( '/<\/tbody><br \/>/is', '</tbody>', $p_string);
+         $p_string = preg_replace( '/<\/table><br \/>/is', '</table>', $p_string);
          $p_string = preg_replace( '/<\/tr><br \/>/is', '</tr>', $p_string);
          $p_string = preg_replace( '/<\/th><br \/>/is', '</th>', $p_string);
          $p_string = preg_replace( '/<\/td><br \/>/is', '</td>', $p_string);
-
+         $p_string = preg_replace( '/<\/pre><br \/>/is', '</pre>', $p_string);
+         $p_string = preg_replace( '/<\/blockquote><br \/>/is', '</blockquote>', $p_string);
          # return the processed string.
          return $p_string;
       }
@@ -361,15 +350,21 @@
        * @return  string $p_string
        */
       function string_escape_code( $p_string ) {
-
-         if (OFF == $this->t_MantisCoreFormatting_process_text) {
-            # escape any HTML entities in order to properly display HTML source code.
-            $p_string = preg_replace_callback('/\[code(.*?)\](.*?)\[\/code\]/s', function ($match) { return "[code" . strtolower($match[1]) . "]" . htmlentities($match[2]) . "[/code]"; }, $p_string);
-         } else {
-            # because Mantis Core formatting already does html entity escaping, we don't need to do it again.
-            $p_string = preg_replace_callback('/\[code(.*?)\](.*?)\[\/code\]/s', function ($match) { return "[code" . strtolower($match[1]) . "]" . $match[2] . "[/code]"; }, $p_string);
-         }
-
+         $p_string = preg_replace_callback('/\[code(.*?)\](.*?)\[\/code\]/s', function ($match) {
+            # account for <br /> in code block (when using html syntax).
+            $code = $match[2];
+            if (ON == $this->t_MantisCoreFormatting) {
+               # preview somehow uses \n only.
+               $code = preg_replace( '/<br \/>\n/is', "\n", $code );
+               # everywhere else uses \r\n.
+               $code = preg_replace( '/<br \/>\r\n/is', "\r\n", $code );
+            }
+            # encode the remaining <br />.
+            $code = str_replace("<br />",htmlentities("<br />"), $code);
+            # return the code.
+            return "[code" . strtolower($match[1]) . "]" . $code . "[/code]";
+         }, $p_string);
+         # return the formatted code.
          return $p_string;
       }
       //-------------------------------------------------------------------
@@ -381,43 +376,19 @@
        */
        function string_strip_bbcode( $p_string ) {
          # perform sanitation before parsing.
+         // convert mentions and titled links to BBCode mentions (if available).
+         $p_string = preg_replace( '/<span class="mention"><a .*?href="(.*?)">(.*?)<\/a><\/span>/is', '$2 ($1)', $p_string);
+         $p_string = preg_replace( '/<a href="([^"]*)" title="([^"]*)">([^"]*)<\/a>/is', '$3 ($1)', $p_string);
          # strip all active href so we can properly process them
          $p_string = string_strip_hrefs( $p_string );
          # escape all html code inside <code> tags.
          $p_string = $this->string_escape_code( $p_string );
          $p_string = $this->t_HTML->parse($p_string);
-
          # strip the BBCode
          $p_string = $this->t_bbCode->stripTags($p_string);
-
          # return the processed string.
          return $p_string;
        }
-      //-------------------------------------------------------------------
-      /**
-       * process the $p_string and convert filenames in the format
-       *  cvs:filename.ext or cvs:filename.ext:n.nn to a html link
-       * if $p_include_anchor is true, include an <a href="..."> tag,
-       *  otherwise, just insert the URL as text
-       * @param string $p_string
-       * @param bool $p_include_anchor
-       * @return string
-       */
-      function string_process_cvs_link( $p_string, $p_include_anchor = true ) {
-         if ( config_is_set('cvs_web') ) {
-            $t_cvs_web = config_get( 'cvs_web' );
-
-            if( $p_include_anchor ) {
-               $t_replace_with = '[CVS] <a href="' . $t_cvs_web . '\\1?rev=\\4" target="_new">\\1</a>\\5';
-            } else {
-               $t_replace_with = '[CVS] ' . $t_cvs_web . '\\1?rev=\\4\\5';
-            }
-
-            return preg_replace( '/cvs:([^\.\s:,\?!<]+(\.[^\.\s:,\?!<]+)*)(:)?(\d\.[\d\.]+)?([\W\s])?/i', $t_replace_with, $p_string );
-         } else {
-            return $p_string;
-         }
-      }
       //-------------------------------------------------------------------
    }
 ?>
