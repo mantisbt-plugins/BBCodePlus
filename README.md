@@ -26,6 +26,13 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.4
+
+- Corrected issues with bug links and mentions.
+- Dropped support for CVS links.
+- Added better code block support for HTML syntax (`<br/>` tags were getting dropped).
+- Removed duplication of MantisCoreFormatting features. They will be used only when the plugin is enabled.
+
 ### 2.1.3
 
 - Cleaned up issues with undefined variable notices from old code.
