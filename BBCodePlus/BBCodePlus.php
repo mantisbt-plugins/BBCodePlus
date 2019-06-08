@@ -6,7 +6,7 @@
 
    class BBCodePlusPlugin extends MantisFormattingPlugin {
       # placeholders for MantisCoreFormatting values.
-     private $t_MantisCoreFormatting = OFF;
+      private $t_MantisCoreFormatting = OFF;
       private $t_MantisCoreFormatting_process_text = OFF;
       private $t_MantisCoreFormatting_process_urls = OFF;
       private $t_MantisCoreFormatting_process_markdown = OFF;
@@ -305,7 +305,7 @@
          }
          # convert all remaining major html items to bbcode for uniform processing.
          $p_string = $this->t_HTML->except('linebreak')->parse($p_string);
-         #escape all html code inside <code> tags.
+         # escape all html code inside <code> tags.
          $p_string = $this->string_escape_code( $p_string );
          # parse the BBCode.
          $p_string = $this->t_bbCode->parse($p_string);
@@ -316,8 +316,6 @@
             $p_string = string_nl2br($p_string);
          }
 
-         # escape all html code inside <code> tags.
-         #$p_string = $this->string_escape_code( $p_string );
          # remove extra breaks added by use of string_nl2br.
          $p_string = preg_replace( '/(<ul.*?>)<br \/>/is', '$1', $p_string);
          $p_string = preg_replace( '/(<ol.*?>)<br \/>/is', '$1', $p_string);
@@ -350,10 +348,14 @@
        * @return  string $p_string
        */
       function string_escape_code( $p_string ) {
-         $p_string = preg_replace_callback('/\[code(.*?)\](.*?)\[\/code\]/s', function ($match) {
+         # store value in var (due to issues with $this inside callbacks.)
+         $mantisCoreFormatting = $this->t_MantisCoreFormatting;
+         $p_string = preg_replace_callback('/\[code(.*?)\](.*?)\[\/code\]/s', function ($match)
+         # use is only supported on PHP 5.3+.
+         use ( $mantisCoreFormatting ) {
             # account for <br /> in code block (when using html syntax).
             $code = $match[2];
-            if (ON == $this->t_MantisCoreFormatting) {
+            if ( ON == $mantisCoreFormatting ) {
                # preview somehow uses \n only.
                $code = preg_replace( '/<br \/>\n/is', "\n", $code );
                # everywhere else uses \r\n.
