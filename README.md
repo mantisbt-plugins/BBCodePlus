@@ -9,6 +9,7 @@ Incorporates the following configurable features:
 * Editor with toolbars and preview (using [jQuery MarkItUp](http://markitup.jaysalvat.com/home/)).
 * BBCode processing.
 * Syntax Highlighting (using [prismjs](http://prismjs.com/)).
+* Mostly compatible with the Mantis Formatting plugin (this means they can both be enabled, if desired).
 
 ## Repository Information
 
@@ -23,6 +24,17 @@ Incorporates the following configurable features:
 If you would like to contribute to BBCode plus, please [read this guide first](https://github.com/mantisbt-plugins/BBCodePlus/wiki/Contributing-to-BBCodePlus). 
 
 ## Change Log
+
+### 1.3.5
+
+- Corrected use of `$this` inside code replace callback (causes issues with older versions of PHP).
+
+### 1.3.4
+
+- Corrected issues with bug links and mentions.
+- Dropped support for CVS links.
+- Added better code block support for HTML syntax (`<br/>` tags were getting dropped).
+- Removed duplication of MantisCoreFormatting features. They will be used only when the plugin is enabled.
 
 ### 1.3.3
 
