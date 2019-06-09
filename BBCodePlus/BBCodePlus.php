@@ -21,7 +21,7 @@
          $this->name        = plugin_lang_get( 'title' );
          $this->description = plugin_lang_get( 'description' );
          $this->page        = 'config';
-         $this->version     = '1.3.5';
+         $this->version     = '1.3.6';
 
          $this->requires['MantisCore'] = '1.3.0';
          # this plugin can coexist with MantisCoreFormatting.
@@ -231,8 +231,8 @@
          $t_extra_link_tags = 'target="_blank"';
          # BBCode parsers.
          $this->t_bbCode->addParser('link', '/\[url\](.*?)\[\/url\]/s', '<a ' . $t_extra_link_tags . ' href="$1">$1</a>', '$1');
-         $this->t_bbCode->addParser('namedlink', '/\[url\=(.*?)\](.*?)\[\/url\]/s', '<a ' . $t_extra_link_tags . ' href="$1">$2</a>', '$2');
-         $this->t_bbCode->addParser('mention', '/\[url\=(.*?)\ mention](.*?)\[\/url\]/s', '<span class="mention"><a ' . $t_extra_link_tags . ' href="$1">$2</a></span>', '$2');
+         $this->t_bbCode->addParser('namedlink', '/\[url\=(.*?)(\smention)?\](.*?)\[\/url\]/s', '<a ' . $t_extra_link_tags . ' href="$1">$3</a>', '$3');
+         $this->t_bbCode->addParser('mention', '/\[url\=([^\s]*)\ mention\](.*?)\[\/url\]/s', '<span class="mention"><a ' . $t_extra_link_tags . ' href="$1">$2</a></span>', '$2');
          $this->t_bbCode->addParser('email', '/\[email\]([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\[\/email\]/s', '<a ' . $t_extra_link_tags . ' href="mailto:$1">$1</a>', '$1');
          $this->t_bbCode->addParser('named-email', '/\[email=([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\](.+?)\[\/email\]/s', '<a ' . $t_extra_link_tags . ' href="mailto:$1">$2</a>', '$2');
          $this->t_bbCode->addParser('color', '/\[color=([\#a-z0-9]+?)\](.*?)\[\/color\]/s', '<span class="bbcolor-$1">$2</span>', '$2');
