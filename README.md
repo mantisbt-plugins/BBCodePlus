@@ -25,6 +25,10 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 1.3.6
+
+- Corrected bug in handling of mention links.
+
 ### 1.3.5
 
 - Corrected use of `$this` inside code replace callback (causes issues with older versions of PHP).
