@@ -22,7 +22,7 @@
          $this->name        = plugin_lang_get( 'title' );
          $this->description = plugin_lang_get( 'description' );
          $this->page        = 'config';
-         $this->version     = '2.1.6';
+         $this->version     = '2.1.7';
 
          $this->requires['MantisCore'] = '2.0.0';
          # this plugin can coexist with MantisCoreFormatting.
@@ -254,8 +254,9 @@
          $t_extra_link_tags = 'target="_blank"';
          # BBCode parsers.
          $this->t_bbCode->addParser('link', '/\[url\](.*?)\[\/url\]/s', '<a ' . $t_extra_link_tags . ' href="$1">$1</a>', '$1');
-         $this->t_bbCode->addParser('namedlink', '/\[url\=(.*?)(\smention)?\](.*?)\[\/url\]/s', '<a ' . $t_extra_link_tags . ' href="$1">$3</a>', '$3');
-         $this->t_bbCode->addParser('mention', '/\[url\=([^\s]*)\ mention\](.*?)\[\/url\]/s', '<span class="mention"><a ' . $t_extra_link_tags . ' href="$1">$2</a></span>', '$2');
+         $this->t_bbCode->addParser('namedlink', '/\[url\=([^\s]*?)\](.*?)\[\/url\]/s', '<a ' . $t_extra_link_tags . ' href="$1">$2</a>', '$2');
+         $this->t_bbCode->addParser('mentionlink', '/\[url\=([^\s]*)\ mention\](.*?)\[\/url\]/s', '<span class="mention"><a ' . $t_extra_link_tags . ' href="$1">$2</a></span>', '$2');
+         $this->t_bbCode->addParser('resolvedlink', '/\[url\=([^\s]*)\ resolved\](.*?)\[\/url\]/s', '<a ' . $t_extra_link_tags . ' href="$1" class="resolved">$2</a>', '$2');
          $this->t_bbCode->addParser('email', '/\[email\]([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\[\/email\]/s', '<a ' . $t_extra_link_tags . ' href="mailto:$1">$1</a>', '$1');
          $this->t_bbCode->addParser('named-email', '/\[email=([a-z0-9\-_\.\+]+@[a-z0-9\-]+\.[a-z0-9\-\.]+?)\](.+?)\[\/email\]/s', '<a ' . $t_extra_link_tags . ' href="mailto:$1">$2</a>', '$2');
          $this->t_bbCode->addParser('color', '/\[color=([\#a-z0-9]+?)\](.*?)\[\/color\]/s', '<span class="bbcolor-$1">$2</span>', '$2');
@@ -292,6 +293,8 @@
          // convert mentions and titled links to BBCode mentions (if available).
          $p_string = preg_replace( '/<span class="mention"><a .*?href="(.*?)">(.*?)<\/a><\/span>/is', '[url=$1 mention]$2[/url]', $p_string);
          $p_string = preg_replace( '/<a href="([^"]*)" title="([^"]*)">([^"]*)<\/a>/is', '[url=$1]$3[/url]', $p_string);
+         $p_string = preg_replace( '/<a href="([^"]*)" title="([^"]*)" class="resolved">([^"]*)<\/a>/is', '[url=$1 resolved]$3[/url]', $p_string);
+         echo $p_string;
          # strip all the auto generated URLs by MantisCoreFormatting plugin to avoid mangling.
          if ( ON == $this->t_MantisCoreFormatting_process_urls ) {
             $p_string = string_strip_hrefs( $p_string );
