@@ -26,6 +26,10 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.7
+
+- Corrected outstanding bug with resolved bug links.
+
 ### 2.1.6
 
 - Corrected bug in handling of mention links.
