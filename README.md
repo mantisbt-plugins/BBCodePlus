@@ -25,6 +25,10 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 1.3.8
+
+- Removed leftover debug call that was breaking display.
+
 ### 1.3.7
 
 - Corrected outstanding bug with resolved bug links.
