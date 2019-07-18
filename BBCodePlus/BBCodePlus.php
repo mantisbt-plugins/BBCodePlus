@@ -22,7 +22,7 @@
          $this->name        = plugin_lang_get( 'title' );
          $this->description = plugin_lang_get( 'description' );
          $this->page        = 'config';
-         $this->version     = '2.1.7';
+         $this->version     = '2.1.8';
 
          $this->requires['MantisCore'] = '2.0.0';
          # this plugin can coexist with MantisCoreFormatting.
@@ -290,11 +290,10 @@
        * @return  string $p_string
        */
       function string_process_bbcode( $p_string, $p_multiline = TRUE ) {
-         // convert mentions and titled links to BBCode mentions (if available).
+         # convert mentions and titled links to BBCode mentions (if available).
          $p_string = preg_replace( '/<span class="mention"><a .*?href="(.*?)">(.*?)<\/a><\/span>/is', '[url=$1 mention]$2[/url]', $p_string);
          $p_string = preg_replace( '/<a href="([^"]*)" title="([^"]*)">([^"]*)<\/a>/is', '[url=$1]$3[/url]', $p_string);
          $p_string = preg_replace( '/<a href="([^"]*)" title="([^"]*)" class="resolved">([^"]*)<\/a>/is', '[url=$1 resolved]$3[/url]', $p_string);
-         echo $p_string;
          # strip all the auto generated URLs by MantisCoreFormatting plugin to avoid mangling.
          if ( ON == $this->t_MantisCoreFormatting_process_urls ) {
             $p_string = string_strip_hrefs( $p_string );
