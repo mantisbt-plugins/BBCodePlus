@@ -298,6 +298,12 @@
          if ( ON == $this->t_MantisCoreFormatting_process_urls ) {
             $p_string = string_strip_hrefs( $p_string );
          }
+
+         # convert url-strings into links
+         $p_string = preg_replace( "/^((http|https|ftp|file):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#\|]+)/i", "[url]$1[/url]", $p_string );
+         $p_string = preg_replace( "/([^='\"(\[url\]|\[img\])])((http|https|ftp|file):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#\|]+)/i", "$1[url]$2[/url]", $p_string );
+
+
          # if mantis core formatting plugin process text feature is off, we need to sanitize the html,
          # for safety. this is the only functionality we will support when the MantisCoreFormatting plugin is
          # not enabled or when the text processing is disabled.
