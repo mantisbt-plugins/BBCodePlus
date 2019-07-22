@@ -26,6 +26,10 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.9
+
+- Fixed display issue of loose links (thanks to [@FSD-Christian-ISS](https://github.com/FSD-Christian-ISS) )
+
 ### 2.1.8
 
 - Removed leftover debug call that was breaking display.
