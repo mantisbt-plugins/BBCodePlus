@@ -26,6 +26,11 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.10
+
+- Fixed rendering issue of code blocks when language parameter was left empty
+- Fixed rendering issue of quote blocks when quotee parameter contained whitespaces 
+
 ### 2.1.9
 
 - Fixed display issue of loose links (thanks to [@FSD-Christian-ISS](https://github.com/FSD-Christian-ISS) )
