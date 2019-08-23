@@ -22,7 +22,7 @@
          $this->name        = plugin_lang_get( 'title' );
          $this->description = plugin_lang_get( 'description' );
          $this->page        = 'config';
-         $this->version     = '2.1.10';
+         $this->version     = '2.1.11';
 
          $this->requires['MantisCore'] = '2.0.0';
          # this plugin can coexist with MantisCoreFormatting.
@@ -298,11 +298,10 @@
          if ( ON == $this->t_MantisCoreFormatting_process_urls ) {
             $p_string = string_strip_hrefs( $p_string );
          }
-
+         
          # convert url-strings into links
-         $p_string = preg_replace( "/^((http|https|ftp|file):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#\|]+)/i", "[url]$1[/url]", $p_string );
-         $p_string = preg_replace( "/([^='\"(\[url\]|\[img\])])((http|https|ftp|file):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#\|]+)/i", "$1[url]$2[/url]", $p_string );
-
+         $p_string = preg_replace( "/^((https?|s?ftp|file|irc[6s]?|ssh|telnet|nntp|git|svn(?:\+ssh)?|cvs|mailto):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#\|]+)/i", "[url]$1[/url]", $p_string );
+         $p_string = preg_replace( "/([^='\"(\[url\]|\[img\])])((https?|s?ftp|file|irc[6s]?|ssh|telnet|nntp|git|svn(?:\+ssh)?|cvs|mailto):\/\/[a-z0-9;\/\?:@=\&\$\-_\.\+!*'\(\),~%#\|]+)/i", "$1[url]$2[/url]", $p_string );
 
          # if mantis core formatting plugin process text feature is off, we need to sanitize the html,
          # for safety. this is the only functionality we will support when the MantisCoreFormatting plugin is
