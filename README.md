@@ -26,6 +26,10 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.11
+
+- Fixed issue with additional protocols in link insertion.
+
 ### 2.1.10
 
 - Fixed rendering issue of code blocks when language parameter was left empty
