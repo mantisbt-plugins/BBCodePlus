@@ -278,7 +278,7 @@
          $this->t_bbCode->addParser('code-lang-ln', '/\[code=(\w*)\ start=([0-9]+)\](.*?)\[\/code\]/s',
                                     '<pre class="bbcodeplus pre line-numbers" data-start="$2"><code class="bbcodeplus code language-$1">$3</code></pre>', '$3');
          $this->t_bbCode->addParser('quote', '/\[quote\](.*?)\[\/quote\]/s', '<blockquote class="bbcodeplus blockquote">$1</blockquote>', '$1');
-         $this->t_bbCode->addParser('named-quote', '/\[quote=([\s\w]*)\](.*?)\[\/quote\]/s',
+         $this->t_bbCode->addParser('named-quote', '/\[quote=([\s\w,\']*)\](.*?)\[\/quote\]/su',
                                     '<blockquote class="bbcodeplus blockquote"><p class="mb-0">$2</p><footer class="bbcodeblus blockquote-footer"><cite title="$1">$1</cite></footer></blockquote>',
                                     '$1 wrote: $2');
       }
