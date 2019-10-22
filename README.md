@@ -28,7 +28,7 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ### 2.1.11
 
-- Fixed display of quotes when quotee's name contains unicode characters, commas or single quotes [@FSD-Christian-ISS](https://github.com/FSD-Christian-ISS)
+- Fixed issue with additional protocols in link insertion.
 
 ### 2.1.10
 
