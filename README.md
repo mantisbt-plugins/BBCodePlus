@@ -26,6 +26,10 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.11
+
+- Fixed display of quotes when quotee's name contains unicode characters, commas or single quotes [@FSD-Christian-ISS](https://github.com/FSD-Christian-ISS)
+
 ### 2.1.10
 
 - Fixed rendering issue of code blocks when language parameter was left empty
