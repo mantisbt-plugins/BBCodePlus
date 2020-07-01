@@ -22,7 +22,7 @@
          $this->name        = plugin_lang_get( 'title' );
          $this->description = plugin_lang_get( 'description' );
          $this->page        = 'config';
-         $this->version     = '2.1.13';
+         $this->version     = '2.1.14';
 
          $this->requires['MantisCore'] = '2.0.0';
          # this plugin can coexist with MantisCoreFormatting.
@@ -216,15 +216,14 @@
        * @return string Formatted text
        */
       public function email( $p_event, $p_string ) {
-         #$p_string = string_strip_hrefs( $p_string );
-         #$p_string = string_process_bug_link( $p_string, FALSE );
-         #$p_string = string_process_bugnote_link( $p_string, FALSE );
-         #$p_string = $this->string_process_cvs_link( $p_string, FALSE );
 
-         if ( ON == plugin_config_get( 'process_email' ) )
+         if ( ON == plugin_config_get( 'process_email' ) ) {
+            # process content to make sure all tags are converted to BBCode.
             $p_string = $this->string_process_bbcode( $p_string );
-         else
-            $p_string = $this->string_strip_bbcode( $p_string );
+         }
+         # strip the BBCode right back out. mantisbt email does not currently support HTML.
+         $p_string = $this->string_strip_bbcode( $p_string );
+
          return $p_string;
       }
       //-------------------------------------------------------------------
