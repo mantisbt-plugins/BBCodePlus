@@ -25,6 +25,10 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 1.3.15
+
+- Now including clipboard.min.js locally, to avoid cdn interaction.
+
 ### 1.3.14
 
 - Corrected email parsing behavior when Email Processing is turned on. MantisBT does not support HTML email natively.

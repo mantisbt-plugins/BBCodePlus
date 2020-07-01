@@ -21,7 +21,7 @@
          $this->name        = plugin_lang_get( 'title' );
          $this->description = plugin_lang_get( 'description' );
          $this->page        = 'config';
-         $this->version     = '1.3.14';
+         $this->version     = '1.3.15';
 
          $this->requires['MantisCore'] = '1.3.0';
          # this plugin can coexist with MantisCoreFormatting.
@@ -85,7 +85,6 @@
       function csp_headers() {
          # relax csp when processing markitup.
          if ( (ON == plugin_config_get( 'process_markitup' )) && function_exists( 'http_csp_add' ) ) {
-            http_csp_add( 'script-src', "'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js" );
             http_csp_add( 'img-src', "*" );
             http_csp_add( 'frame-ancestors', "'self'" );
          }
