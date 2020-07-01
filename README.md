@@ -26,6 +26,10 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.15
+
+- Npw including clipboard.min.js locally, to avoid cdn interaction.
+
 ### 2.1.14
 
 - Corrected email parsing behavior when Email Processing is turned on. MantisBT does not support HTML email natively.
