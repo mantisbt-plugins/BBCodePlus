@@ -22,7 +22,7 @@
          $this->name        = plugin_lang_get( 'title' );
          $this->description = plugin_lang_get( 'description' );
          $this->page        = 'config';
-         $this->version     = '2.1.11';
+         $this->version     = '2.1.14';
 
          $this->requires['MantisCore'] = '2.0.0';
          # this plugin can coexist with MantisCoreFormatting.
@@ -216,15 +216,14 @@
        * @return string Formatted text
        */
       public function email( $p_event, $p_string ) {
-         #$p_string = string_strip_hrefs( $p_string );
-         #$p_string = string_process_bug_link( $p_string, FALSE );
-         #$p_string = string_process_bugnote_link( $p_string, FALSE );
-         #$p_string = $this->string_process_cvs_link( $p_string, FALSE );
 
-         if ( ON == plugin_config_get( 'process_email' ) )
+         if ( ON == plugin_config_get( 'process_email' ) ) {
+            # process content to make sure all tags are converted to BBCode.
             $p_string = $this->string_process_bbcode( $p_string );
-         else
-            $p_string = $this->string_strip_bbcode( $p_string );
+         }
+         # strip the BBCode right back out. mantisbt email does not currently support HTML.
+         $p_string = $this->string_strip_bbcode( $p_string );
+
          return $p_string;
       }
       //-------------------------------------------------------------------
@@ -278,7 +277,7 @@
          $this->t_bbCode->addParser('code-lang-ln', '/\[code=(\w*)\ start=([0-9]+)\](.*?)\[\/code\]/s',
                                     '<pre class="bbcodeplus pre line-numbers" data-start="$2"><code class="bbcodeplus code language-$1">$3</code></pre>', '$3');
          $this->t_bbCode->addParser('quote', '/\[quote\](.*?)\[\/quote\]/s', '<blockquote class="bbcodeplus blockquote">$1</blockquote>', '$1');
-         $this->t_bbCode->addParser('named-quote', '/\[quote=([\s\w]*)\](.*?)\[\/quote\]/s',
+         $this->t_bbCode->addParser('named-quote', '/\[quote=([\s\w,\'\.@-]*)\](.*?)\[\/quote\]/su',
                                     '<blockquote class="bbcodeplus blockquote"><p class="mb-0">$2</p><footer class="bbcodeblus blockquote-footer"><cite title="$1">$1</cite></footer></blockquote>',
                                     '$1 wrote: $2');
       }

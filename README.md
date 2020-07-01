@@ -26,6 +26,18 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.14
+
+- Corrected email parsing behavior when Email Processing is turned on. MantisBT does not support HTML email natively.
+
+### 2.1.13
+
+- Added the following characters to work with the quotee's name in the named quote function (basically to support email-adresses here): . @ - [@FSD-Christian-ISS](https://github.com/FSD-Christian-ISS)
+
+### 2.1.12
+
+- Fixed display of quotes when quotee's name contains unicode characters, commas or single quotes [@FSD-Christian-ISS](https://github.com/FSD-Christian-ISS)
+
 ### 2.1.11
 
 - Fixed issue with additional protocols in link insertion.
