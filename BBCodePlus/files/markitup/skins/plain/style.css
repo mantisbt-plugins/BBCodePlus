@@ -12,7 +12,6 @@
 	text-decoration: none;
 }
 .markItUp  {
-	width: 730px;
 	margin: 5px 0 5px 0;
 }
 .markItUpContainer  {
@@ -22,7 +21,7 @@
 	font: 12px 'CG Mono', 'Consolas', 'Courier New', Courier, monospace;
 	padding: 5px 5px 5px 5px;
 	border: 1px solid #c0c0c0;
-	width: 705px;
+	width: 98%;
 	height: 320px;
 	clear: both;
 	line-height: 18px;

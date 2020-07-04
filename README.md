@@ -25,6 +25,16 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+
+### 1.3.17
+
+- Fixed styling and scripting issues with issue image picker. 
+- Resized markItUp editor elements.
+
+### 1.3.16
+
+- NEW: Added image picker modal for picking images that have been uploaded to issue.
+
 ### 1.3.15
 
 - Now including clipboard.min.js locally, to avoid cdn interaction.
@@ -96,6 +106,8 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 ![Markup editor](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master-1.3.x/Screen1.png)
 
 ![Configuration](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master-1.3.x/Screen2.png)
+
+![Configuration](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master-1.3.x/Screen3.png)
 
 Considerations
 -------------------------
