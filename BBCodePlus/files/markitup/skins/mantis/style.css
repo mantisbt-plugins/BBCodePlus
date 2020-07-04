@@ -12,7 +12,6 @@
 	text-decoration: none;
 }
 .markItUp  {
-	width: 730px;
 	margin: 5px 0 5px 0;
 }
 .markItUpContainer  {
@@ -24,11 +23,11 @@
 
 .markItUpEditor {
 	font:12px 'CG Mono', 'Consolas', 'Courier New', Courier, monospace;
-	padding: 5px 5px 5px 35px !important;
+	padding: 5px 5px 5px 5px !important;
 	border: 3px solid #3C769D;
-	width: 667px;
+	width: 98%;
 	height: 320px;
-	background: #FFF url("plugin_file.php?file=BBCodePlus/markitup/skins/mantis/images/bg-editor.png") no-repeat;
+	background: #FFF url("plugin_file.php?file=BBCodePlus/markitup/skins/mantis/images/bg-editor.png") repeat-x;
 	clear: both;
 	line-height: 18px;
 	overflow: auto;
