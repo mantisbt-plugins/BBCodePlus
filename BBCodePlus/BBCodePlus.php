@@ -21,7 +21,7 @@
          $this->name        = plugin_lang_get( 'title' );
          $this->description = plugin_lang_get( 'description' );
          $this->page        = 'config';
-         $this->version     = '1.3.15';
+         $this->version     = '1.3.17';
 
          $this->requires['MantisCore'] = '1.3.0';
          # this plugin can coexist with MantisCoreFormatting.
@@ -42,6 +42,7 @@
          $hooks = parent::hooks();
 
          # add in our plugin's hooks.
+		 $hooks['EVENT_LAYOUT_CONTENT_BEGIN'] = 'content_begin';
          $hooks['EVENT_LAYOUT_RESOURCES'] = 'resources';
          $hooks['EVENT_LAYOUT_PAGE_FOOTER'] = 'footer';
          $hooks['EVENT_CORE_HEADERS'] = 'csp_headers';
@@ -67,6 +68,25 @@
             $this->t_MantisCoreFormatting_process_text = $this->t_MantisCoreFormatting && config_get( 'plugin_MantisCoreFormatting_process_text' );
             $this->t_MantisCoreFormatting_process_urls = $this->t_MantisCoreFormatting && config_get( 'plugin_MantisCoreFormatting_process_urls' );
          }
+      }
+      //-------------------------------------------------------------------
+      /**
+       *  Event fired on content begin (at top of page). Useful for notices.
+       *
+       * @return  void
+       */
+      function content_begin() {
+         # add image picker modal.
+         $output = '<div id="bbcodeplus-image-picker" class="bbcodeplus modal">';
+         $output .= '<div class="bbcodeplus modal-content table-container">';
+         $output .= '<table>';
+         $output .= '<tr><th class="category">Images attached to issue</th><th class="category" width="1" ><a href="#" id="bbcodeplus-image-picker-close" class="bbcodeplus modal-close">&times;</a></th></tr>';
+         $output .= '</table>';
+         $output .= '<div id="bbcodeplus-image-picker-body" class="bbcodeplus modal-body"></div>';
+         $output .= '</div>';
+         $output .= '</div>';
+
+         return $output;
       }
       //-------------------------------------------------------------------
       /**
