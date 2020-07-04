@@ -190,9 +190,11 @@ mySettings = {
 
                     // empty picker body.
                     body.html("");
-
+                    
                     // create a new list of images.
-                    var list = body.append("<ul></ul>");
+                    body.append("<ul></ul>")
+                    var list = body.children('ul');
+
                     // append thumbnail classes.
                     list.attr("class", "bbcodeplus image-picker");
 
@@ -205,7 +207,7 @@ mySettings = {
                             markitup.textarea.insertAtCaret("[img]" + imgUrl + "[/img]");
                             $(document.body).css('overflow', 'auto');
                             modal.hide();
-                            return false;s
+                            return false;
                         });
                         list.append(img);
                     });

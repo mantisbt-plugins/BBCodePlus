@@ -60,7 +60,7 @@
   padding: 0;
   border: 1px solid #888;
   width: 50%;
-  max-height: 50%px;
+  max-height: 50%;
   overflow: auto;
   z-index: 1031;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -68,12 +68,16 @@
   animation-duration: 0.4s
 }
 
+.bbcodeplus.modal-body {
+  padding: 10px;
+}
+
 .bbcodeplus.image-picker ul {
   margin: 1em 0;
   padding: 0;
   list-style: none;
   display: grid;
-  grid: auto-flow / repeat(auto-fit, minmax(100px, 1fr));
+  grid: auto-flow / repeat(auto-fill, minmax(110px, 1fr));
   align-items: baseline;
   grid-gap: 10px;
   gap: 10px;
