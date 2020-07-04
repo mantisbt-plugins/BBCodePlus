@@ -26,6 +26,11 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.17
+
+- Fixed styling and scripting issues with issue image picker. 
+- Resized markItUp editor elements.
+
 ### 2.1.16
 
 - NEW: Added image picker modal for picking images that have been uploaded to issue.
