@@ -22,7 +22,7 @@
          $this->name        = plugin_lang_get( 'title' );
          $this->description = plugin_lang_get( 'description' );
          $this->page        = 'config';
-         $this->version     = '2.1.15';
+         $this->version     = '2.1.16';
 
          $this->requires['MantisCore'] = '2.0.0';
          # this plugin can coexist with MantisCoreFormatting.
@@ -89,6 +89,17 @@
          } else {
             $output = '';
          }
+         # add image picker modal.
+         $output .= '<div id="bbcodeplus-image-picker" class="bbcodeplus modal">';
+         $output .= '<div class="bbcodeplus modal-content widget-box widget-color-blue2">';
+         $output .= '<div class="widget-header widget-header-small">';
+         $output .= '<h4 class="widget-title lighter bbcodeplus"><i class="ace-icon fa fa-image"></i>Images attached to issue</h4>';
+         $output .= '<div class="widget-toolbar"><a href="#" id="bbcodeplus-image-picker-close" class="bbcodeplus modal-close"><i class="ace-icon fa fa-close"></a></i></div>';
+         $output .= '</div>';
+         $output .= '<div id="bbcodeplus-image-picker-body" class="bbcodeplus modal-body"></div>';
+         $output .= '</div>';
+         $output .= '</div>';
+
          return $output;
       }
       //-------------------------------------------------------------------
