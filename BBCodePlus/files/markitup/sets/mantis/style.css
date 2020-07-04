@@ -96,6 +96,11 @@
 	background-image: url("plugin_file.php?file=BBCodePlus/markitup/sets/mantis/images/picture.png");
 }
 /* --- separator ---*/
+/* issue picture */
+.markItUp .markItUpButton23 a	{
+	background-image: url("plugin_file.php?file=BBCodePlus/markitup/sets/mantis/images/picture-issue.png");
+}
+/* --- separator ---*/
 /* clean */
 .markItUp .clean a {
 	background-image: url("plugin_file.php?file=BBCodePlus/markitup/sets/mantis/images/clean.png");
