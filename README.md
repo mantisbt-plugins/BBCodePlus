@@ -26,9 +26,13 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.16
+
+- NEW: Added image picker modal for picking images that have been uploaded to issue.
+
 ### 2.1.15
 
-- Npw including clipboard.min.js locally, to avoid cdn interaction.
+- Now including clipboard.min.js locally, to avoid cdn interaction.
 
 ### 2.1.14
 
@@ -106,6 +110,8 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 ![Markup editor](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master/Screen1.png)
 
 ![Configuration](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master/Screen2.png)
+
+![Configuration](https://raw.githubusercontent.com/mantisbt-plugins/BBCodePlus/master/Screen3.png)
 
 Supported BBCode Tags
 ---------------------
