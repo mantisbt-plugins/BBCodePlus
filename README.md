@@ -26,6 +26,11 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.18
+
+- Added `nonce` random token and directives for included js scripts in order to hopefully address CSP restrictions.
+- Corrected issue with referencing issue images (removed volatile token, now using only file id and type).
+
 ### 2.1.17
 
 - Fixed styling and scripting issues with issue image picker. 
