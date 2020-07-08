@@ -194,12 +194,12 @@ mySettings = {
                     // create a new list of images.
                     body.append("<ul></ul>")
                     var list = body.children('ul');
+
                     // append thumbnail classes.
                     list.attr("class", "bbcodeplus image-picker");
 
                     $(".bug-attachment-preview-image a img").each(function(index, value) {
-                        var imgUrl = this.src;
-                        
+                        var imgUrl = $(this).parent().prop('href');
                         var img = $("<li><a href=\"#\"><img src=\"" + imgUrl + "\"></a></li>");
                         var link = img.children('a');
                         link.click(function() {

@@ -220,9 +220,7 @@
 						}).bind("focusin.markItUp", function(){
                             $$.focus();
 						}).bind('mouseup', function(e) {
-							if (button.call) {
-								eval(button.call)(e); // Pass the mouseup event to custom delegate
-							}
+							if (button.call == 'preview') { preview(); }
 							setTimeout(function() { markup(button) },1);
 							return false;
 						}).bind('mouseenter.markItUp', function() {
