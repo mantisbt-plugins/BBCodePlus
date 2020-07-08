@@ -199,8 +199,7 @@ mySettings = {
                     list.attr("class", "bbcodeplus image-picker");
 
                     $(".bug-attachment-preview-image a img").each(function(index, value) {
-                        var imgUrl = this.src;
-                        
+                        var imgUrl = $(this).parent().prop('href');
                         var img = $("<li><a href=\"#\"><img src=\"" + imgUrl + "\"></a></li>");
                         var link = img.children('a');
                         link.click(function() {
@@ -256,4 +255,16 @@ mySettings = {
         {name:'Clean', className:"clean", replaceWith:function(markitup) { return markitup.selection.replace(/\[(.*?)\]/g, "") } },
         {name:'Preview', className:'preview',  call:'preview'},
     ]
+}
+
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
 }

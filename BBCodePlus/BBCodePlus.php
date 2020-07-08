@@ -124,7 +124,6 @@
          if ( (ON == plugin_config_get( 'process_markitup' )) && function_exists( 'http_csp_add' ) ) {
             http_csp_add( 'img-src', "*" );
             http_csp_add( 'frame-ancestors', "'self'" );
-            http_csp_add( 'script', "'self'" );
             http_csp_add( 'script-src', "'nonce-$this->t_nonceToken'");
          }
       }
