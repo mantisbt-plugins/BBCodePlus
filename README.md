@@ -26,6 +26,10 @@ If you would like to contribute to BBCode plus, please [read this guide first](h
 
 ## Change Log
 
+### 2.1.19
+
+- Corrected issue with clipboard js script not being referenced properly on some mantis installs.
+
 ### 2.1.18
 
 - Added `nonce` random token and directives for included js scripts in order to hopefully address CSP restrictions.
