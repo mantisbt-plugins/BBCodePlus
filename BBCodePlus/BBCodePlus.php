@@ -12,6 +12,7 @@
       private $t_MantisCoreFormatting_process_markdown = OFF;
       private $t_bbCode = null;
       private $t_HTML = null;
+      private $t_nonceToken = null;
       //-------------------------------------------------------------------
       /**
        *  A method that populates the plugin information and minimum requirements.
@@ -22,7 +23,7 @@
          $this->name        = plugin_lang_get( 'title' );
          $this->description = plugin_lang_get( 'description' );
          $this->page        = 'config';
-         $this->version     = '2.1.17';
+         $this->version     = '2.1.18';
 
          $this->requires['MantisCore'] = '2.0.0';
          # this plugin can coexist with MantisCoreFormatting.
@@ -74,6 +75,8 @@
                $this->t_MantisCoreFormatting_process_markdown = OFF;
             }
          }
+         # create the random nonce token for allowing unsafe-eval on csp
+         $this->t_nonceToken = base64_encode(substr(md5(mt_rand()), 0, 12));
       }
       //-------------------------------------------------------------------
       /**
@@ -121,6 +124,7 @@
          if ( (ON == plugin_config_get( 'process_markitup' )) && function_exists( 'http_csp_add' ) ) {
             http_csp_add( 'img-src', "*" );
             http_csp_add( 'frame-ancestors', "'self'" );
+            http_csp_add( 'script-src', "'nonce-$this->t_nonceToken'");
          }
       }
       //-------------------------------------------------------------------
@@ -132,23 +136,23 @@
       function resources( $p_event ) {
          # includes.
          $resources = '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'bbcodeplus.css' ) . '" />';
-         $resources .= '<script type="text/javascript" src="' . plugin_file( 'bbcodeplus-init.js' ) . '"></script>';
+         $resources .= '<script type="text/javascript" src="' . plugin_file( 'bbcodeplus-init.js' ) . '" nonce="' . $this->t_nonceToken . '"></script>';
 
          if ( ON == plugin_config_get( 'process_markitup' ) ) {
             $resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'markitup/skins/' . plugin_config_get( 'markitup_skin' ) . '/style.css' ) . '" />';
             $resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'markitup/sets/mantis/style.css' ) . '" />';
-            $resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/jquery_markitup.js' ) . '"></script>';
-            $resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/sets/mantis/set.js' ) . '"></script>';
-            $resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup-init.js' ) . '"></script>';
+            $resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/jquery_markitup.js' ) . '" nonce="' . $this->t_nonceToken . '"></script>';
+            $resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup/sets/mantis/set.js' ) . '" nonce="' . $this->t_nonceToken . '"></script>';
+            $resources .= '<script type="text/javascript" src="' . plugin_file( 'markitup-init.js' ) . '" nonce="' . $this->t_nonceToken . '"></script>';
          }
 
          if ( ON == plugin_config_get( 'process_highlight' ) ) {
             $resources .= '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'prism/styles/' . plugin_config_get( 'highlight_css' ) . '.css' ) . '" />';
-            $resources .= '<script type="text/javascript" src="' . plugin_file( 'prism/prism.js' ) . '"></script>';
+            $resources .= '<script type="text/javascript" src="' . plugin_file( 'prism/prism.js' ) . '" nonce="' . $this->t_nonceToken . '"></script>';
 
             # load additional languages.
             if ( ON == plugin_config_get( 'highlight_extralangs' ) ) {
-               $resources .= '<script type="text/javascript" src="' . plugin_file( 'prism/prism_additional_languages.js' ) . '"></script>';
+               $resources .= '<script type="text/javascript" src="' . plugin_file( 'prism/prism_additional_languages.js' ) . '" nonce="' . $this->t_nonceToken . '"></script>';
             }
          }
 

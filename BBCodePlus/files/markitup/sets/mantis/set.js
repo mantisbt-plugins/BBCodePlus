@@ -199,8 +199,7 @@ mySettings = {
                     list.attr("class", "bbcodeplus image-picker");
 
                     $(".bug-attachment-preview-image a img").each(function(index, value) {
-                        var imgUrl = this.src;
-                        
+                        var imgUrl = $(this).parent().prop('href');
                         var img = $("<li><a href=\"#\"><img src=\"" + imgUrl + "\"></a></li>");
                         var link = img.children('a');
                         link.click(function() {
